@@ -30,7 +30,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45R-9l-HTu">
                                             <rect key="frame" x="8" y="8" width="359" height="237"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-AR-4wL">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-AR-4wL">
                                                     <rect key="frame" x="17" y="8" width="323" height="174"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTz-In-thY">
@@ -141,6 +141,7 @@
     <resources>
         <image name="002-facebook" width="64" height="64"/>
         <image name="003-twitter" width="64" height="64"/>
+        <image name="Default" width="900" height="600"/>
         <image name="present" width="64" height="64"/>
         <image name="speech-bubble" width="64" height="64"/>
     </resources>
