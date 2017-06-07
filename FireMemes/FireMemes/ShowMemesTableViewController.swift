@@ -19,18 +19,13 @@ class ShowMemesTableViewController: UITableViewController {
         guard let myLocation = myLocation else { return }
         MemeController.shared.fetch(myLocation, radiusInMeters: 500) // We can change radius
     }
-    
-    func getLocationUpdate() {
-        locationManager.startUpdatingLocation()
-    }
+
     
     func refreshing() {
         tableView.reloadData()
-        
-        // Location Services
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func requestLocation() {
         locationManager.requestLocation()
     }
     
@@ -41,6 +36,10 @@ class ShowMemesTableViewController: UITableViewController {
         fetch()
         tableView.reloadData()
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
     }
@@ -73,7 +72,6 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             myLocation = location
-            locationManager.stopUpdatingLocation()
         }
     }
     
