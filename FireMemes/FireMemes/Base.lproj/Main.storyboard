@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,17 +14,29 @@
         <scene sceneID="GTy-wU-Le8">
             <objects>
                 <tableViewController id="9GN-a9-xrG" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="On9-lZ-xQf">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="247" sectionHeaderHeight="28" sectionFooterHeight="28" id="On9-lZ-xQf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeFeed" id="CEx-M2-Wm4">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeFeed" rowHeight="247" id="CEx-M2-Wm4">
+                                <rect key="frame" x="0.0" y="28" width="375" height="247"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CEx-M2-Wm4" id="Jus-eM-6Y4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="246.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45R-9l-HTu">
+                                            <rect key="frame" x="8" y="8" width="359" height="211"/>
+                                            <color key="backgroundColor" red="0.84696626663208008" green="0.84711211919784546" blue="0.84695702791213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="45R-9l-HTu" firstAttribute="top" secondItem="Jus-eM-6Y4" secondAttribute="top" constant="8" id="04w-11-iFc"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="45R-9l-HTu" secondAttribute="trailing" id="54U-4i-77m"/>
+                                        <constraint firstItem="45R-9l-HTu" firstAttribute="leading" secondItem="Jus-eM-6Y4" secondAttribute="leadingMargin" id="BpT-QS-ena"/>
+                                        <constraint firstAttribute="bottom" secondItem="45R-9l-HTu" secondAttribute="bottom" constant="27.5" id="WWZ-MW-gjY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -35,7 +48,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5eq-lm-eX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="-69"/>
+            <point key="canvasLocation" x="-52" y="-69.715142428785612"/>
         </scene>
     </scenes>
 </document>
