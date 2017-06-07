@@ -154,23 +154,29 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
         convertNumbers()
     }
     
+    @IBAction func shareMeme(_ sender: Any) {
+        
+        
+        //what we want to do when
+        //we push the share button
+    }
     
     //MARK: END ACTIONS
     
     //MARK: DRAWING
     
-    func redrawImage() {
-        
-        let y = CGFloat(yValue.value)
-        let x = CGFloat(xValue.value)
-        
-        let newPoint = CGPoint(x: x, y: y)
-        
-        memeImage = textToImage(drawText:"aaa", inImage: memeImage, atPoint: newPoint)
-        
-        imageView.image = memeImage
-        
-    }
+//    func redrawImage() {
+//        
+//        let y = CGFloat(yValue.value)
+//        let x = CGFloat(xValue.value)
+//        
+//        let newPoint = CGPoint(x: x, y: y)
+//        
+//        memeImage = textToImage(drawText:"aaa", inImage: memeImage, atPoint: newPoint)
+//        
+//        imageView.image = memeImage
+//        
+//    }
     
     func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
         
@@ -234,38 +240,34 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
         default:
             return .darkText
         }
-        
     }
 
     func convertNumbers() {
+        
+        //get the values from the
+        //sliders!!!!!!!!!!!!!
         
         let x = CGFloat(xValue.value)
         let y = CGFloat(yValue.value)
     
         let imageSize = memeImage.size
         
+        //this is to know how big the image is compared to the
+        //view, so the text shows up in the right spot.
         let scale = view.layer.preferredFrameSize().width / imageSize.width
-        
-        print(scale)
         
         let testX = x * scale
         let testY = y * scale
-        
         let point = CGPoint(x: testX, y: testY)
         
         guard var text = memeTextField.text else { return }
-        
         if text == "" {
             text = "enter meme"
         }
         
         let image = textToImage(drawText: text, inImage: memeImage, atPoint: point)
-        
         imageView.image = image
-        
     }
-    
-    
 }
 
 extension MemeCreatorViewController: UIPickerViewDelegate, UIPickerViewDataSource {
