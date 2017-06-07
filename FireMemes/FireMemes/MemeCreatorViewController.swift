@@ -29,6 +29,7 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
     
     let colorData = ["red", "green", "blue", "white", "black"]
     let fontData = ["AmericanTypewriter", "AvenirNext-HeavyItalic", "Helvetica Bold"]
+    let fontSizeData = ["12", "24", "36", "70", "100", "150"]
     
     var pickerData: [[String]] = [[]]
     
