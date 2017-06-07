@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import MapKit
 
 class ShowMemesTableViewController: UITableViewController {
 
+    //MARK: - Internal Properties
+    var locationManager = CLLocationManager()
+    var myLocation: CLLocation?
+    
+    //MARK: - ViewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
     }
-
- 
 
     // MARK: - Table view data source
 
@@ -28,7 +32,6 @@ class ShowMemesTableViewController: UITableViewController {
         return 1
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath)
 
@@ -37,5 +40,24 @@ class ShowMemesTableViewController: UITableViewController {
     }
  
 
+}
 
+extension ShowMemesTableViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            myLocation = location
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error with locationManager: \(error.localizedDescription)")
+    }
+    
 }

@@ -242,7 +242,7 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
     
 }
 
-extension NewPicViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension MemeCreatorViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -322,11 +322,9 @@ extension NewPicViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
         self.view.addConstraints([pickerBottom, topPicker, leadPicker, trailPicker])
     
-    
     }
     
 }
-
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
