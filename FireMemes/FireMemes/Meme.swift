@@ -21,7 +21,7 @@ class Meme: CloudKitSync {
     
     let date: Date
     let identifier: String
-    let thumbsUp: Int
+    var thumbsUp: Int
     var comments: [String]
     let location: CLLocation
     var ckRecordID: CKRecordID?
