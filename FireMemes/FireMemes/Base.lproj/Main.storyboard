@@ -14,39 +14,44 @@
         <scene sceneID="GTy-wU-Le8">
             <objects>
                 <tableViewController id="9GN-a9-xrG" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="247" sectionHeaderHeight="28" sectionFooterHeight="28" id="On9-lZ-xQf">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="281" sectionHeaderHeight="28" sectionFooterHeight="28" id="On9-lZ-xQf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeFeed" rowHeight="247" id="CEx-M2-Wm4">
-                                <rect key="frame" x="0.0" y="28" width="375" height="247"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeFeed" rowHeight="281" id="CEx-M2-Wm4">
+                                <rect key="frame" x="0.0" y="28" width="375" height="281"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CEx-M2-Wm4" id="Jus-eM-6Y4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="246.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="280.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45R-9l-HTu">
-                                            <rect key="frame" x="8" y="8" width="359" height="231"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="249"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-AR-4wL">
                                                     <rect key="frame" x="17" y="8" width="323" height="174"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTz-In-thY">
-                                                    <rect key="frame" x="74" y="190" width="30" height="30"/>
+                                                    <rect key="frame" x="65" y="196" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="003-twitter"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyU-dA-ck0">
-                                                    <rect key="frame" x="27" y="190" width="30" height="30"/>
+                                                    <rect key="frame" x="22" y="196" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" backgroundImage="002-facebook"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeP-wJ-eu5">
-                                                    <rect key="frame" x="112" y="190" width="30" height="30"/>
+                                                    <rect key="frame" x="109" y="196" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" backgroundImage="speech-bubble"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOD-nH-pwR">
+                                                    <rect key="frame" x="157" y="196" width="67" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Comment"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.84696626663208008" green="0.84711211919784546" blue="0.84695702791213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -56,7 +61,7 @@
                                         <constraint firstItem="45R-9l-HTu" firstAttribute="top" secondItem="Jus-eM-6Y4" secondAttribute="top" constant="8" id="04w-11-iFc"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="45R-9l-HTu" secondAttribute="trailing" id="54U-4i-77m"/>
                                         <constraint firstItem="45R-9l-HTu" firstAttribute="leading" secondItem="Jus-eM-6Y4" secondAttribute="leadingMargin" id="BpT-QS-ena"/>
-                                        <constraint firstAttribute="bottom" secondItem="45R-9l-HTu" secondAttribute="bottom" constant="7.5" id="WWZ-MW-gjY"/>
+                                        <constraint firstAttribute="bottom" secondItem="45R-9l-HTu" secondAttribute="bottom" constant="23.5" id="WWZ-MW-gjY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
