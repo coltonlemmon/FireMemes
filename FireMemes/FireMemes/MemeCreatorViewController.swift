@@ -42,7 +42,7 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickerData = [colorData, fontData]
+        pickerData = [colorData, fontData, fontSizeData]
         
         imageView.image = textToImage(drawText: "", inImage: #imageLiteral(resourceName: "oldMan"), atPoint: CGPoint(x: 0, y: 0))
     
@@ -177,15 +177,19 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
         let int = textPicker.selectedRow(inComponent: 1)
         let font = fontData[int]
         
+        let intt = textPicker.selectedRow(inComponent: 2)
+        guard let fontSizeInt = Int(fontSizeData[intt]) else { return UIFont(name:  "AmericanTypewriter", size: 24) }
+        let fontInt = CGFloat(fontSizeInt)
+        
         switch font {
             case "AmericanTypewriter":
-                return UIFont(name: "AmericanTypewriter", size: 50)
+                return UIFont(name: "AmericanTypewriter", size: fontInt)
             case "AvenirNext-HeavyItalic":
-                return UIFont(name: "AvenirNext-HeavyItalic", size: 50)
+                return UIFont(name: "AvenirNext-HeavyItalic", size: fontInt)
             case "Helvetica Bold":
-                return UIFont(name: "Helvetica Bold", size: 50)
+                return UIFont(name: "Helvetica Bold", size: fontInt)
             default:
-                return UIFont()
+                return UIFont(name:  "AmericanTypewriter", size: 24)
         }
     }
     
@@ -242,7 +246,7 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
     
 }
 
-extension NewPicViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension MemeCreatorViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -285,29 +289,6 @@ extension NewPicViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return pickerData[component].count}
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { return pickerData[component][row] }
-    
-    
-    func switchColor() {
-        
-        
-        //will return the color of the picker
-    }
-    
-    func switchFont() {
-        
-        
-        //will return the font of the picker
-    }
-
-    
-    
-    func setContstraintsForYSlider() {
-        
-        let point = CGPoint(x: 0, y: 0)
-        
-        yValue.layer.position = point
-        
-    }
     
     func setupPicker() {
     
