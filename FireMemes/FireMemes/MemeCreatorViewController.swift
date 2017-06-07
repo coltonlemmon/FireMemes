@@ -9,8 +9,11 @@
 import UIKit
 import CoreImage
 import CoreGraphics
+import MapKit
 
 class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    //MARK: - Outlets
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textLabel: UILabel!
@@ -25,6 +28,8 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var testLabel: UILabel!
     
+    //MARK: - Internal Properties
+    
     let textPicker = UIPickerView()
     
     let colorData = ["red", "green", "blue", "white", "black"]
@@ -38,6 +43,11 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
     var memeImage = UIImage()
     
     var isImageGiven = false
+    
+    //MARK: - Location Properties
+    
+    var myLocation: CLLocation?
+    var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +71,19 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
         
         setupPicker()
         
+        // Location Services
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+    }
+    
+    //MARK: - Location Functions
+    
+    func getLocationUpdate() {
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
     
     //MARK: functions
@@ -305,6 +328,27 @@ extension MemeCreatorViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     }
     
+}
+
+//MARK: - Location Manager Delegate Methods
+extension MemeCreatorViewController: CLLocationManagerDelegate {
+    
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            myLocation = location
+            self.locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error getting location to create meme: \(error.localizedDescription)")
+    }
 }
 
 extension UIViewController {

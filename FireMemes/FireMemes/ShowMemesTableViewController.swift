@@ -20,8 +20,18 @@ class ShowMemesTableViewController: UITableViewController {
         MemeController.shared.fetch(myLocation, radiusInMeters: 500) // We can change radius
     }
     
+    func getLocationUpdate() {
+        locationManager.startUpdatingLocation()
+    }
+    
     func refreshing() {
         tableView.reloadData()
+        
+        // Location Services
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
     
     //MARK: - Lifecycle
@@ -63,6 +73,7 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             myLocation = location
+            locationManager.stopUpdatingLocation()
         }
     }
     
