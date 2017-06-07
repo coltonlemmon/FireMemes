@@ -82,8 +82,7 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
     //MARK: - Location Functions
     
     func getLocationUpdate() {
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
+        locationManager.requestLocation()
     }
     
     //MARK: functions
@@ -342,7 +341,6 @@ extension MemeCreatorViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             myLocation = location
-            self.locationManager.stopUpdatingLocation()
         }
     }
     
