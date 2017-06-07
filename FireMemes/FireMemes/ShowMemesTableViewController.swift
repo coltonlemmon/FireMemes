@@ -15,26 +15,36 @@ class ShowMemesTableViewController: UITableViewController {
     var locationManager = CLLocationManager()
     var myLocation: CLLocation?
     
-    //MARK: - ViewDidLoad
+    func fetch() {
+        guard let myLocation = myLocation else { return }
+        MemeController.shared.fetch(myLocation, radiusInMeters: 500) // We can change radius
+    }
+    
+    func refreshing() {
+        tableView.reloadData()
+    }
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetch()
+        tableView.reloadData()
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return MemeController.shared.memes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath)
-
+        
+        
 
         return cell
     }
