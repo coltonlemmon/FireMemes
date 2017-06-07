@@ -21,5 +21,4 @@ class MemeController {
     
     //MARK: - CRUD
     
-
 }

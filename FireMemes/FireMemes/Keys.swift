@@ -21,4 +21,5 @@ enum Keys {
     static let identifier = "Identifier"
     static let thumbsUp = "ThumbsUp"
     static let comments = "Comments"
+    static let location = "Location"
 }

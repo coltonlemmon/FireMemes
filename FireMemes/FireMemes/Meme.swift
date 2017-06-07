@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CloudKit
+import MapKit
 
 class Meme {
     
@@ -18,18 +19,21 @@ class Meme {
         return UIImage(data: imageData)
     }
     
+    
     let date: Date
     let identifier: String
     let thumbsUp: Int
     let comments: [String]
+    let location: CLLocation
     
-    init(imageData: Data?, image: UIImage, date: Date, id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = []) {
+    init(imageData: Data?, image: UIImage, date: Date, id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation) {
         self.imageData = imageData
         //self.image = image  WTF?
         self.date = date
         self.identifier = id
         self.thumbsUp = thumbsUp
         self.comments = comments
+        self.location = location
     }
     
 }
@@ -45,8 +49,9 @@ extension Meme {
             let date = cloudKitRecord[Keys.date] as? Date,
             let id = cloudKitRecord[Keys.identifier] as? String,
             let thumbsUp = cloudKitRecord[Keys.thumbsUp] as? Int,
-            let comments = cloudKitRecord[Keys.comments] as? [String] else { return nil }
-        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments)
+            let comments = cloudKitRecord[Keys.comments] as? [String],
+            let location = cloudKitRecord[Keys.location] as? CLLocation else { return nil }
+        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location)
     }
     
     fileprivate var temporaryPhotoURL: URL { //WTF
@@ -69,6 +74,7 @@ extension Meme {
         record[Keys.identifier] = identifier as CKRecordValue
         record[Keys.thumbsUp] = thumbsUp as CKRecordValue
         record[Keys.comments] = comments as CKRecordValue
+        record[Keys.location] = location as CKRecordValue
         
         return record
     }
