@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="290"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CEx-M2-Wm4" id="Jus-eM-6Y4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="289.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45R-9l-HTu">
@@ -93,7 +93,7 @@
                                                 <constraint firstItem="OX2-1P-rDM" firstAttribute="leading" secondItem="mbv-VR-lZu" secondAttribute="trailing" constant="42" id="1Td-vk-5Tc"/>
                                                 <constraint firstItem="qTz-In-thY" firstAttribute="leading" secondItem="uyU-dA-ck0" secondAttribute="trailing" constant="15" id="9Sw-6z-nEq"/>
                                                 <constraint firstItem="OX2-1P-rDM" firstAttribute="centerY" secondItem="qTz-In-thY" secondAttribute="centerY" id="Dt3-6b-5f1"/>
-                                                <constraint firstItem="bOD-nH-pwR" firstAttribute="leading" secondItem="EeP-wJ-eu5" secondAttribute="trailing" constant="15" id="Nbo-a6-W4d"/>
+                                                <constraint firstAttribute="trailing" secondItem="OX2-1P-rDM" secondAttribute="trailing" constant="27" id="EQQ-1g-tMv"/>
                                                 <constraint firstAttribute="bottom" secondItem="uyU-dA-ck0" secondAttribute="bottom" constant="8" id="PCs-Ik-QL9"/>
                                                 <constraint firstItem="mbv-VR-lZu" firstAttribute="leading" secondItem="bOD-nH-pwR" secondAttribute="trailing" constant="2" id="PgJ-Ir-uiL"/>
                                                 <constraint firstAttribute="bottom" secondItem="EeP-wJ-eu5" secondAttribute="bottom" constant="8" id="QUR-SK-6op"/>
@@ -102,8 +102,9 @@
                                                 <constraint firstItem="qTz-In-thY" firstAttribute="bottom" secondItem="EeP-wJ-eu5" secondAttribute="bottom" id="Xz4-CD-clp"/>
                                                 <constraint firstAttribute="bottom" secondItem="mbv-VR-lZu" secondAttribute="bottom" constant="16" id="ef9-xE-Jwx"/>
                                                 <constraint firstItem="uyU-dA-ck0" firstAttribute="leading" secondItem="45R-9l-HTu" secondAttribute="leading" constant="17" id="jOL-9c-qPd"/>
-                                                <constraint firstItem="Euz-nQ-0qc" firstAttribute="leading" secondItem="mbv-VR-lZu" secondAttribute="trailing" constant="19" id="jvB-RM-Dku"/>
+                                                <constraint firstItem="Euz-nQ-0qc" firstAttribute="leading" secondItem="mbv-VR-lZu" secondAttribute="trailing" constant="19" id="l4X-L7-OfR"/>
                                                 <constraint firstAttribute="bottom" secondItem="bOD-nH-pwR" secondAttribute="bottom" constant="6" id="leG-LD-3jr"/>
+                                                <constraint firstItem="OX2-1P-rDM" firstAttribute="leading" secondItem="bOD-nH-pwR" secondAttribute="trailing" constant="69" id="m2U-ma-CIX"/>
                                                 <constraint firstItem="bOD-nH-pwR" firstAttribute="top" secondItem="x4B-AR-4wL" secondAttribute="bottom" constant="2" id="mP3-wb-bN1"/>
                                                 <constraint firstItem="EeP-wJ-eu5" firstAttribute="top" secondItem="x4B-AR-4wL" secondAttribute="bottom" constant="8" symbolic="YES" id="r12-VQ-LZ0"/>
                                                 <constraint firstItem="EeP-wJ-eu5" firstAttribute="leading" secondItem="qTz-In-thY" secondAttribute="trailing" constant="14" id="tve-5O-veo"/>
