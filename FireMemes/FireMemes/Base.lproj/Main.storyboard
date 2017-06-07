@@ -27,7 +27,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45R-9l-HTu">
-                                            <rect key="frame" x="8" y="8" width="359" height="211"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="231"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4B-AR-4wL">
+                                                    <rect key="frame" x="17" y="8" width="323" height="174"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.84696626663208008" green="0.84711211919784546" blue="0.84695702791213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                     </subviews>
@@ -35,7 +41,7 @@
                                         <constraint firstItem="45R-9l-HTu" firstAttribute="top" secondItem="Jus-eM-6Y4" secondAttribute="top" constant="8" id="04w-11-iFc"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="45R-9l-HTu" secondAttribute="trailing" id="54U-4i-77m"/>
                                         <constraint firstItem="45R-9l-HTu" firstAttribute="leading" secondItem="Jus-eM-6Y4" secondAttribute="leadingMargin" id="BpT-QS-ena"/>
-                                        <constraint firstAttribute="bottom" secondItem="45R-9l-HTu" secondAttribute="bottom" constant="27.5" id="WWZ-MW-gjY"/>
+                                        <constraint firstAttribute="bottom" secondItem="45R-9l-HTu" secondAttribute="bottom" constant="7.5" id="WWZ-MW-gjY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
