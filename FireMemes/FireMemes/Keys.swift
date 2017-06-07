@@ -12,6 +12,8 @@ enum Keys {
     
     //MARK: - General
     
+    static let notification = Notification.Name("memeNotification")
+    
     //MARK: - Meme
     
     static let meme = "Meme"
@@ -21,4 +23,5 @@ enum Keys {
     static let identifier = "Identifier"
     static let thumbsUp = "ThumbsUp"
     static let comments = "Comments"
+    static let location = "Location"
 }
