@@ -9,6 +9,8 @@
 import UIKit
 
 class MemeTableViewCell: UITableViewCell {
+    
+    //each cell will have a meme,
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +22,9 @@ class MemeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    //actions for each button here
+    
+    
 
 }

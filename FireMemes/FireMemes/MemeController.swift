@@ -30,12 +30,6 @@ class MemeController {
         }
     }
     
-    //MARK: - Initializer
-    
-    init() {
-        
-    }
-    
     //MARK: - CRUD
     
     func createMeme(image: UIImage, location: CLLocation) -> Meme {
@@ -44,7 +38,6 @@ class MemeController {
     }
     
     func postMeme(meme: Meme) {
-        
         self.saveUsingCloudKit(record: CKRecord(meme)) { (error) in
             if let error = error {
                 print("Error saving to cloudKit \(error.localizedDescription)")
@@ -63,6 +56,10 @@ class MemeController {
             }
         }
     }
+    
+    //delete comment from meme
+    
+    //delete meme
     
     //MARK: - CloudKit Stuff
     func fetch(_ location: CLLocation, radiusInMeters: CLLocationDistance) {
