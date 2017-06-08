@@ -72,8 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				4DA2D7D81EE9A91D006D056D /* FireMemes.entitlements */,
-				4DA2D7D71EE8A4A2006D056D /* Storyboards */,
 				4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */,
+				4DA2D7D71EE8A4A2006D056D /* Storyboards */,
 				5914E6EB1EE877F9007D9C81 /* ViewControllers */,
 				4D4A89091EE5B586004A2AC3 /* Model */,
 				4D4A890A1EE5B7E9004A2AC3 /* ModelControllers */,
