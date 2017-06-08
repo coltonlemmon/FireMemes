@@ -10,8 +10,9 @@ import UIKit
 import MapKit
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
     @IBOutlet weak var tableView: UITableView!
+
+    
     //MARK: - Internal Properties
     var locationManager = CLLocationManager()
     var myLocation: CLLocation?
