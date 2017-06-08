@@ -61,6 +61,8 @@ class ShowMemesTableViewController: UITableViewController {
 
 }
 
+//MARK: - Location manager delegate functions
+
 extension ShowMemesTableViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -80,3 +82,4 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     }
     
 }
+
