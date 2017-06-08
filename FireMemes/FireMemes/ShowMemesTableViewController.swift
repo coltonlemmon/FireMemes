@@ -83,6 +83,3 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     
 }
 
-extension ShowMemesTableViewController: UIPickerViewDelegate {
-    
-}
