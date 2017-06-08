@@ -9,8 +9,9 @@
 import UIKit
 import MapKit
 
-class ShowMemesTableViewController: UITableViewController {
+class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
+    @IBOutlet weak var tableView: UITableView!
     //MARK: - Internal Properties
     var locationManager = CLLocationManager()
     var myLocation: CLLocation?
@@ -42,15 +43,16 @@ class ShowMemesTableViewController: UITableViewController {
         locationManager.requestLocation()
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
+        tableView.delegate = self
     }
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MemeController.shared.memes.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath)
         
         
@@ -58,6 +60,9 @@ class ShowMemesTableViewController: UITableViewController {
         return cell
     }
  
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
 }
 
