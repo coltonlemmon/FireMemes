@@ -65,7 +65,7 @@ class MemeController {
             guard let meme = Meme(record: record) else { return }
             
             if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
-                    self.memes.append(meme)
+                self.memes.append(meme)
             } else {
                 self.delete(meme)
             }
