@@ -161,22 +161,18 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
         //we push the share button
     }
     
+    @IBAction func postMeme(_ sender: Any) {
+        
+        guard let location = myLocation else { return }
+        let meme = MemeController.shared.createMeme(image: memeImage, location: location)
+        
+        MemeController.shared.postMeme(meme: meme)
+    }
+    
+    
     //MARK: END ACTIONS
     
     //MARK: DRAWING
-    
-//    func redrawImage() {
-//        
-//        let y = CGFloat(yValue.value)
-//        let x = CGFloat(xValue.value)
-//        
-//        let newPoint = CGPoint(x: x, y: y)
-//        
-//        memeImage = textToImage(drawText:"aaa", inImage: memeImage, atPoint: newPoint)
-//        
-//        imageView.image = memeImage
-//        
-//    }
     
     func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
         

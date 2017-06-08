@@ -23,17 +23,17 @@
                     <view key="view" contentMode="scaleToFill" id="HgB-lR-JMg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeFeed" rowHeight="290" id="CEx-M2-Wm4" customClass="MemeTableViewCell" customModule="FireMemes" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="290"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CEx-M2-Wm4" id="Jus-eM-6Y4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45R-9l-HTu">
-                                            <rect key="frame" x="8" y="8" width="359" height="274"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="290" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3l4-6O-0Zn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeFeed" rowHeight="290" id="AIm-IS-bmf" customClass="MemeTableViewCell" customModule="FireMemes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="290"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AIm-IS-bmf" id="74a-ea-2bW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="289.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBT-HC-b6B">
                                                     <rect key="frame" x="8" y="8" width="359" height="274"/>
