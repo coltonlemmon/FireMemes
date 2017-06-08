@@ -33,7 +33,10 @@ class MemeController {
     //MARK: - CRUD
     
     func createMeme(image: UIImage, location: CLLocation) -> Meme {
-        let meme = Meme(imageData: nil, image: image, location: location)
+        
+        guard let data = UIImagePNGRepresentation(image) else { return Meme(imageData: nil, image: image, location: location) }
+        
+        let meme = Meme(imageData: data, image: image, location: location)
         return meme
     }
     

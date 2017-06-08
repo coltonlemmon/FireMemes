@@ -34,6 +34,9 @@ class Meme: CloudKitSync {
         self.identifier = id
         self.thumbsUp = thumbsUp
         self.comments = comments
+        
+        self.comments.append("")
+        
         self.location = location
     }
     
@@ -93,7 +96,7 @@ extension CKRecord {
         self[Keys.identifier] = meme.identifier as CKRecordValue?
         self[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue?
         self[Keys.comments] = meme.comments as CKRecordValue?
-        self[Keys.location] = meme.comments as CKRecordValue?
+        self[Keys.location] = meme.location as CKRecordValue?
         self[Keys.imageData] = CKAsset(fileURL: url)
     }
     

@@ -50,13 +50,14 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
         
         tableView.delegate = self
+        tableView.dataSource = self
 
     }
 
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return MemeController.shared.memes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
