@@ -19,6 +19,7 @@
 		4DA2D7DB1EE9A921006D056D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA2D7DA1EE9A921006D056D /* CloudKit.framework */; };
 		5914E6E41EE87562007D9C81 /* ShowMemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914E6E31EE87562007D9C81 /* ShowMemesTableViewController.swift */; };
 		5914E6EA1EE87799007D9C81 /* MemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */; };
+		5914E7111EE9CD59007D9C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914E7101EE9CD59007D9C81 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		4DA2D7DA1EE9A921006D056D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		5914E6E31EE87562007D9C81 /* ShowMemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMemesTableViewController.swift; sourceTree = "<group>"; };
 		5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewCell.swift; sourceTree = "<group>"; };
+		5914E7101EE9CD59007D9C81 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		4DA2D7D71EE8A4A2006D056D /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				5914E7101EE9CD59007D9C81 /* Main.storyboard */,
 				3B616A801EE8A205002E0B03 /* MemeCreator.storyboard */,
 				4D4A88FE1EE5B208004A2AC3 /* LaunchScreen.storyboard */,
 			);
@@ -215,6 +218,7 @@
 				4D4A89001EE5B208004A2AC3 /* LaunchScreen.storyboard in Resources */,
 				3B616A811EE8A205002E0B03 /* MemeCreator.storyboard in Resources */,
 				4D4A88FD1EE5B208004A2AC3 /* Assets.xcassets in Resources */,
+				5914E7111EE9CD59007D9C81 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
