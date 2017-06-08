@@ -11,6 +11,7 @@ import MapKit
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
+    @IBOutlet weak var tableView: UITableView!
 
     //MARK: - Internal Properties
     var locationManager = CLLocationManager()
@@ -45,6 +46,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
+        
+        tableView.delegate = self
 
     }
 
