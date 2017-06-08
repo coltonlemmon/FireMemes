@@ -16,6 +16,7 @@ class ShowMemesTableViewController: UITableViewController {
     var myLocation: CLLocation?
     
     func fetch() {
+        
         guard let myLocation = myLocation else { return }
         MemeController.shared.fetch(myLocation, radiusInMeters: 500) // We can change radius
     }
@@ -34,13 +35,13 @@ class ShowMemesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.reloadData()
-        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        fetch()
+    
+        tableView.reloadData()
+        
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
 
@@ -53,10 +54,11 @@ class ShowMemesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath)
-        
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
 
+        
+        
+        
         return cell
     }
  
@@ -76,6 +78,7 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             myLocation = location
+            fetch()
         }
     }
     
