@@ -57,10 +57,6 @@ class MemeController {
         }
     }
     
-    //delete comment from meme
-    
-    //delete meme
-    
     //MARK: - CloudKit Stuff
     func fetch(_ location: CLLocation, radiusInMeters: CLLocationDistance) {
         let radiusInKilometers = radiusInMeters / 1000.0
@@ -70,6 +66,8 @@ class MemeController {
             
             if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
                     self.memes.append(meme)
+            } else {
+                self.delete(meme)
             }
             
         }) { (_, error) in
@@ -90,10 +88,19 @@ class MemeController {
         
         if memeLife < Double(60 * 60 * 24 * dayLimitForMeme) {
             return true
+        } else {
+            return false
         }
-        return false
     }
     
+    func delete(_ meme: Meme) {
+        guard let recordID = meme.ckRecordID else { return }
+        cloudKitManager.deleteRecordWithID(recordID) { (recordID, error) in
+            if error != nil {
+                print(error ?? "something went wrong")
+            }
+        }
+    }
 }
 
 protocol CloudKitSync {
