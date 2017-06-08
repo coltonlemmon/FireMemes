@@ -28,6 +28,8 @@
 	<string>To find memes in your area!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To get a picture to post!</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To take a picture of the next big meme!</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
