@@ -50,21 +50,29 @@ class Meme: CloudKitSync {
         cloudKitRecordID = record.recordID
     }
     
-    fileprivate var temporaryPhotoURL: URL? { //WTF
+    fileprivate var temporaryPhotoURL: URL { //WTF
         
         let temporaryDirectory = NSTemporaryDirectory()
         let temporaryDirectoryURL = URL(fileURLWithPath: temporaryDirectory)
-        let fileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("jpg")
+        let fileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("png")
+        
         
         try? imageData?.write(to: fileURL, options: [.atomic])
         
         return fileURL
     }
     
+    
     var cloudKitRecordID: CKRecordID?
 }
 
 extension CKRecord {
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
     
     convenience init(_ meme: Meme) {
         
@@ -72,13 +80,21 @@ extension CKRecord {
         self.init(recordType: Keys.meme, recordID: recordID)
         meme.ckRecordID = recordID
         
-        guard let temporaryPhotoURL = meme.temporaryPhotoURL else { return }
-        self[Keys.imageData] = CKAsset(fileURL: temporaryPhotoURL)
+        var url: URL = URL(fileURLWithPath: "")
+        if let image = meme.image {
+            if let data = UIImagePNGRepresentation(image) {
+                let fileName = getDocumentsDirectory().appendingPathComponent(".png")
+                try? data.write(to: fileName)
+                url = fileName
+            }
+        }
+        
         self[Keys.date] = meme.date as CKRecordValue?
         self[Keys.identifier] = meme.identifier as CKRecordValue?
         self[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue?
         self[Keys.comments] = meme.comments as CKRecordValue?
         self[Keys.location] = meme.comments as CKRecordValue?
+        self[Keys.imageData] = CKAsset(fileURL: url)
     }
     
 }

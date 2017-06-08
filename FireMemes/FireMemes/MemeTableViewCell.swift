@@ -10,6 +10,10 @@ import UIKit
 
 class MemeTableViewCell: UITableViewCell {
     
+    //MARK: - Outlets and Actions
+    
+    @IBOutlet weak var memeImageView: UIImageView!
+    
     //each cell will have a meme,
 
     override func awakeFromNib() {
@@ -26,5 +30,13 @@ class MemeTableViewCell: UITableViewCell {
     //actions for each button here
     
     
+}
 
+//MARK: - UpdateViews Method
+
+extension MemeTableViewCell {
+    
+    func updateViews(meme: Meme) {
+        memeImageView.image = meme.image
+    }
 }
