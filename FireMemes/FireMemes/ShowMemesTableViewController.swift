@@ -62,6 +62,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
 
+        let meme = MemeController.shared.memes[indexPath.row]
+        cell.updateViews(meme: meme)
+        
         return cell
     }
  
