@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+    
+    let test = UIButton()
 
 
     //MARK: - Internal Properties
