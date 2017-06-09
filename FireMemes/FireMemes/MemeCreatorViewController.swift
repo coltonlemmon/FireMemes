@@ -171,7 +171,6 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
         DispatchQueue.main.async {
             self.getLocationUpdate()
         }
-        
         guard let location = myLocation else { return }
         let meme = MemeController.shared.createMeme(image: memeImage, location: location)
         MemeController.shared.postMeme(meme: meme)
