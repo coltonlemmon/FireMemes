@@ -77,10 +77,12 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
         
-        //Show navigation bar in this view controller
-        self.navigationController?.isNavigationBarHidden = false
-        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        presentingViewController?.navigationController?.isNavigationBarHidden = false
+    }
+    
     
     //MARK: - Location Functions
     
