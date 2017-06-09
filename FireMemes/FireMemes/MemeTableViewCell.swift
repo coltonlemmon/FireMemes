@@ -14,21 +14,27 @@ class MemeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var memeImageView: UIImageView!
     
+    @IBOutlet weak var numberOfComments: UILabel!
+    
+    @IBOutlet weak var numberOfUpvotes: UILabel!
+    
     //each cell will have a meme,
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
     
     //actions for each button here
+
+    @IBAction func facebookButtonTapped(_ sender: Any) {
+    }
+    @IBAction func twitterButtonTapped(_ sender: Any) {
+    }
     
+    @IBAction func messageButtonTapped(_ sender: Any) {
+    }
+    @IBAction func commentButtonTapped(_ sender: Any) {
+    }
+    @IBAction func upvoteButtonTapped(_ sender: Any) {
+    }
     
 }
 
