@@ -42,6 +42,8 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
     
     func addTextField() {
         
+        hideKeyboardWhenTappedAround()
+        
         memeText.delegate = self
         
         memeText.textAlignment = .center
@@ -105,6 +107,18 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         memeText.font = font
     }
     
+}
+
+extension UIView {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        self.endEditing(true)
+    }
 }
 
 

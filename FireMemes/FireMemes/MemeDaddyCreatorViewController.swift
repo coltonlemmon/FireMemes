@@ -39,6 +39,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
         postMemeButton.layer.cornerRadius = 15
         updateTextButton.layer.cornerRadius = 15
         pickerData = [colorData, fontData, fontSizeData]
