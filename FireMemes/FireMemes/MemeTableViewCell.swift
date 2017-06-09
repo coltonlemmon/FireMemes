@@ -26,10 +26,12 @@ class MemeTableViewCell: UITableViewCell {
     //actions for each button here
 
     @IBAction func facebookButtonTapped(_ sender: Any) {
+        print("Facebook")
         
     
     }
     @IBAction func twitterButtonTapped(_ sender: Any) {
+        print("Twitter")
     }
     
     @IBAction func messageButtonTapped(_ sender: Any) {

@@ -47,7 +47,6 @@
                                                             <state key="normal" image="002-facebook"/>
                                                             <connections>
                                                                 <action selector="facebookButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="eWi-ud-cC4"/>
-                                                                <action selector="facebookTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="Z3h-6m-Cxp"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfa-RW-0Bz">
@@ -58,7 +57,6 @@
                                                             <state key="normal" image="003-twitter"/>
                                                             <connections>
                                                                 <action selector="twitterButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="Och-Es-ASy"/>
-                                                                <action selector="twitterTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="knk-XY-oOX"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCl-dI-Qil">
