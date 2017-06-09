@@ -17,6 +17,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     @IBOutlet weak var pickingButton: UIButton!
     
     @IBOutlet weak var postMemeButton: UIButton!
+    @IBOutlet weak var downloadMemeButton: UIButton!
+    
     @IBOutlet weak var updateTextButton: UIButton!
     
     //MARK: picker properties 
@@ -41,6 +43,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
         postMemeButton.layer.cornerRadius = 15
         updateTextButton.layer.cornerRadius = 15
+        downloadMemeButton.layer.cornerRadius = 15
+        
         pickerData = [colorData, fontData, fontSizeData]
         
         textPicker.delegate = self
@@ -57,6 +61,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         nc.addObserver(self, selector: #selector(getImage), name: NSNotification.Name(rawValue: "getImage"), object: nil)
         
     }
+    
+    
 
     //MARK: ACTIONS
     @IBAction func pickImage(_ sender: Any) {
@@ -64,7 +70,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     @IBAction func postMeme(_ sender: Any) {
-        
         self.locationManager.requestLocation()
         
         let image = memeImageView.makeImageFromView()
@@ -75,8 +80,9 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
         let nc = navigationController
         nc?.popViewController(animated: true)
-        
+
     }
+    
     
     @IBAction func updateText(_ sender: Any) {
      
@@ -211,7 +217,7 @@ extension MemeDaddyCreatorViewController: UIPickerViewDelegate, UIPickerViewData
         textPicker.translatesAutoresizingMaskIntoConstraints = false
         
         let pickerBottom = NSLayoutConstraint(item: textPicker, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
-        let topPicker = NSLayoutConstraint(item: textPicker, attribute: .top, relatedBy: .equal, toItem: postMemeButton, attribute: .bottom, multiplier: 1, constant: 0)
+        let topPicker = NSLayoutConstraint(item: textPicker, attribute: .top, relatedBy: .equal, toItem: downloadMemeButton, attribute: .bottom, multiplier: 1, constant: 0)
         let leadPicker = NSLayoutConstraint(item: textPicker, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
         let trailPicker = NSLayoutConstraint(item: textPicker, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
         

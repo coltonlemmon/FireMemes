@@ -27,32 +27,6 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="avk-0F-MQq">
-                                <rect key="frame" x="50" y="407" width="275" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PK5-VW-XX8">
-                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="30"/>
-                                        <color key="backgroundColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="update text">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="updateText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q8f-5y-UBC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uh-Ko-7Kl">
-                                        <rect key="frame" x="161.5" y="0.0" width="113.5" height="30"/>
-                                        <color key="backgroundColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="post meme">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M8g-aZ-jCQ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPO-PP-8bx">
                                 <rect key="frame" x="112" y="176" width="151" height="30"/>
                                 <state key="normal" title="Click to choose image"/>
@@ -60,25 +34,79 @@
                                     <action selector="pickImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGz-rA-smv"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZUp-Le-CuH">
+                                <rect key="frame" x="16" y="369" width="342" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-lt-VDl">
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="30"/>
+                                        <color key="backgroundColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="vxC-al-YNe"/>
+                                        </constraints>
+                                        <state key="normal" title="Post">
+                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0uH-e5-gBK"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="avk-0F-MQq">
+                                        <rect key="frame" x="69" y="30" width="204" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PK5-VW-XX8">
+                                                <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" title="update ">
+                                                    <color key="titleColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="updateText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q8f-5y-UBC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uh-Ko-7Kl">
+                                                <rect key="frame" x="126" y="0.0" width="78" height="30"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="R3n-j3-Ze1"/>
+                                                    <constraint firstAttribute="width" constant="78" id="rGr-bY-usf"/>
+                                                </constraints>
+                                                <state key="normal" title="download">
+                                                    <color key="titleColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M8g-aZ-jCQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="ZUp-Le-CuH" secondAttribute="top" id="ETs-fL-Dgx"/>
+                                    <constraint firstItem="j3L-lt-VDl" firstAttribute="leading" secondItem="ZUp-Le-CuH" secondAttribute="leading" id="HiA-a7-BAM"/>
+                                    <constraint firstAttribute="trailing" secondItem="j3L-lt-VDl" secondAttribute="trailing" id="n40-ZH-DEk"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="avk-0F-MQq" firstAttribute="centerX" secondItem="YPO-PP-8bx" secondAttribute="centerX" id="3w3-Xj-kUu"/>
-                            <constraint firstItem="avk-0F-MQq" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="4R0-uR-ljv"/>
-                            <constraint firstItem="avk-0F-MQq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="34" id="6Es-5u-3y3"/>
+                            <constraint firstItem="YPO-PP-8bx" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="3Jd-xA-1kv"/>
                             <constraint firstItem="YPO-PP-8bx" firstAttribute="centerY" secondItem="rvw-Vm-whk" secondAttribute="centerY" id="9gc-Uw-z1Z"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="avk-0F-MQq" secondAttribute="bottom" constant="230" id="CBd-zI-LGr"/>
                             <constraint firstAttribute="trailing" secondItem="rvw-Vm-whk" secondAttribute="trailing" id="Noa-yT-xCb"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YBr-X8-RdZ"/>
+                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="aez-Tk-For"/>
+                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="centerX" secondItem="YPO-PP-8bx" secondAttribute="centerX" id="gYr-NT-lY8"/>
+                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="7" id="hT8-bF-bEJ"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mHn-NQ-o0F"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="305" id="oxL-AY-bWr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="pimp" id="MQb-az-aH2"/>
                     <connections>
+                        <outlet property="downloadMemeButton" destination="2uh-Ko-7Kl" id="A56-XN-dDX"/>
                         <outlet property="memeImageView" destination="rvw-Vm-whk" id="P0m-3M-Tgo"/>
                         <outlet property="pickingButton" destination="YPO-PP-8bx" id="77z-JL-9kA"/>
-                        <outlet property="postMemeButton" destination="2uh-Ko-7Kl" id="jsS-9r-b9g"/>
+                        <outlet property="postMemeButton" destination="j3L-lt-VDl" id="T2v-Az-ISX"/>
                         <outlet property="updateTextButton" destination="PK5-VW-XX8" id="c0Y-fE-mRQ"/>
                     </connections>
                 </viewController>
