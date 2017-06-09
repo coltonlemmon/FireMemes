@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHJ-MC-8GD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHJ-MC-8GD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="290"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M8H-m4-HF3" id="m0t-Il-tmo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="289.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-QK-PF9">
@@ -45,6 +45,9 @@
                                                                 <constraint firstAttribute="width" constant="30" id="SGA-Hd-Pxu"/>
                                                             </constraints>
                                                             <state key="normal" image="002-facebook"/>
+                                                            <connections>
+                                                                <action selector="facebookButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="eWi-ud-cC4"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfa-RW-0Bz">
                                                             <rect key="frame" x="67" y="216" width="30" height="30"/>
@@ -52,6 +55,9 @@
                                                                 <constraint firstAttribute="width" constant="30" id="YdF-b6-HGU"/>
                                                             </constraints>
                                                             <state key="normal" image="003-twitter"/>
+                                                            <connections>
+                                                                <action selector="twitterButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="Och-Es-ASy"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCl-dI-Qil">
                                                             <rect key="frame" x="115" y="216" width="30" height="30"/>
@@ -59,15 +65,24 @@
                                                                 <constraint firstAttribute="width" constant="30" id="XPs-OS-bD9"/>
                                                             </constraints>
                                                             <state key="normal" image="speech-bubble"/>
+                                                            <connections>
+                                                                <action selector="messageButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="Ni3-l0-jMk"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cun-Fy-Lea">
                                                             <rect key="frame" x="305" y="216" width="30" height="30"/>
                                                             <state key="normal" image="present"/>
+                                                            <connections>
+                                                                <action selector="upvoteButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="FDC-0G-gg8"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ExY-1s-ezt">
                                                             <rect key="frame" x="158" y="214" width="83" height="30"/>
                                                             <fontDescription key="fontDescription" name="EuphemiaUCAS-Italic" family="Euphemia UCAS" pointSize="17"/>
                                                             <state key="normal" title="COMMENT"/>
+                                                            <connections>
+                                                                <action selector="commentButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="0ES-jt-nOJ"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwH-G4-Hk9">
                                                             <rect key="frame" x="244" y="220" width="11" height="21"/>
@@ -129,6 +144,8 @@
                                         <color key="backgroundColor" red="0.31368762254714966" green="0.31374725699424744" blue="0.31368386745452881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="memeImageView" destination="skf-zH-oqf" id="ieX-vr-fIm"/>
+                                            <outlet property="numberOfComments" destination="QwH-G4-Hk9" id="QMM-bz-Oaw"/>
+                                            <outlet property="numberOfUpvotes" destination="Dqq-Us-E9a" id="5Ge-VV-buU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -140,7 +157,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                         <state key="normal" title="Make A Meme"/>
                                         <connections>
-                                            <segue destination="usg-Eo-KOI" kind="show" id="rF9-LQ-Yfm"/>
+                                            <segue destination="usg-Eo-KOI" kind="show" id="ffz-4h-7zi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -179,10 +196,10 @@
             </objects>
             <point key="canvasLocation" x="1060" y="174.96251874062969"/>
         </scene>
-        <!--MemeCreator-->
+        <!--MemeDaddy-->
         <scene sceneID="7jt-9B-Xnh">
             <objects>
-                <viewControllerPlaceholder storyboardName="MemeCreator" id="usg-Eo-KOI" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="MemeDaddy" id="usg-Eo-KOI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vht-BP-1Bm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1741.5999999999999" y="250.9745127436282"/>
