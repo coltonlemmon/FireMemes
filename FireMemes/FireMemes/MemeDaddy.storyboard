@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--pimp-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MemeDaddyCreatorViewController" customModule="FireMemes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rvw-Vm-whk" customClass="MemeImageView" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="342"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="avk-0F-MQq">
+                                <rect key="frame" x="50" y="407" width="275" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PK5-VW-XX8">
+                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="30"/>
+                                        <color key="backgroundColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="update text">
+                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="updateText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q8f-5y-UBC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uh-Ko-7Kl">
+                                        <rect key="frame" x="161.5" y="0.0" width="113.5" height="30"/>
+                                        <color key="backgroundColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="post meme">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M8g-aZ-jCQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPO-PP-8bx">
+                                <rect key="frame" x="112" y="176" width="151" height="30"/>
+                                <state key="normal" title="Click to choose image"/>
+                                <connections>
+                                    <action selector="pickImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGz-rA-smv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="avk-0F-MQq" firstAttribute="centerX" secondItem="YPO-PP-8bx" secondAttribute="centerX" id="3w3-Xj-kUu"/>
+                            <constraint firstItem="avk-0F-MQq" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="4R0-uR-ljv"/>
+                            <constraint firstItem="avk-0F-MQq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="34" id="6Es-5u-3y3"/>
+                            <constraint firstItem="YPO-PP-8bx" firstAttribute="centerY" secondItem="rvw-Vm-whk" secondAttribute="centerY" id="9gc-Uw-z1Z"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="avk-0F-MQq" secondAttribute="bottom" constant="230" id="CBd-zI-LGr"/>
+                            <constraint firstAttribute="trailing" secondItem="rvw-Vm-whk" secondAttribute="trailing" id="Noa-yT-xCb"/>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YBr-X8-RdZ"/>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mHn-NQ-o0F"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="305" id="oxL-AY-bWr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="pimp" id="MQb-az-aH2"/>
+                    <connections>
+                        <outlet property="memeImageView" destination="rvw-Vm-whk" id="P0m-3M-Tgo"/>
+                        <outlet property="pickingButton" destination="YPO-PP-8bx" id="77z-JL-9kA"/>
+                        <outlet property="postMemeButton" destination="2uh-Ko-7Kl" id="jsS-9r-b9g"/>
+                        <outlet property="updateTextButton" destination="PK5-VW-XX8" id="c0Y-fE-mRQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3893.5" y="138.5"/>
+        </scene>
+    </scenes>
+</document>
