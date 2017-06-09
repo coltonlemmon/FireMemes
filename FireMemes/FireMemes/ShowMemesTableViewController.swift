@@ -154,6 +154,14 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
     }
     
     //MessageShare
-    
+    func messageClicked(_ sender: MemeTableViewCell, image: UIImage) {
+        let image = image
+        let imageToShare = [image]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare,
+                                                              applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityViewController,animated: true,completion: nil)
+    }
 }
 

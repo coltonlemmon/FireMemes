@@ -40,7 +40,8 @@ class MemeTableViewCell: UITableViewCell {
     
     @IBAction func messageButtonTapped(_ sender: Any) {
         
-        
+        delegate?.messageClicked(self, image: memeImageView.image!)
+
     }
     @IBAction func commentButtonTapped(_ sender: Any) {
         
@@ -67,5 +68,5 @@ protocol MemeTableViewCellDelegate: class{
     
     func twitterClicked(_ sender: MemeTableViewCell, image: UIImage)
     
-    func messageClicked(_ sender: MemeTableViewCell)
+    func messageClicked(_ sender: MemeTableViewCell, image: UIImage)
 }
