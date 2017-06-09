@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class MemeTableViewCell: UITableViewCell {
     
@@ -25,6 +26,8 @@ class MemeTableViewCell: UITableViewCell {
     //actions for each button here
 
     @IBAction func facebookButtonTapped(_ sender: Any) {
+        
+    
     }
     @IBAction func twitterButtonTapped(_ sender: Any) {
     }
