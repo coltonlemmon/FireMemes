@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHJ-MC-8GD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHJ-MC-8GD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="290"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M8H-m4-HF3" id="m0t-Il-tmo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="289.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-QK-PF9">
@@ -167,14 +167,18 @@
                                     <constraint firstItem="lgS-mr-IxA" firstAttribute="leading" secondItem="763-uJ-t24" secondAttribute="leading" id="slG-9V-LMR"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P12-6K-sjL" customClass="LoadingAnimation" customModule="FireMemes" customModuleProvider="target">
-                                <rect key="frame" x="145" y="291" width="85" height="85"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P12-6K-sjL" customClass="LoadingAnimation" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="145" y="264" width="85" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="KEV-IS-I9q"/>
+                                    <constraint firstAttribute="height" constant="85" id="wfI-kM-bUQ"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="P12-6K-sjL" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="200" id="5H8-bU-QnN"/>
                             <constraint firstItem="763-uJ-t24" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leadingMargin" constant="96" id="5qk-Hz-18N"/>
                             <constraint firstAttribute="trailing" secondItem="6OP-bg-0eh" secondAttribute="trailing" id="6hA-O0-JHU"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="6OP-bg-0eh" secondAttribute="bottom" id="E1b-k6-6QT"/>
@@ -183,6 +187,7 @@
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="763-uJ-t24" secondAttribute="bottom" constant="19" id="bJ8-BA-JcD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="763-uJ-t24" secondAttribute="trailing" constant="80" id="bMM-0t-rEk"/>
                             <constraint firstItem="6OP-bg-0eh" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leading" id="bOq-Mp-7gK"/>
+                            <constraint firstItem="P12-6K-sjL" firstAttribute="centerX" secondItem="6OP-bg-0eh" secondAttribute="centerX" id="d09-G8-inH"/>
                             <constraint firstItem="763-uJ-t24" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="554" id="phw-lf-LBV"/>
                         </constraints>
                     </view>
