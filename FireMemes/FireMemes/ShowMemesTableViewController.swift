@@ -42,6 +42,10 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.isHidden = true
+        view.backgroundColor = UIColor.gray
+        loadingAnimationView.backgroundColor = UIColor.gray
+        
         // Location Services
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -80,6 +84,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         // Loading Animation
         loadingAnimationView.isHidden = true
+        tableView.isHidden = false
         cell.updateViews(meme: meme)
         
         

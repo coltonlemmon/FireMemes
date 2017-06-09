@@ -20,7 +20,6 @@ class LoadingAnimation: UIView {
         return CAShapeLayer.self
     }
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.fillColor = nil
