@@ -21,24 +21,29 @@ class MemeTableViewCell: UITableViewCell {
     
     //each cell will have a meme,
 
+    //Delegate
+    var delegate: MemeTableViewCellDelegate?
     
     
     //actions for each button here
 
     @IBAction func facebookButtonTapped(_ sender: Any) {
-        print("Facebook")
         
+        delegate?.facebookClicked(self, image: memeImageView.image!)
     
     }
     @IBAction func twitterButtonTapped(_ sender: Any) {
-        print("Twitter")
+    
     }
     
     @IBAction func messageButtonTapped(_ sender: Any) {
+        
     }
     @IBAction func commentButtonTapped(_ sender: Any) {
+        
     }
     @IBAction func upvoteButtonTapped(_ sender: Any) {
+        
     }
     
 }
@@ -50,4 +55,10 @@ extension MemeTableViewCell {
     func updateViews(meme: Meme) {
         memeImageView.image = meme.image
     }
+}
+
+//Protocol 
+protocol MemeTableViewCellDelegate: class{
+    
+    func facebookClicked(_ sender: MemeTableViewCell, image: UIImage)
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Social
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -56,7 +57,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         tableView.delegate = self
         tableView.dataSource = self
-
+        
     }
     
     //viewWillApear
@@ -81,6 +82,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         // Loading Animation
         loadingAnimationView.isHidden = true
         cell.updateViews(meme: meme)
+        cell.delegate = self
         
         
         return cell
@@ -94,7 +96,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 
 //MARK: - Location manager delegate functions
 
-extension ShowMemesTableViewController: CLLocationManagerDelegate {
+extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableViewCellDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -111,6 +113,25 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error with locationManager: \(error.localizedDescription)")
+    }
+    
+    func facebookClicked(_ sender: MemeTableViewCell, image: UIImage) {
+        
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+            let fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            fbShare.setInitialText("The worlds greatest Meme!")
+            fbShare.add(image)
+            
+            self.present(fbShare, animated: true, completion: nil)
+            
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+
     }
     
 }
