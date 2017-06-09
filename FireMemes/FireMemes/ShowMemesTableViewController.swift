@@ -115,6 +115,7 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         print("Error with locationManager: \(error.localizedDescription)")
     }
     
+    //FacebookShare
     func facebookClicked(_ sender: MemeTableViewCell, image: UIImage) {
         
         if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
@@ -130,9 +131,29 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        
-
     }
+    
+    //TwitterShare
+    func twitterClicked(_ sender: MemeTableViewCell, image: UIImage) {
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+            
+            let tweetShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            
+            self.present(tweetShare, animated: true, completion: nil)
+            tweetShare.setInitialText("Amazing Meme Alert!")
+            tweetShare.add(image)
+            
+        } else {
+            
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to tweet.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //MessageShare
     
 }
 
