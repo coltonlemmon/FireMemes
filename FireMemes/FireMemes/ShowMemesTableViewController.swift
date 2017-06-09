@@ -51,10 +51,15 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        //Hide navigation bar
-        self.navigationController?.isNavigationBarHidden = true
 
+    }
+    
+    //viewWillApear
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //Hided navigation bar
+        self.navigationController?.isNavigationBarHidden = true
+        
     }
 
     // MARK: - Table view data source
