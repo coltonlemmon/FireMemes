@@ -20,6 +20,7 @@ class LoadingAnimation: UIView {
         return CAShapeLayer.self
     }
     
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.fillColor = nil
@@ -76,7 +77,7 @@ class LoadingAnimation: UIView {
             time += pose.secondsSincePriorPose
             times.append(time / totalSeconds)
             start = pose.start
-            rotations.append(start * 2 * CGFloat(M_PI))
+            rotations.append(start * 2 * CGFloat(Double.pi))
             strokeEnds.append(pose.length)
         }
         

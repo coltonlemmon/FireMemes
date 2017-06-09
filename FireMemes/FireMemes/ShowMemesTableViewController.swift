@@ -14,6 +14,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     let test = UIButton()
 
     @IBOutlet weak var tableView: UITableView!
+    
+    //Loading Animation
+    @IBOutlet weak var loadingAnimationView: LoadingAnimation!
 
     //MARK: - Internal Properties
     var locationManager = CLLocationManager()
@@ -39,6 +42,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Location Services
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -46,6 +50,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
         tableView.reloadData()
         
+        // Notification Center
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
         
@@ -64,7 +69,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
 
         let meme = MemeController.shared.memes[indexPath.row]
+        
+        // Loading Animation
+        loadingAnimationView.isHidden = true
         cell.updateViews(meme: meme)
+        
         
         return cell
     }
