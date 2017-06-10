@@ -32,7 +32,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     func fetch() {
         
         guard let myLocation = myLocation else { return }
-        MemeController.shared.fetch(myLocation, radiusInMeters: 27358) // We can change radius
+        MemeController.shared.fetch(myLocation, radiusInMeters: 80000) // We can change radius
     }
 
     
