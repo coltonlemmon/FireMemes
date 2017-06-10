@@ -174,19 +174,33 @@
                                     <constraint firstAttribute="height" constant="85" id="wfI-kM-bUQ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3z-pj-Af8">
+                                <rect key="frame" x="375" y="64" width="310" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="310" id="MsR-RP-Dib"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="wSa-lt-09r" appends="YES" id="LpM-5P-I8B"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="d3z-pj-Af8" secondAttribute="bottom" id="2Hq-eL-Csv"/>
                             <constraint firstItem="P12-6K-sjL" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="200" id="5H8-bU-QnN"/>
                             <constraint firstItem="763-uJ-t24" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leadingMargin" constant="96" id="5qk-Hz-18N"/>
                             <constraint firstAttribute="trailing" secondItem="6OP-bg-0eh" secondAttribute="trailing" id="6hA-O0-JHU"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="6OP-bg-0eh" secondAttribute="bottom" id="E1b-k6-6QT"/>
+                            <constraint firstItem="d3z-pj-Af8" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" id="HgA-ev-uEP"/>
                             <constraint firstItem="lgS-mr-IxA" firstAttribute="top" secondItem="6OP-bg-0eh" secondAttribute="bottom" constant="-49" id="MLZ-2d-B8M"/>
                             <constraint firstItem="6OP-bg-0eh" firstAttribute="top" secondItem="cei-ib-895" secondAttribute="top" id="b9E-Bb-KR2"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="763-uJ-t24" secondAttribute="bottom" constant="19" id="bJ8-BA-JcD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="763-uJ-t24" secondAttribute="trailing" constant="80" id="bMM-0t-rEk"/>
                             <constraint firstItem="6OP-bg-0eh" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leading" id="bOq-Mp-7gK"/>
                             <constraint firstItem="P12-6K-sjL" firstAttribute="centerX" secondItem="6OP-bg-0eh" secondAttribute="centerX" id="d09-G8-inH"/>
+                            <constraint firstAttribute="trailing" secondItem="d3z-pj-Af8" secondAttribute="trailing" constant="-310" id="f8u-WI-nJ5"/>
                             <constraint firstItem="763-uJ-t24" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="554" id="phw-lf-LBV"/>
                         </constraints>
                     </view>
@@ -195,9 +209,11 @@
                         <outlet property="createButtonClick" destination="lgS-mr-IxA" id="pz3-FZ-3YX"/>
                         <outlet property="loadingAnimationView" destination="P12-6K-sjL" id="5D3-Z2-TE2"/>
                         <outlet property="tableView" destination="6OP-bg-0eh" id="nj3-7x-caA"/>
+                        <outlet property="trailingConstraint" destination="f8u-WI-nJ5" id="4lQ-Xd-nxC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adm-2f-zZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="wSa-lt-09r"/>
             </objects>
             <point key="canvasLocation" x="1060" y="174.96251874062969"/>
         </scene>
@@ -207,7 +223,7 @@
                 <viewControllerPlaceholder storyboardName="MemeDaddy" id="usg-Eo-KOI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vht-BP-1Bm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1741.5999999999999" y="250.9745127436282"/>
+            <point key="canvasLocation" x="2141" y="202"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tYF-X2-Po3">

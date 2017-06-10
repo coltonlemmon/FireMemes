@@ -12,6 +12,8 @@ import Social
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    //Side menu constraint
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     let test = UIButton()
 
     @IBOutlet weak var tableView: UITableView!
@@ -181,6 +183,15 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         activityViewController.popoverPresentationController?.sourceView = self.view
         
         self.present(activityViewController,animated: true,completion: nil)
+    }
+    //Comment clicked 
+    func commentClicked(_ sender: MemeTableViewCell) {
+        
+        trailingConstraint.constant = 0
+        UIView.animate(withDuration: 0.6, animations: {
+            self.view.layoutIfNeeded()
+        })
+
     }
 }
 
