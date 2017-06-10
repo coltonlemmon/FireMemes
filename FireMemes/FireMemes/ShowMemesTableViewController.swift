@@ -17,7 +17,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     //Side menu constraint
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     let test = UIButton()
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     //Button that segues user to editing screen
@@ -78,6 +78,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightGesture(swipe:)))
         rightSwipe.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(rightSwipe)
+        
+        
         
     }
     
