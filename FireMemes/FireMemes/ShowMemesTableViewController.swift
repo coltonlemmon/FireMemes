@@ -16,6 +16,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 
     @IBOutlet weak var tableView: UITableView!
     
+    //Button that segues user to editing screen
+    @IBOutlet weak var createButtonClick: UIButton!
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
 
@@ -61,6 +63,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        createButtonClick.layer.cornerRadius = 7
+        createButtonClick.layer.backgroundColor = UIColor(red:52/255 , green: 152/255, blue: 219/255, alpha: 0.8).cgColor
+        createButtonClick.layer.borderWidth = 2
+        createButtonClick.layer.borderColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0).cgColor
         
     }
     

@@ -150,7 +150,10 @@
                                 <rect key="frame" x="112" y="618" width="167" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgS-mr-IxA">
-                                        <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="32"/>
+                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="0.48335830479452052" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Make A Meme"/>
                                         <connections>
                                             <segue destination="usg-Eo-KOI" kind="show" id="ffz-4h-7zi"/>
@@ -189,6 +192,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Fire Memes" id="EUv-w6-j0R"/>
                     <connections>
+                        <outlet property="createButtonClick" destination="lgS-mr-IxA" id="pz3-FZ-3YX"/>
                         <outlet property="loadingAnimationView" destination="P12-6K-sjL" id="5D3-Z2-TE2"/>
                         <outlet property="tableView" destination="6OP-bg-0eh" id="nj3-7x-caA"/>
                     </connections>
