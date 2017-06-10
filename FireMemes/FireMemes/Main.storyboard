@@ -182,7 +182,7 @@
                                     <constraint firstAttribute="width" constant="310" id="MsR-RP-Dib"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="wSa-lt-09r" appends="YES" id="LpM-5P-I8B"/>
+                                    <outletCollection property="gestureRecognizers" destination="vF9-zV-xdg" appends="YES" id="96O-Bz-LhC"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -213,7 +213,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adm-2f-zZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="wSa-lt-09r"/>
+                <gestureRecognizer id="vF9-zV-xdg">
+                    <connections>
+                        <action selector="swipeRightGesture:" destination="05e-fx-T71" id="3Nt-bR-Bjq"/>
+                    </connections>
+                </gestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1060" y="174.96251874062969"/>
         </scene>

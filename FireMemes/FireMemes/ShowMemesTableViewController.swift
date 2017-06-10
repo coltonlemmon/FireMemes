@@ -12,6 +12,8 @@ import Social
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    
+    
     //Side menu constraint
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     let test = UIButton()
@@ -66,10 +68,16 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.delegate = self
         tableView.dataSource = self
         
+        //Custom button for Make a Meme button
         createButtonClick.layer.cornerRadius = 7
         createButtonClick.layer.backgroundColor = UIColor(red:52/255 , green: 152/255, blue: 219/255, alpha: 0.8).cgColor
         createButtonClick.layer.borderWidth = 2
         createButtonClick.layer.borderColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0).cgColor
+        
+        //Swipe right gesture 
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightGesture(swipe:)))
+        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(rightSwipe)
         
     }
     
@@ -80,10 +88,10 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationController?.isNavigationBarHidden = false
         //Set navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0)
-        
-        
     }
     
+
+   
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
@@ -118,6 +126,21 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 //MARK: - Location manager delegate functions
 
 extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableViewCellDelegate {
+    
+    //Swipe right gesture regonizer, Hides the comment section when user swipes right
+    func swipeRightGesture(swipe: UISwipeGestureRecognizer) {
+        switch swipe.direction.rawValue {
+        case 1:
+            trailingConstraint.constant = -310
+            UIView.animate(withDuration: 0.6, animations: {
+                self.view.layoutIfNeeded()
+            })
+
+        default:
+            break
+        }
+        
+    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {

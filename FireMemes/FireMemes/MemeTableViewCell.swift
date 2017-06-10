@@ -75,5 +75,7 @@ protocol MemeTableViewCellDelegate: class{
     func messageClicked(_ sender: MemeTableViewCell, image: UIImage)
     
     func commentClicked(_ sender: MemeTableViewCell)
+    
+    
 }
 
