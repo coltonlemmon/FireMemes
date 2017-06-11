@@ -27,6 +27,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Button that segues user to editing screen
     @IBOutlet weak var createButtonClick: UIButton!
+    
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
 
@@ -70,8 +71,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
         
+        //Table View Delegates
         tableView.delegate = self
         tableView.dataSource = self
+        commentsTableView.delegate = self
+        commentsTableView.dataSource = self
         
         //Custom button for Make a Meme button
         createButtonClick.layer.cornerRadius = 7
@@ -105,7 +109,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     
     //IB-Actions
-    @IBAction func postComment(_ sender: Any) {
+    @IBAction func addCommentClicked(_ sender: Any) {
+        
     }
 
     // MARK: - Table view data source
