@@ -185,6 +185,9 @@
                                         <rect key="frame" x="279" y="568" width="30" height="34"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="postComment:" destination="05e-fx-T71" eventType="touchUpInside" id="wCc-W4-sAa"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZD-mb-QOp">
                                         <rect key="frame" x="0.0" y="573" width="280" height="30"/>
@@ -235,6 +238,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Fire Memes" id="EUv-w6-j0R"/>
                     <connections>
+                        <outlet property="commentTextField" destination="AZD-mb-QOp" id="sTh-iH-FGF"/>
+                        <outlet property="commentsTableView" destination="dUj-g4-8q8" id="vp2-y3-775"/>
                         <outlet property="createButtonClick" destination="lgS-mr-IxA" id="pz3-FZ-3YX"/>
                         <outlet property="loadingAnimationView" destination="P12-6K-sjL" id="5D3-Z2-TE2"/>
                         <outlet property="tableView" destination="6OP-bg-0eh" id="nj3-7x-caA"/>

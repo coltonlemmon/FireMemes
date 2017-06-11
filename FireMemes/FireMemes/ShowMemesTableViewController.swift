@@ -12,12 +12,17 @@ import Social
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    
+    //Comment text field
+    @IBOutlet weak var commentTextField: UITextField!
     
     //Side menu constraint
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     let test = UIButton()
     
+    //Comments table view
+    @IBOutlet weak var commentsTableView: UITableView!
+    
+    //Show memes table view
     @IBOutlet weak var tableView: UITableView!
     
     //Button that segues user to editing screen
@@ -96,6 +101,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
    
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    
+    //IB-Actions
+    @IBAction func postComment(_ sender: Any) {
     }
 
     // MARK: - Table view data source
