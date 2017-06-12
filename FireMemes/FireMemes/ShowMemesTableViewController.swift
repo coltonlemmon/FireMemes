@@ -111,17 +111,31 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     //IB-Actions
     @IBAction func addCommentClicked(_ sender: Any) {
         
+        guard let newIndexPath = tableView.indexPath(for: sender as! UITableViewCell) else { return }
+        
+        let meme = MemeController.shared.memes[newIndexPath.row]
+        
+        if let comment = commentTextField.text {
+            
+        MemeController.shared.addCommentToMeme(meme: meme, comment: comment)
+            
+        }
+        
     }
 
     // MARK: - Table view data source
-
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MemeController.shared.memes.count
     }
+    
+    
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
-
+        
         let meme = MemeController.shared.memes.reversed()[indexPath.row]
         
         // Loading Animation
@@ -133,6 +147,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         return cell
     }
+    
  
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
