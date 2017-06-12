@@ -12,16 +12,22 @@ import Social
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
-    
+    //Comment text field
+    @IBOutlet weak var commentTextField: UITextField!
     
     //Side menu constraint
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     let test = UIButton()
     
+    //Comments table view
+    @IBOutlet weak var commentsTableView: UITableView!
+    
+    //Show memes table view
     @IBOutlet weak var tableView: UITableView!
     
     //Button that segues user to editing screen
     @IBOutlet weak var createButtonClick: UIButton!
+    
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
 
@@ -71,8 +77,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
         
+        //Table View Delegates
         tableView.delegate = self
         tableView.dataSource = self
+        commentsTableView.delegate = self
+        commentsTableView.dataSource = self
         
         //Custom button for Make a Meme button
         createButtonClick.layer.cornerRadius = 7
@@ -103,16 +112,53 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
-
-    // MARK: - Table view data source
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MemeController.shared.memes.count
+    
+    var comments = [String]()
+    
+    var data = ["Jose", "Eddie", "James"]
+    
+    //IB-Actions
+    @IBAction func addCommentClicked(_ sender: Any) {
+        
+        guard let newIndexPath = tableView.indexPath(for: sender as! UITableViewCell) else { return }
+        
+        let meme = MemeController.shared.memes[newIndexPath.row]
+        
+        if let comment = commentTextField.text {
+            
+        MemeController.shared.addCommentToMeme(meme: meme, comment: comment)
+            
+        comments.append(comment)
+            
+        }
+        
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
+    // MARK: - Table view data source
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var count: Int?
+        
+        if tableView == self.tableView{
+            
+        count = MemeController.shared.memes.count
+            
+        }
+        if tableView == self.commentsTableView{
+            
+            count = data.count
+        }
+        
+    return count!
+    }
+    
+    
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
+        
         let meme = MemeController.shared.memes.reversed()[indexPath.row]
         
         // Loading Animation
@@ -122,7 +168,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         cell.delegate = self
         
         return cell
+        
     }
+    
  
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
