@@ -107,6 +107,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    var comments = [String]()
     
     //IB-Actions
     @IBAction func addCommentClicked(_ sender: Any) {
@@ -118,7 +119,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         if let comment = commentTextField.text {
             
         MemeController.shared.addCommentToMeme(meme: meme, comment: comment)
-            
+        comments.append(comment)
         }
         
     }
@@ -127,13 +128,21 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MemeController.shared.memes.count
+        var count: Int?
+        if tableView == self.tableView{
+        count = MemeController.shared.memes.count
+        }
+        if tableView == self.commentsTableView{
+            count = comments.count
+        }
+    return count!
     }
     
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        if tableView == self.tableView{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
         
         let meme = MemeController.shared.memes.reversed()[indexPath.row]
@@ -143,9 +152,17 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.isHidden = false
         cell.updateViews(meme: meme)
         cell.delegate = self
-        
-        
+            
         return cell
+        }
+        if tableView == self.commentsTableView {
+            guard tableView.dequeueReusableCell(withIdentifier: "commentsDisplayed", for: indexPath) is MemeTableViewCell else { return UITableViewCell() }
+            
+            let comment = comments[indexPath.row]
+            
+        }
+        
+     return cell
     }
     
  
