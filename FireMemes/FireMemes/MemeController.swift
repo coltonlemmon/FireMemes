@@ -62,9 +62,9 @@ class MemeController {
     }
     
     //MARK: - CloudKit Stuff
-    func fetch(_ location: CLLocation, radiusInMeters: CLLocationDistance) {
-        let radiusInKilometers = radiusInMeters / 1000.0
-        let locationPredicate = NSPredicate(format: "distanceToLocation:fromLocation:(%K,%@) < %F", "Location", location, radiusInKilometers)
+    func fetch(_ location: CLLocation, radiusInMeters: CGFloat) {
+        //let radiusInKilometers = radiusInMeters / 1000.0
+        let locationPredicate = NSPredicate(format: "distanceToLocation:fromLocation:(Location,%@) < %f", location, radiusInMeters)
         cloudKitManager.fetchRecordsWithType(Keys.meme, predicate: locationPredicate, recordFetchedBlock: { (record) in
             guard let meme = Meme(record: record) else { return }
             
@@ -90,7 +90,7 @@ class MemeController {
         // if it is less, this meme will be added to the
         // array of memes, otherwise, it won't
         
-        if memeLife < Double(60 * 60 * 24 * dayLimitForMeme) {
+        if memeLife > Double(-60 * 60 * 24 * dayLimitForMeme) {
             return true
         } else {
             return false
@@ -98,7 +98,7 @@ class MemeController {
     }
     
     func delete(_ meme: Meme) {
-        guard let recordID = meme.ckRecordID else { return }
+        guard let recordID = meme.cloudKitRecordID else { return }
         cloudKitManager.deleteRecordWithID(recordID) { (recordID, error) in
             if error != nil {
                 print(error ?? "something went wrong")
