@@ -204,6 +204,20 @@ class CloudKitManager {
         modifyRecords(records, perRecordCompletion: perRecordCompletion, completion: completion)
     }
     
+    func saveUser(_ userRecord: CKRecord) {
+        
+        publicDatabase.save(userRecord) { (record, error) in
+            
+            if record == nil || error != nil {
+                print("bad in ckmanager")
+            }
+            
+        }
+        
+    }
+    
+    
+    
     // Saves record to the database.
     func saveRecord(_ record: CKRecord, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         

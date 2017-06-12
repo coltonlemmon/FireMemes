@@ -13,7 +13,7 @@ class User: CloudKitSync {
     
     static let flagCountKey = "FlagCount"
     static let isBannedKey = "UserBanned"
-    static let typeKey = "FireMemeUser"
+    static let typeKey = "FireMemeUsers"
     
     var ckRecordID: CKRecordID?
     var ckReference: CKReference?
@@ -44,6 +44,8 @@ extension CKRecord {
         let recordID = CKRecordID(recordName: UUID().uuidString)
         
         self.init(recordType: User.typeKey, recordID: recordID)
+        
+        user.ckRecordID = recordID
         
         self[User.flagCountKey] = user.flagCount as CKRecordValue?
         self[User.isBannedKey] = user.isBanned as CKRecordValue?

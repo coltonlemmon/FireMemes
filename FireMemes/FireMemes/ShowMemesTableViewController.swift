@@ -53,6 +53,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         setupView()
         
+        UserController.shared.checkUserIn()
+        
         tableView.isHidden = true
         view.backgroundColor = UIColor.gray
         loadingAnimationView.backgroundColor = UIColor.gray
