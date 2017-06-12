@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHJ-MC-8GD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
@@ -31,10 +34,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-QK-PF9">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                                    <rect key="frame" x="0.0" y="-20" width="600" height="389"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default" translatesAutoresizingMaskIntoConstraints="NO" id="skf-zH-oqf">
+                                                            <rect key="frame" x="0.0" y="18" width="600" height="326.5"/>
+=======
+=======
+>>>>>>> ff10d0e5b888d40af0357c32777784b2ddf3df11
                                                     <rect key="frame" x="0.0" y="-20" width="375" height="388"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default" translatesAutoresizingMaskIntoConstraints="NO" id="skf-zH-oqf">
                                                             <rect key="frame" x="0.0" y="18" width="375" height="326"/>
+<<<<<<< HEAD
+>>>>>>> dd3078fb3d6522e55a2fbf67e650de4d2bdeb287
+=======
+>>>>>>> ff10d0e5b888d40af0357c32777784b2ddf3df11
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZr-jB-LqM">
                                                             <rect key="frame" x="8" y="352" width="30" height="30"/>
@@ -67,7 +83,15 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cun-Fy-Lea">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                                            <rect key="frame" x="555" y="356" width="30" height="30"/>
+=======
                                                             <rect key="frame" x="330" y="356" width="30" height="29"/>
+>>>>>>> dd3078fb3d6522e55a2fbf67e650de4d2bdeb287
+=======
+                                                            <rect key="frame" x="330" y="356" width="30" height="29"/>
+>>>>>>> ff10d0e5b888d40af0357c32777784b2ddf3df11
                                                             <state key="normal" image="present"/>
                                                             <connections>
                                                                 <action selector="upvoteButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="FDC-0G-gg8"/>
@@ -80,25 +104,57 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QwH-G4-Hk9">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                                            <rect key="frame" x="487" y="356.5" width="11" height="21"/>
+=======
+=======
+>>>>>>> ff10d0e5b888d40af0357c32777784b2ddf3df11
                                                             <rect key="frame" x="288" y="356" width="11" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="11" id="RMH-gf-aac"/>
                                                             </constraints>
+<<<<<<< HEAD
+>>>>>>> dd3078fb3d6522e55a2fbf67e650de4d2bdeb287
+=======
+>>>>>>> ff10d0e5b888d40af0357c32777784b2ddf3df11
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.82906991243362427" green="0.011224683374166489" blue="0.10454045981168747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ExY-1s-ezt">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                                            <rect key="frame" x="396" y="350" width="83" height="30.5"/>
+=======
+=======
+>>>>>>> ff10d0e5b888d40af0357c32777784b2ddf3df11
                                                             <rect key="frame" x="197" y="350" width="83" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="83" id="s9F-R3-BO8"/>
                                                             </constraints>
+<<<<<<< HEAD
+>>>>>>> dd3078fb3d6522e55a2fbf67e650de4d2bdeb287
+=======
+>>>>>>> ff10d0e5b888d40af0357c32777784b2ddf3df11
                                                             <fontDescription key="fontDescription" name="EuphemiaUCAS-Italic" family="Euphemia UCAS" pointSize="17"/>
                                                             <state key="normal" title="COMMENT"/>
                                                             <connections>
                                                                 <action selector="commentButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="0ES-jt-nOJ"/>
                                                             </connections>
                                                         </button>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqq-Us-E9a">
+                                                            <rect key="frame" x="540" y="347" width="27" height="21.5"/>
+                                                            <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="18"/>
+                                                            <color key="textColor" red="0.28594177961349487" green="0.51316261291503906" blue="0.8701358437538147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+=======
+>>>>>>> dd3078fb3d6522e55a2fbf67e650de4d2bdeb287
+=======
+>>>>>>> ff10d0e5b888d40af0357c32777784b2ddf3df11
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
