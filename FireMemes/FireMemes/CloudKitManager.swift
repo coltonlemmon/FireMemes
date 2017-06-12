@@ -17,6 +17,8 @@ private let ModificationDateKey = "modificationDate"
 
 class CloudKitManager {
     
+    static let shared = CloudKitManager()
+    
     let publicDatabase = CKContainer.default().publicCloudDatabase
     let privateDatabase = CKContainer.default().privateCloudDatabase
     
@@ -106,7 +108,7 @@ class CloudKitManager {
     func fetchRecordsWithType(_ type: String,
                               predicate: NSPredicate = NSPredicate(value: true),
                               recordFetchedBlock: ((_ record: CKRecord) -> Void)?,
-                              completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
+                              completion: ((_ recordID: CKRecordID? , _ records: [CKRecord]?, _ error: Error?) -> Void)?) {
         
         var fetchedRecords: [CKRecord] = []
         
@@ -133,7 +135,8 @@ class CloudKitManager {
                 self.publicDatabase.add(continuedQueryOperation)
                 
             } else {
-                completion?(fetchedRecords, error)
+                let recordID = fetchedRecords.first?.recordID
+                completion?(recordID, fetchedRecords, error)
             }
         }
         queryOperation.queryCompletionBlock = queryCompletionBlock
@@ -143,7 +146,7 @@ class CloudKitManager {
     }
     
     // Returns all CKRecords that the user has created.
-    func fetchCurrentUserRecords(_ type: String, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
+    func fetchCurrentUserRecords(_ type: String, completion: ((_ recordID: CKRecordID?, _ records: [CKRecord]?, _ error: Error?) -> Void)?) {
         
         fetchLoggedInUserRecord { (record, error) in
             
@@ -157,16 +160,16 @@ class CloudKitManager {
     }
     
     // Returns all CKRecords in a time window.
-    func fetchRecordsFromDateRange(_ type: String, recordType: String, fromDate: Date, toDate: Date, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
+    func fetchRecordsFromDateRange(_ type: String, recordType: String, fromDate: Date, toDate: Date, completion: ((_ recordID: CKRecordID?, _ records: [CKRecord]?, _ error: Error?) -> Void)?) {
         
         let startDatePredicate = NSPredicate(format: "%K > %@", argumentArray: [CreationDateKey, fromDate])
         let endDatePredicate = NSPredicate(format: "%K < %@", argumentArray: [CreationDateKey, toDate])
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [startDatePredicate, endDatePredicate])
         
         
-        self.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: nil) { (records, error) in
+        self.fetchRecordsWithType(type, predicate: predicate, recordFetchedBlock: nil) { (nil, records, error) in
             
-            completion?(records, error)
+            completion?(nil, records, error)
         }
     }
     
@@ -201,6 +204,20 @@ class CloudKitManager {
         modifyRecords(records, perRecordCompletion: perRecordCompletion, completion: completion)
     }
     
+    func saveUser(_ userRecord: CKRecord) {
+        
+        publicDatabase.save(userRecord) { (record, error) in
+            
+            if record == nil || error != nil {
+                print("bad in ckmanager")
+            }
+            
+        }
+        
+    }
+    
+    
+    
     // Saves record to the database.
     func saveRecord(_ record: CKRecord, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         
@@ -225,6 +242,80 @@ class CloudKitManager {
         }
         
         publicDatabase.add(operation)
+    }
+    
+    func modifyFlagCount(_ meme: Meme) {
+        
+        guard let memeID = meme.ckRecordID else { return }
+        
+        publicDatabase.fetch(withRecordID: memeID) { (record, error) in
+            
+            guard let record = record else { return }
+            guard var flagCount = record[Meme.flagKey] as? Int else { return }
+            
+            flagCount += 1
+            
+            if flagCount >= 3 {
+                
+                guard var isBanned = record[Meme.isMemeBanedKey] as? Bool else { return }
+                isBanned = true
+                record[Meme.isMemeBanedKey] = isBanned as CKRecordValue
+                //delete the record, but i set the isBanned boolean value just in case
+                self.deleteRecordWithID(record.recordID, completion: { (_, _) in})
+                
+                
+                guard let userID = record[Meme.ownerKey] as? CKRecordID else { return }
+                
+                self.fetchRecord(withID: userID, completion: { (record, error) in
+                    guard let record = record else { return }
+                    self.verify(record)
+                })
+            }
+            
+            record[Meme.flagKey] = flagCount as CKRecordValue?
+            
+            self.publicDatabase.save(record, completionHandler: { (record, error) in
+                
+                if error != nil || record == nil {
+                    print("error saving meme flag count")
+                }
+            })
+            
+        }
+        
+    }
+    
+    func verify(_ userRecord: CKRecord) {
+        
+        publicDatabase.fetch(withRecordID: userRecord.recordID) { (record, error) in
+            guard let record = record else { return }
+            
+            guard var userFlagCount = record[User.flagCountKey] as? Int else { return }
+            
+            userFlagCount += 1
+            
+            record[User.flagCountKey] = userFlagCount as CKRecordValue
+            
+            if userFlagCount >= 3 {
+                
+                var isBanned = record[User.isBannedKey] as? Bool
+                isBanned = true
+                record[User.isBannedKey] = isBanned as CKRecordValue?
+                
+                self.deleteRecordWithID(userRecord.recordID, completion: { (_, _) in
+                    print("deleted record")
+                })
+            }
+                self.publicDatabase.save(record, completionHandler: { (record, error) in
+                    if error != nil || record == nil {
+                        print("there was an error deleting the account")
+                    }
+                })
+            
+        }
+        
+        
+        
     }
     
     

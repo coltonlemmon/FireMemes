@@ -22,6 +22,10 @@ class MemeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var numberOfUpvotes: UILabel!
     
+    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var twitterButton: UIButton!
+    
+    
     //each cell will have a meme,
 
     //Delegates
@@ -64,6 +68,16 @@ extension MemeTableViewCell {
     
     func updateViews(meme: Meme) {
         memeImageView.image = meme.image
+        
+        facebookButton.layer.cornerRadius = 15
+        twitterButton.layer.cornerRadius = 15
+        
+        facebookButton.layer.borderColor = UIColor.black.cgColor
+        twitterButton.layer.borderColor = UIColor.black.cgColor
+        
+        facebookButton.layer.borderWidth = 0.5
+        twitterButton.layer.borderWidth = 0.5
+        
     }
 }
 

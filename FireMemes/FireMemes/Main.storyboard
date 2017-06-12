@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHJ-MC-8GD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHJ-MC-8GD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="369"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M8H-m4-HF3" id="m0t-Il-tmo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="368.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="369"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-QK-PF9">
@@ -146,9 +146,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="facebookButton" destination="cZr-jB-LqM" id="IT9-10-9Hu"/>
                                             <outlet property="memeImageView" destination="skf-zH-oqf" id="ieX-vr-fIm"/>
                                             <outlet property="numberOfComments" destination="QwH-G4-Hk9" id="QMM-bz-Oaw"/>
                                             <outlet property="numberOfUpvotes" destination="Dqq-Us-E9a" id="5Ge-VV-buU"/>
+                                            <outlet property="twitterButton" destination="lfa-RW-0Bz" id="pTX-bw-bgc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -268,6 +270,7 @@
                         <outlet property="commentsTableView" destination="dUj-g4-8q8" id="vp2-y3-775"/>
                         <outlet property="createButtonClick" destination="lgS-mr-IxA" id="pz3-FZ-3YX"/>
                         <outlet property="loadingAnimationView" destination="P12-6K-sjL" id="5D3-Z2-TE2"/>
+                        <outlet property="makeAMemeButton" destination="lgS-mr-IxA" id="bJu-0B-k9c"/>
                         <outlet property="tableView" destination="6OP-bg-0eh" id="nj3-7x-caA"/>
                         <outlet property="trailingConstraint" destination="f8u-WI-nJ5" id="4lQ-Xd-nxC"/>
                     </connections>
