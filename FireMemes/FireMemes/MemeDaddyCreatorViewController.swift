@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
     
     @IBOutlet weak var memeImageView: MemeImageView!
@@ -18,6 +18,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     @IBOutlet weak var postMemeButton: UIButton!
     @IBOutlet weak var downloadMemeButton: UIButton!
+    @IBOutlet weak var addTextButton: UIButton!
     
     @IBOutlet weak var updateTextButton: UIButton!
     
@@ -26,8 +27,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     let textPicker = UIPickerView()
     
     let colorData = ["red", "green", "blue", "white", "black"]
-    let fontData = ["American", "Avenir", "Helvetica"]
-    let fontSizeData = ["12", "24", "36", "70", "100","150"]
+    let fontData = ["Impact", "American", "Avenir", "Helvetica"]
     
     var pickerData: [[String]] = [[]]
     
@@ -36,16 +36,12 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     var myLocation: CLLocation?
     var locationManager = CLLocationManager()
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        postMemeButton.layer.cornerRadius = 15
-        updateTextButton.layer.cornerRadius = 15
-        downloadMemeButton.layer.cornerRadius = 15
+        setupButtons()
         
-        pickerData = [colorData, fontData, fontSizeData]
+        pickerData = [colorData, fontData]
         
         textPicker.delegate = self
         textPicker.dataSource = self
@@ -62,6 +58,24 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
     }
     
+    func setupButtons() {
+        
+        postMemeButton.layer.borderWidth = 2
+        
+        updateTextButton.layer.borderWidth = 0.5
+        downloadMemeButton.layer.borderWidth = 0.5
+        addTextButton.layer.borderWidth = 0.5
+        
+        postMemeButton.layer.borderColor = UIColor.red.cgColor
+        updateTextButton.layer.borderColor = UIColor.red.cgColor
+        addTextButton.layer.borderColor = UIColor.red.cgColor
+        downloadMemeButton.layer.borderColor = UIColor.red.cgColor
+        
+        postMemeButton.layer.cornerRadius = 15
+        updateTextButton.layer.cornerRadius = 15
+        downloadMemeButton.layer.cornerRadius = 15
+        addTextButton.layer.cornerRadius = 15
+    }
     
 
     //MARK: ACTIONS
@@ -70,12 +84,15 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     @IBAction func postMeme(_ sender: Any) {
+        
+        guard (memeImageView.image != nil) else { return }
+        
         self.locationManager.requestLocation()
         
         let image = memeImageView.makeImageFromView()
         
         guard let location = myLocation else { return }
-        let meme = MemeController.shared.createMeme(image: image, location: location)
+        guard let meme = MemeController.shared.createMeme(image: image, location: location) else { return }
         MemeController.shared.postMeme(meme: meme)
         
         let nc = navigationController
@@ -85,6 +102,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     
     @IBAction func updateText(_ sender: Any) {
+        
+        guard (memeImageView.image != nil) else { return }
      
         guard let font = getFontFromPicker() else { return }
         let color = getColorFromPicker()
@@ -93,10 +112,26 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
 
     }
     
+    @IBAction func downloadMemeToPhone(_ sender: Any) {
+        guard memeImageView.image != nil else { return }
+        
+        let image = memeImageView.makeImageFromView()
+        
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    }
+    
+    @IBAction func addText(_ sender: Any) {
+        guard memeImageView.image != nil else { return }
+        
+        memeImageView.addText()
+    }
+    
+    //MARK: END ACTIONS
+    
+    
     func getImage() {
         
         pickingButton.isHidden = true
-        
         //Create an Instance of Image Picker Controller
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -154,19 +189,19 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         let int = textPicker.selectedRow(inComponent: 1)
         let font = fontData[int]
         
-        let intt = textPicker.selectedRow(inComponent: 2)
-        guard let fontSizeInt = Int(fontSizeData[intt]) else { return UIFont(name:  "AmericanTypewriter", size: 24) }
-        let fontInt = CGFloat(fontSizeInt)
+        let fontSize = CGFloat(24)
         
         switch font {
+        case "Impact":
+            return UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize)
         case "American":
-            return UIFont(name: "AmericanTypewriter", size: fontInt)
+            return UIFont(name: "AmericanTypewriter", size: fontSize)
         case "Avenir":
-            return UIFont(name: "AvenirNext-HeavyItalic", size: fontInt)
+            return UIFont(name: "AvenirNext-HeavyItalic", size: fontSize)
         case "Helvetica":
-            return UIFont(name: "Helvetica Bold", size: fontInt)
+            return UIFont(name: "HelveticaNeue-Bold", size: fontSize)
         default:
-            return UIFont(name:  "AmericanTypewriter", size: 24)
+            return UIFont(name:  "HelveticaNeue-CondensedBlack", size: fontSize)
         }
     }
     
@@ -189,6 +224,12 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         default:
             return .darkText
         }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        
     }
 
 }

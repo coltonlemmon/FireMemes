@@ -172,7 +172,7 @@ class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelega
             self.getLocationUpdate()
         }
         guard let location = myLocation else { return }
-        let meme = MemeController.shared.createMeme(image: memeImage, location: location)
+        guard let meme = MemeController.shared.createMeme(image: memeImage, location: location) else { return }
         MemeController.shared.postMeme(meme: meme)
         
         let nc = navigationController

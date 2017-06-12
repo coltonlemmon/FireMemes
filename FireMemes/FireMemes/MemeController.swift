@@ -32,11 +32,13 @@ class MemeController {
     
     //MARK: - CRUD
     
-    func createMeme(image: UIImage, location: CLLocation) -> Meme {
+    func createMeme(image: UIImage, location: CLLocation) -> Meme? {
         
-        guard let data = UIImagePNGRepresentation(image) else { return Meme(imageData: nil, image: image, location: location) }
+        guard let user = UserController.shared.currentUser else { return nil }
         
-        let meme = Meme(imageData: data, image: image, location: location)
+        guard let data = UIImagePNGRepresentation(image) else { return nil }
+        
+        let meme = Meme(imageData: data, image: image, location: location, creatorID: user.ckRecordID, memeOwner: user)
         return meme
     }
     
@@ -74,11 +76,20 @@ class MemeController {
                 self.delete(meme)
             }
             
-        }) { (_, error) in
+        }) { (_,_, error) in
             if let error = error {
                 print("Error fetching meme: \(error.localizedDescription)")
             }
         }
+    }
+    
+    //MARK: FLAGGING THE MEME
+    //all you have to do is call this function, and it'll take care of 
+    //flagging the meme, deleting it if it has 3+ flags, and deleting the user
+    // if they have 3+ flags too.
+    
+    func flag(_ meme: Meme) {
+        CloudKitManager.shared.modifyFlagCount(meme)
     }
     
     func TodayIsCloseEnoughTo(memeDate: Date) -> Bool {

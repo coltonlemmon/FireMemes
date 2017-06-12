@@ -22,10 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rvw-Vm-whk" customClass="MemeImageView" customModule="FireMemes" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rvw-Vm-whk" customClass="MemeImageView" customModule="FireMemes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="342"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="342" id="1eN-Y2-jGF"/>
+                                    <constraint firstAttribute="height" constant="342" id="GbS-gz-uJa"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="bvV-zQ-pew"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPO-PP-8bx">
                                 <rect key="frame" x="112" y="176" width="151" height="30"/>
@@ -34,30 +39,34 @@
                                     <action selector="pickImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGz-rA-smv"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZUp-Le-CuH">
-                                <rect key="frame" x="16" y="369" width="342" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZUp-Le-CuH">
+                                <rect key="frame" x="16" y="382" width="348" height="62"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-lt-VDl">
-                                        <rect key="frame" x="0.0" y="0.0" width="342" height="30"/>
-                                        <color key="backgroundColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="348" height="30"/>
+                                        <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="vxC-al-YNe"/>
+                                            <constraint firstAttribute="height" constant="30" id="M4S-e2-684"/>
                                         </constraints>
-                                        <state key="normal" title="Post">
-                                            <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="🔥                  POST                  🔥">
+                                            <color key="titleColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0uH-e5-gBK"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="avk-0F-MQq">
-                                        <rect key="frame" x="69" y="30" width="204" height="30"/>
+                                        <rect key="frame" x="0.0" y="32" width="348" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PK5-VW-XX8">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="84" height="30"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="oz6-h2-hsl"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title="update ">
+                                                <state key="normal" title="update font ">
                                                     <color key="titleColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
@@ -65,44 +74,65 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uh-Ko-7Kl">
-                                                <rect key="frame" x="126" y="0.0" width="78" height="30"/>
+                                                <rect key="frame" x="132" y="0.0" width="84" height="30"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="R3n-j3-Ze1"/>
-                                                    <constraint firstAttribute="width" constant="78" id="rGr-bY-usf"/>
                                                 </constraints>
                                                 <state key="normal" title="download">
                                                     <color key="titleColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M8g-aZ-jCQ"/>
+                                                    <action selector="downloadMemeToPhone:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dKh-Ex-zdJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0C-Ev-f0K">
+                                                <rect key="frame" x="264" y="0.0" width="84" height="30"/>
+                                                <state key="normal" title="add text">
+                                                    <color key="titleColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fng-St-cUp"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="PK5-VW-XX8" firstAttribute="top" secondItem="avk-0F-MQq" secondAttribute="top" id="2qJ-nq-sca"/>
+                                            <constraint firstItem="2uh-Ko-7Kl" firstAttribute="leading" secondItem="PK5-VW-XX8" secondAttribute="trailing" constant="48" id="WwA-hP-Vd4"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="ZUp-Le-CuH" secondAttribute="top" id="ETs-fL-Dgx"/>
-                                    <constraint firstItem="j3L-lt-VDl" firstAttribute="leading" secondItem="ZUp-Le-CuH" secondAttribute="leading" id="HiA-a7-BAM"/>
-                                    <constraint firstAttribute="trailing" secondItem="j3L-lt-VDl" secondAttribute="trailing" id="n40-ZH-DEk"/>
+                                    <constraint firstItem="j3L-lt-VDl" firstAttribute="leading" secondItem="ZUp-Le-CuH" secondAttribute="leading" id="xOf-H9-Ecn"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCg-JE-PL6">
+                                <rect key="frame" x="16" y="444" width="343" height="223"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="172"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="YPO-PP-8bx" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="3Jd-xA-1kv"/>
+                            <constraint firstItem="SCg-JE-PL6" firstAttribute="top" secondItem="ZUp-Le-CuH" secondAttribute="bottom" id="69m-PV-oen"/>
                             <constraint firstItem="YPO-PP-8bx" firstAttribute="centerY" secondItem="rvw-Vm-whk" secondAttribute="centerY" id="9gc-Uw-z1Z"/>
-                            <constraint firstAttribute="trailing" secondItem="rvw-Vm-whk" secondAttribute="trailing" id="Noa-yT-xCb"/>
+                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="20" id="LYw-HC-8FF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SCg-JE-PL6" secondAttribute="trailing" id="SmC-Et-KZw"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YBr-X8-RdZ"/>
-                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="aez-Tk-For"/>
-                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="centerX" secondItem="YPO-PP-8bx" secondAttribute="centerX" id="gYr-NT-lY8"/>
-                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="7" id="hT8-bF-bEJ"/>
+                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="leading" secondItem="SCg-JE-PL6" secondAttribute="leading" id="e7z-VR-BAO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SCg-JE-PL6" secondAttribute="bottom" id="iqx-lZ-Mc6"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mHn-NQ-o0F"/>
+                            <constraint firstItem="YPO-PP-8bx" firstAttribute="centerX" secondItem="SCg-JE-PL6" secondAttribute="centerX" id="mrJ-oD-Vhb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="305" id="oxL-AY-bWr"/>
+                            <constraint firstItem="YPO-PP-8bx" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="pNe-VF-TYw"/>
+                            <constraint firstItem="SCg-JE-PL6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qjO-sZ-2P0"/>
+                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="20" id="vPv-0v-4ha"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="pimp" id="MQb-az-aH2"/>
                     <connections>
+                        <outlet property="addTextButton" destination="v0C-Ev-f0K" id="7To-UC-wdM"/>
                         <outlet property="downloadMemeButton" destination="2uh-Ko-7Kl" id="A56-XN-dDX"/>
                         <outlet property="memeImageView" destination="rvw-Vm-whk" id="P0m-3M-Tgo"/>
                         <outlet property="pickingButton" destination="YPO-PP-8bx" id="77z-JL-9kA"/>
@@ -112,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3893.5" y="138.5"/>
+            <point key="canvasLocation" x="3892" y="138.0809595202399"/>
         </scene>
     </scenes>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import Social
 
-class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
     let test = UIButton()
 
@@ -22,6 +22,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     //MARK: - Internal Properties
     var locationManager = CLLocationManager()
     var myLocation: CLLocation?
+    
+    @IBOutlet weak var makeAMemeButton: UIButton!
     
     func fetch() {
         
@@ -42,6 +44,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupView()
         
         tableView.isHidden = true
         view.backgroundColor = UIColor.gray
@@ -93,12 +97,22 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         cell.updateViews(meme: meme)
         cell.delegate = self
         
-        
         return cell
     }
  
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func setupView() {
+        makeAMemeButton.layer.cornerRadius = 15
+        makeAMemeButton.layer.borderWidth = 1
+        makeAMemeButton.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
     }
 
 }
