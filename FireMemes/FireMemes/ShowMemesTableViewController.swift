@@ -15,6 +15,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     //Comment text field
     @IBOutlet weak var commentTextField: UITextField!
     
+
+    
     //Side menu constraint
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     let test = UIButton()
@@ -82,6 +84,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.dataSource = self
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
+
         
         //Custom button for Make a Meme button
         createButtonClick.layer.cornerRadius = 7
@@ -138,19 +141,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count: Int?
+      
         
-        if tableView == self.tableView{
+        return MemeController.shared.memes.count
             
-        count = MemeController.shared.memes.count
-            
-        }
-        if tableView == self.commentsTableView{
-            
-            count = data.count
-        }
-        
-    return count!
+   
     }
     
     
