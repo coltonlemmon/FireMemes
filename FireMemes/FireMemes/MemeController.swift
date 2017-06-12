@@ -98,7 +98,7 @@ class MemeController {
     }
     
     func delete(_ meme: Meme) {
-        guard let recordID = meme.ckRecordID else { return }
+        guard let recordID = meme.cloudKitRecordID else { return }
         cloudKitManager.deleteRecordWithID(recordID) { (recordID, error) in
             if error != nil {
                 print(error ?? "something went wrong")
