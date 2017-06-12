@@ -12,16 +12,22 @@ import Social
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    
+    //Comment text field
+    @IBOutlet weak var commentTextField: UITextField!
     
     //Side menu constraint
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     let test = UIButton()
     
+    //Comments table view
+    @IBOutlet weak var commentsTableView: UITableView!
+    
+    //Show memes table view
     @IBOutlet weak var tableView: UITableView!
     
     //Button that segues user to editing screen
     @IBOutlet weak var createButtonClick: UIButton!
+    
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
 
@@ -65,8 +71,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
         
+        //Table View Delegates
         tableView.delegate = self
         tableView.dataSource = self
+        commentsTableView.delegate = self
+        commentsTableView.dataSource = self
         
         //Custom button for Make a Meme button
         createButtonClick.layer.cornerRadius = 7
@@ -96,6 +105,12 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
    
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    
+    //IB-Actions
+    @IBAction func addCommentClicked(_ sender: Any) {
+        
     }
 
     // MARK: - Table view data source

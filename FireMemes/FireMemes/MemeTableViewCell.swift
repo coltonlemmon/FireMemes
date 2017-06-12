@@ -11,7 +11,8 @@ import Social
 
 class MemeTableViewCell: UITableViewCell {
     
-    
+    //Variables
+    var upVoteCount = 0
     
     //MARK: - Outlets and Actions
     
@@ -51,7 +52,8 @@ class MemeTableViewCell: UITableViewCell {
         
     }
     @IBAction func upvoteButtonTapped(_ sender: Any) {
-        
+        upVoteCount += 1
+        numberOfUpvotes.text = "\(upVoteCount)"
     }
     
 }
