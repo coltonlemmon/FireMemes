@@ -38,11 +38,9 @@ class UserController {
             let newUser = User(flagCount: 0, isBanned: false, recordID: record.recordID)
             self.currentUser = newUser
             
-            guard let userRecord = newUser.ckRecordID else { return }
+            let userRecord = CKRecord(newUser)
             
-            let newRecord = CKRecord(recordType: User.typeKey, recordID: userRecord)
-            
-            CloudKitManager.shared.saveRecord(newRecord, completion: { (record, error) in
+            CloudKitManager.shared.saveRecord(userRecord, completion: { (record, error) in
                 if record == nil || error != nil {
                     print("something went wrong saving the user")
                 }
