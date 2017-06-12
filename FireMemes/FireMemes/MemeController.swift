@@ -67,16 +67,21 @@ class MemeController {
     func fetch(_ location: CLLocation, radiusInMeters: CGFloat) {
         //let radiusInKilometers = radiusInMeters / 1000.0
         let locationPredicate = NSPredicate(format: "distanceToLocation:fromLocation:(Location,%@) < %f", location, radiusInMeters)
-        cloudKitManager.fetchRecordsWithType(Keys.meme, predicate: locationPredicate, recordFetchedBlock: { (record) in
-            guard let meme = Meme(record: record) else { return }
+        cloudKitManager.fetchRecordsWithType(Keys.meme, predicate: locationPredicate, recordFetchedBlock: { (record) in }) { (_, records, error) in
+
+            guard let records = records else { return }
             
-            if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
-                self.memes.append(meme)
-            } else {
-                self.delete(meme)
+            for record in records {
+            
+                guard let meme = Meme(record: record) else { return }
+            
+                if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
+                    self.memes.append(meme)
+                } else {
+                    self.delete(meme)
+                }
             }
             
-        }) { (_,_, error) in
             if let error = error {
                 print("Error fetching meme: \(error.localizedDescription)")
             }
