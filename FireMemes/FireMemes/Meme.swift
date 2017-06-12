@@ -117,6 +117,7 @@ extension CKRecord {
         }
         
         self[Meme.isMemeBanedKey] = meme.isBanned as CKRecordValue?
+        self[Meme.flagKey] = meme.flagCount as CKRecordValue?
         self[Meme.ownerKey] = creatorID as? CKRecordValue
         self[Keys.date] = meme.date as CKRecordValue?
         self[Keys.identifier] = meme.identifier as CKRecordValue?
