@@ -148,7 +148,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if tableView == self.tableView{
+        //if tableView == self.tableView{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
         
         let meme = MemeController.shared.memes.reversed()[indexPath.row]
@@ -160,15 +160,15 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         cell.delegate = self
             
         return cell
-        }
-        if tableView == self.commentsTableView {
-            guard tableView.dequeueReusableCell(withIdentifier: "commentsDisplayed", for: indexPath) is MemeTableViewCell else { return UITableViewCell() }
-            
-            let comment = comments[indexPath.row]
-            
-        }
         
-     return cell
+//        if tableView == self.commentsTableView {
+//            guard tableView.dequeueReusableCell(withIdentifier: "commentsDisplayed", for: indexPath) is MemeTableViewCell else { return UITableViewCell() }
+//            
+//            let comment = comments[indexPath.row]
+//            
+//        }
+        
+     //return cell
     }
     
  
