@@ -59,7 +59,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(getImage), name: NSNotification.Name(rawValue: "getImage"), object: nil)
-        
     }
     
     func setupButtons() {
@@ -131,8 +130,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     //MARK: END ACTIONS
-    
-    
+
     func getImage() {
         
         pickingButton.isHidden = true

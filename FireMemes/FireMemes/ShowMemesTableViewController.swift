@@ -57,6 +57,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     var locationManager = CLLocationManager()
     var myLocation: CLLocation?
     
+    //for fetching
+    var didFetch: Bool = false
+    
     @IBOutlet weak var makeAMemeButton: UIButton!
     
     func fetch() {
@@ -234,7 +237,11 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             myLocation = location
-            fetch()
+            
+            if !didFetch {
+                fetch()
+                didFetch = true
+            }
         }
     }
     
