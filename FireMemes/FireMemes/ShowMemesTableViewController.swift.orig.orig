@@ -14,6 +14,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Comment text field
     @IBOutlet weak var commentTextField: UITextField!
+<<<<<<< HEAD
     
     //Side menu constraint
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
@@ -22,6 +23,16 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     //Comments table view
     @IBOutlet weak var commentsTableView: UITableView!
     
+=======
+    
+    //Side menu constraint
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    let test = UIButton()
+    
+    //Comments table view
+    @IBOutlet weak var commentsTableView: UITableView!
+    
+>>>>>>> gavinsBranch
     //Show memes table view
     @IBOutlet weak var tableView: UITableView!
     
@@ -156,7 +167,15 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+<<<<<<< HEAD
+        
+<<<<<<< HEAD
+        //if tableView == self.tableView{
+=======
+>>>>>>> ff10d0e5b888d40af0357c32777784b2ddf3df11
+=======
     
+>>>>>>> gavinsBranch
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
         
         let meme = MemeController.shared.memes.reversed()[indexPath.row]
