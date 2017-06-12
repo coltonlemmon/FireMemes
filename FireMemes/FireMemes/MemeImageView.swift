@@ -70,7 +70,7 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
     func addTextField() {
         
         contentMode = .scaleAspectFit
-        backgroundColor = .black
+        backgroundColor = .white
         hideKeyboardWhenTappedAround()
         
         memeText.delegate = self
