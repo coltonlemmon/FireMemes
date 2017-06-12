@@ -32,6 +32,26 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
+    
+    //MARK: - Pull to Refresh
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(ShowMemesTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        
+        
+        return refreshControl
+    }()
+    
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        DispatchQueue.main.async {
+            self.requestLocation()
+        }
+        fetch()
+        refreshing()
+        refreshControl.endRefreshing()
+    }
 
     //MARK: - Internal Properties
     var locationManager = CLLocationManager()
@@ -44,7 +64,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         guard let myLocation = myLocation else { return }
         MemeController.shared.fetch(myLocation, radiusInMeters: 20000) // We can change radius
     }
-
     
     func refreshing() {
         tableView.reloadData()
@@ -74,6 +93,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         locationManager.requestLocation()
     
         tableView.reloadData()
+        
+        // Pull to Refresh
+        self.tableView.addSubview(self.refreshControl)
         
         // Notification Center
         let nc = NotificationCenter.default
