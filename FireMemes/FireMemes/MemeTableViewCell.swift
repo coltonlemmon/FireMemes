@@ -11,6 +11,8 @@ import Social
 
 class MemeTableViewCell: UITableViewCell {
     
+    
+    
     //MARK: - Outlets and Actions
     
     @IBOutlet weak var memeImageView: UIImageView!
@@ -49,6 +51,8 @@ class MemeTableViewCell: UITableViewCell {
     }
     @IBAction func commentButtonTapped(_ sender: Any) {
         
+        delegate?.commentClicked(self)
+        
     }
     @IBAction func upvoteButtonTapped(_ sender: Any) {
         
@@ -83,4 +87,9 @@ protocol MemeTableViewCellDelegate: class{
     func twitterClicked(_ sender: MemeTableViewCell, image: UIImage)
     
     func messageClicked(_ sender: MemeTableViewCell, image: UIImage)
+    
+    func commentClicked(_ sender: MemeTableViewCell)
+    
+    
 }
+
