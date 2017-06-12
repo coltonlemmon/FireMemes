@@ -27,7 +27,7 @@ class Meme: CloudKitSync {
     //the user in check...
     
     var memeOwner: User?
-    var memeOwnerID: CKRecordID?
+    var memeOwnerReference: CKReference?
     var flagCount: Int
     var isBanned = false
     
@@ -40,7 +40,7 @@ class Meme: CloudKitSync {
     var ckReference: CKReference?
     var recordType: String { return Keys.meme }
     
-    init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorID: CKRecordID?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false) {
+    init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorRef: CKReference?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false) {
         self.imageData = imageData
         self.date = date
         self.identifier = id
@@ -51,7 +51,7 @@ class Meme: CloudKitSync {
         self.memeOwner = memeOwner
         self.isBanned = isBanned
         
-        self.memeOwnerID = creatorID
+        self.memeOwnerReference = creatorRef
         
         self.flagCount = flagCount
         
@@ -69,9 +69,9 @@ class Meme: CloudKitSync {
             let comments = record[Keys.comments] as? [String],
             let flagCount = record[Meme.flagKey] as? Int,
             let isBanned = record[Meme.isMemeBanedKey] as? Bool,
-            let memeOwner = record[Meme.ownerKey] as? CKRecordID,
+            let memeOwner = record[Meme.ownerKey] as? CKReference,
             let location = record[Keys.location] as? CLLocation else { return nil }
-        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorID: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned)
+        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned)
         cloudKitRecordID = record.recordID
     }
     
@@ -105,7 +105,9 @@ extension CKRecord {
         self.init(recordType: Keys.meme, recordID: recordID)
         meme.ckRecordID = recordID
         
-        guard let creatorID = meme.memeOwner?.ckRecordID else {return}
+        guard let owner = meme.memeOwner else { return }
+
+        let userRecordID = owner.ckRecordID ?? CKRecord(owner).recordID
         
         var url: URL = URL(fileURLWithPath: "")
         if let image = meme.image {
@@ -118,7 +120,7 @@ extension CKRecord {
         
         self[Meme.isMemeBanedKey] = meme.isBanned as CKRecordValue?
         self[Meme.flagKey] = meme.flagCount as CKRecordValue?
-        self[Meme.ownerKey] = creatorID as? CKRecordValue
+        self[Meme.ownerKey] = CKReference(recordID: userRecordID, action: .deleteSelf)
         self[Keys.date] = meme.date as CKRecordValue?
         self[Keys.identifier] = meme.identifier as CKRecordValue?
         self[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue?
