@@ -35,6 +35,7 @@ class MemeTableViewCell: UITableViewCell {
     //actions for each button here
 
     @IBAction func commentButtonTapped(_ sender: Any) {
+        delegate?.commentButtonTapped(self)
         
     }
     @IBAction func facebookButtonTapped(_ sender: Any) {
@@ -89,5 +90,6 @@ protocol MemeTableViewCellDelegate: class{
     
     func messageClicked(_ sender: MemeTableViewCell, image: UIImage)
     
+    func commentButtonTapped(_ sender: MemeTableViewCell)
 }
 

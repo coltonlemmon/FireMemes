@@ -14,6 +14,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     var meme = MemeController.shared.memes
     
+    @IBOutlet weak var containerTrailingConstant: NSLayoutConstraint!
+    
     //Show memes table view
     @IBOutlet weak var tableView: UITableView!
     
@@ -301,7 +303,10 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
     }
     //CommentButton tapped
     func commentButtonTapped(_ sender: MemeTableViewCell){
-    
+        containerTrailingConstant.constant = 0
+        UIView.animate(withDuration: 0.6, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 
 }

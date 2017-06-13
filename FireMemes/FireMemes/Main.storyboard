@@ -213,6 +213,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Fire Memes" id="EUv-w6-j0R"/>
                     <connections>
+                        <outlet property="containerTrailingConstant" destination="gLI-Q1-opT" id="y4q-0g-BVo"/>
                         <outlet property="createButtonClick" destination="lgS-mr-IxA" id="pz3-FZ-3YX"/>
                         <outlet property="loadingAnimationView" destination="P12-6K-sjL" id="5D3-Z2-TE2"/>
                         <outlet property="makeAMemeButton" destination="lgS-mr-IxA" id="bJu-0B-k9c"/>
@@ -253,6 +254,10 @@
         <scene sceneID="sT5-rm-eOi">
             <objects>
                 <viewController id="euf-RF-V4G" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hB2-Ic-l0K"/>
+                        <viewControllerLayoutGuide type="bottom" id="ibV-mu-gn1"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="C2g-uX-x2V">
                         <rect key="frame" x="0.0" y="0.0" width="310" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
