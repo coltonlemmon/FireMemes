@@ -36,17 +36,14 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     //MARK: - Pull to Refresh
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        
         refreshControl.addTarget(self, action: #selector(ShowMemesTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        
         refreshControl.backgroundColor = .gray
         refreshControl.tintColor = .clear
         refreshControl.clipsToBounds = true
-        let box = CGRect(x: self.view.layer.bounds.midX - 15, y: 40, width: 30, height: 30)
-        var loadingAnimation = LoadingAnimation(frame: box)
-        loadingAnimation.backgroundColor = .gray
-        refreshControl.addSubview(loadingAnimation)
-        
+        let box = CGRect(x: self.view.layer.bounds.midX - 15, y: 30, width: 30, height: 30)
+        var fireAnimation = FireAnimation(frame: box)
+        fireAnimation.backgroundColor = .gray
+        refreshControl.addSubview(fireAnimation)
         return refreshControl
     }()
     
@@ -54,24 +51,12 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         DispatchQueue.main.async {
             self.requestLocation()
         }
-        timerForRefresh()
         MemeController.shared.memes.removeAll()
         didFetch = false
         fetch()
         refreshing()
         refreshControl.endRefreshing()
     }
-    
-    func timerForRefresh() {
-        timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(endOfWork), userInfo: nil, repeats: true)
-    }
-    func endOfWork() {
-        refreshControl.endRefreshing()
-        timer.invalidate()
-        timer = nil
-    }
-    
-    var timer: Timer!
 
     //MARK: - Internal Properties
     var locationManager = CLLocationManager()
@@ -108,6 +93,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.isHidden = true
         view.backgroundColor = UIColor.gray
         loadingAnimationView.backgroundColor = UIColor.gray
+        tableView.backgroundColor = .gray
         
         // Location Services
         locationManager.delegate = self
