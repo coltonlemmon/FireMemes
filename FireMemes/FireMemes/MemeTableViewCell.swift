@@ -34,6 +34,9 @@ class MemeTableViewCell: UITableViewCell {
     
     //actions for each button here
 
+    @IBAction func commentButtonTapped(_ sender: Any) {
+        
+    }
     @IBAction func facebookButtonTapped(_ sender: Any) {
         
         delegate?.facebookClicked(self, image: memeImageView.image!)
@@ -50,11 +53,7 @@ class MemeTableViewCell: UITableViewCell {
         delegate?.messageClicked(self, image: memeImageView.image!)
 
     }
-    @IBAction func commentButtonTapped(_ sender: Any) {
-        
-        delegate?.commentClicked(self)
-        
-    }
+  
     @IBAction func upvoteButtonTapped(_ sender: Any) {
         upVoteCount += 1
         numberOfUpvotes.text = "\(upVoteCount)"
@@ -89,9 +88,6 @@ protocol MemeTableViewCellDelegate: class{
     func twitterClicked(_ sender: MemeTableViewCell, image: UIImage)
     
     func messageClicked(_ sender: MemeTableViewCell, image: UIImage)
-    
-    func commentClicked(_ sender: MemeTableViewCell)
-    
     
 }
 

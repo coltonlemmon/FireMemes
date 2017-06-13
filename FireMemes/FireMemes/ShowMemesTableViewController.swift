@@ -12,20 +12,7 @@ import Social
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
-  
-    
-    //Comment text field
-    @IBOutlet weak var commentTextField: UITextField!
-    
-    //View for comments
-    @IBOutlet weak var viewForComments: UIView!
-    
-    //Side menu constraint
-    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
-    let test = UIButton()
-    
-    //Comments table view
-    @IBOutlet weak var commentsTableView: UITableView!
+    var meme = MemeController.shared.memes
     
     //Show memes table view
     @IBOutlet weak var tableView: UITableView!
@@ -116,8 +103,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         //Table View Delegates
         tableView.delegate = self
         tableView.dataSource = self
-        commentsTableView.delegate = self
-        commentsTableView.dataSource = self
        
 
         
@@ -128,9 +113,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         createButtonClick.layer.borderColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0).cgColor
         
         //Swipe right gesture 
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightGesture(swipe:)))
-        rightSwipe.direction = UISwipeGestureRecognizerDirection.right
-        self.view.addGestureRecognizer(rightSwipe)
+        //let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightGesture(swipe:)))
+       // rightSwipe.direction = UISwipeGestureRecognizerDirection.right
+       // self.view.addGestureRecognizer(rightSwipe)
         
         
         
@@ -156,20 +141,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     //IB-Actions
     @IBAction func addCommentClicked(_ sender: Any) {
         
-        /*guard let newIndexPath = tableView.indexPath(for: sender as! UIButton) else { return }
-    
-        let meme = MemeController.shared.memes[newIndexPath.row]
-        
-        let comment = commentTextField.text
-            
-            MemeController.shared.addCommentToMeme(meme: meme, comment: comment!)
-            
-            comments.append(comment!)*/
-        
-        comments.append(commentTextField.text!)
-        
-          commentsTableView.reloadData()
-      
         
     }
   
@@ -183,7 +154,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         if tableView == self.tableView{
             return MemeController.shared.memes.count
         } else {
-            return comments.count
+            return  comments.count
         }
             
    
@@ -211,7 +182,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
              guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentsDisplayed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
             
                 cell.textLabel?.text = comments[indexPath.row]
-
+            
             return cell
         }
         
@@ -246,19 +217,18 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableViewCellDelegate {
     
     //Swipe right gesture regonizer, Hides the comment section when user swipes right
-    func swipeRightGesture(swipe: UISwipeGestureRecognizer) {
+    /*func swipeRightGesture(swipe: UISwipeGestureRecognizer) {
         switch swipe.direction.rawValue {
         case 1:
             trailingConstraint.constant = -310
             UIView.animate(withDuration: 0.6, animations: {
                 self.view.layoutIfNeeded()
             })
-
+            
         default:
             break
-        }
-        
-    }
+        }*/
+
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -329,14 +299,9 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         
         self.present(activityViewController,animated: true,completion: nil)
     }
-    //Comment clicked 
-    func commentClicked(_ sender: MemeTableViewCell) {
-        
-        trailingConstraint.constant = 0
-        UIView.animate(withDuration: 0.6, animations: {
-            self.view.layoutIfNeeded()
-        })
-
+    //CommentButton tapped
+    func commentButtonTapped(_ sender: MemeTableViewCell){
+    
     }
-}
 
+}
