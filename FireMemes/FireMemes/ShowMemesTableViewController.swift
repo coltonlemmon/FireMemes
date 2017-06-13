@@ -33,6 +33,31 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
+    
+    //MARK: - Pull to Refresh
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ShowMemesTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.backgroundColor = .gray
+        refreshControl.tintColor = .clear
+        refreshControl.clipsToBounds = true
+        let box = CGRect(x: self.view.layer.bounds.midX - 15, y: 30, width: 30, height: 30)
+        var fireAnimation = FireAnimation(frame: box)
+        fireAnimation.backgroundColor = .gray
+        refreshControl.addSubview(fireAnimation)
+        return refreshControl
+    }()
+    
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        DispatchQueue.main.async {
+            self.requestLocation()
+        }
+        MemeController.shared.memes.removeAll()
+        didFetch = false
+        fetch()
+        refreshing()
+        refreshControl.endRefreshing()
+    }
 
     //MARK: - Internal Properties
     var locationManager = CLLocationManager()
@@ -48,7 +73,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         guard let myLocation = myLocation else { return }
         MemeController.shared.fetch(myLocation, radiusInMeters: 30000) // We can change radius
     }
-
     
     func refreshing() {
         tableView.reloadData()
@@ -70,6 +94,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.isHidden = true
         view.backgroundColor = UIColor.gray
         loadingAnimationView.backgroundColor = UIColor.gray
+        tableView.backgroundColor = .gray
         
         // Location Services
         locationManager.delegate = self
@@ -78,6 +103,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         locationManager.requestLocation()
     
         tableView.reloadData()
+        
+        // Pull to Refresh
+        self.tableView.addSubview(self.refreshControl)
         
         // Notification Center
         let nc = NotificationCenter.default

@@ -31,11 +31,9 @@ class MemeController {
     }
     
     //MARK: - CRUD
-    
     func createMeme(image: UIImage, location: CLLocation) -> Meme? {
         
         guard let user = UserController.shared.currentUser else { return nil }
-        
         guard let data = UIImagePNGRepresentation(image) else { return nil }
         
         let meme = Meme(imageData: data, image: image, location: location, creatorRef: user.ckReference, memeOwner: user)
@@ -89,11 +87,15 @@ class MemeController {
     }
     
     //MARK: FLAGGING THE MEME
-    //all you have to do is call this function, and it'll take care of 
+    //all you have to do is call this function, and it'll take care of
     //flagging the meme, deleting it if it has 3+ flags, and deleting the user
     // if they have 3+ flags too.
     
     func flag(_ meme: Meme) {
+        
+        meme.flagCount += 1
+        UserController.shared.currentUser?.flagCount += 1
+        
         CloudKitManager.shared.modifyFlagCount(meme)
     }
     

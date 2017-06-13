@@ -87,11 +87,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     @IBAction func postMeme(_ sender: Any) {
-        
         guard (memeImageView.image != nil) else { return }
-        
         self.locationManager.requestLocation()
-        
         let image = memeImageView.makeImageFromView()
         
         guard let location = myLocation else { return }
@@ -100,7 +97,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
         let nc = navigationController
         nc?.popViewController(animated: true)
-
     }
     
     
@@ -171,8 +167,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
         self.present(actionSheet, animated: true, completion: nil)
     }
-    
-    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
@@ -265,6 +259,13 @@ extension MemeDaddyCreatorViewController: UIPickerViewDelegate, UIPickerViewData
         let trailPicker = NSLayoutConstraint(item: textPicker, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
         
         self.view.addConstraints([pickerBottom, topPicker, leadPicker, trailPicker])
+    }
+    
+    func showBannedAlert() {
+        let alertController = UIAlertController(title: "you've been banned", message: "nobody likes your memes", preferredStyle: .alert)
+        let dismissActioin = UIAlertAction(title: "bummer", style: .default, handler: nil)
+        alertController.addAction(dismissActioin)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
