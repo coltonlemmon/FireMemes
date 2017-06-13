@@ -263,6 +263,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="postCommentButton:" destination="faQ-M2-raI" eventType="touchUpInside" id="Ksw-1f-9YG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -279,6 +282,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentTextField" destination="jdd-7J-syQ" id="uHI-Wc-bvx"/>
                         <outlet property="tableView" destination="Qvd-Fg-qlm" id="zZY-yr-sxi"/>
                     </connections>
                 </viewController>
