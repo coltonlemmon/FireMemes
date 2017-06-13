@@ -21,7 +21,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     let textPicker = UIPickerView()
     
-    let colorData = ["red", "green", "blue", "white", "black"]
+    let colorData = ["black", "white", "red", "orange", "yellow", "green", "cyan", "blue", "purple", "magenta", "gray"]
     let fontData = ["Impact", "American", "Avenir", "Helvetica"]
     
     var pickerData: [[String]] = [[]]
@@ -179,10 +179,22 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         switch color {
         case "red":
             return .red
+        case "orange":
+            return .orange
+        case "yellow":
+            return .yellow
         case "blue":
             return .blue
         case "green":
             return .green
+        case "cyan":
+            return .cyan
+        case "purple":
+            return .purple
+        case "magenta":
+            return .magenta
+        case "gray":
+            return .gray
         case "black":
             return .black
         case "white":
@@ -273,26 +285,4 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
