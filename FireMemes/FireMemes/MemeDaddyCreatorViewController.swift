@@ -11,14 +11,12 @@ import CoreLocation
 
 class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
+    //MARK: - Outlets
     @IBOutlet weak var memeImageView: MemeImageView!
-    
     @IBOutlet weak var pickingButton: UIButton!
-    
     @IBOutlet weak var postMemeButton: UIButton!
     @IBOutlet weak var downloadMemeButton: UIButton!
     @IBOutlet weak var addTextButton: UIButton!
-    
     @IBOutlet weak var updateTextButton: UIButton!
     
     //MARK: picker properties 
@@ -35,6 +33,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     var myLocation: CLLocation?
     var locationManager = CLLocationManager()
 
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 setupButtons()
@@ -61,7 +61,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     func setupButtons() {
-        
         postMemeButton.layer.borderWidth = 2
         
         updateTextButton.layer.borderWidth = 0.5
@@ -100,13 +99,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     
     @IBAction func updateText(_ sender: Any) {
-        
-        guard (memeImageView.image != nil) else { return }
-     
-        guard let font = getFontFromPicker() else { return }
-        let color = getColorFromPicker()
-        
-        memeImageView.updateTextForMemeWith(font: font, color: color)
 
     }
     
@@ -120,7 +112,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     @IBAction func addText(_ sender: Any) {
         guard memeImageView.image != nil else { return }
-        
         memeImageView.addText()
     }
     
@@ -171,12 +162,10 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         self.memeImageView.set(image: originalImage, and: self.view.layer.bounds.size)
         picker.dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-
     }
     
     func getFontFromPicker() -> UIFont? {
@@ -201,10 +190,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     func getColorFromPicker() -> UIColor {
-        
         let int = textPicker.selectedRow(inComponent: 0)
         let color = colorData[int]
-        
         switch color {
         case "red":
             return .red
@@ -222,8 +209,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
         
     }
 
@@ -243,6 +228,12 @@ extension MemeDaddyCreatorViewController: UIPickerViewDelegate, UIPickerViewData
         let componentString = pickerComponent[row]
         
         return NSAttributedString(string: componentString, attributes: [NSForegroundColorAttributeName: UIColor.white])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let color = getColorFromPicker()
+        let font = getFontFromPicker()
+        memeImageView.updateTextForMemeWith(font: font, color: color)
     }
     
     func setupPicker() {
@@ -294,7 +285,6 @@ extension UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-
     func dismissKeyboard() {
         view.endEditing(true)
     }
