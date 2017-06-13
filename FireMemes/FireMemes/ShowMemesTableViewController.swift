@@ -231,7 +231,7 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         default:
             break
         }
-  
+    }
 
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -308,7 +308,6 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         containerTrailingConstant.constant = 0
         UIView.animate(withDuration: 0.6, animations: {
             self.view.layoutIfNeeded()
-        })
+            })
         }
     }
-}
