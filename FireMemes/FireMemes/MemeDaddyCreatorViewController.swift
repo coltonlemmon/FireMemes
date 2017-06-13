@@ -15,9 +15,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     @IBOutlet weak var memeImageView: MemeImageView!
     @IBOutlet weak var pickingButton: UIButton!
     @IBOutlet weak var postMemeButton: UIButton!
-    @IBOutlet weak var downloadMemeButton: UIButton!
     @IBOutlet weak var addTextButton: UIButton!
-    @IBOutlet weak var updateTextButton: UIButton!
     
     //MARK: picker properties 
     
@@ -44,7 +42,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         hideKeyboardWhenTappedAround()
         
         postMemeButton.layer.cornerRadius = 15
-        updateTextButton.layer.cornerRadius = 15
         
         textPicker.delegate = self
         textPicker.dataSource = self
@@ -63,18 +60,12 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     func setupButtons() {
         postMemeButton.layer.borderWidth = 2
         
-        updateTextButton.layer.borderWidth = 0.5
-        downloadMemeButton.layer.borderWidth = 0.5
         addTextButton.layer.borderWidth = 0.5
         
         postMemeButton.layer.borderColor = UIColor.red.cgColor
-        updateTextButton.layer.borderColor = UIColor.red.cgColor
         addTextButton.layer.borderColor = UIColor.red.cgColor
-        downloadMemeButton.layer.borderColor = UIColor.red.cgColor
         
         postMemeButton.layer.cornerRadius = 15
-        updateTextButton.layer.cornerRadius = 15
-        downloadMemeButton.layer.cornerRadius = 15
         addTextButton.layer.cornerRadius = 15
     }
     
@@ -97,16 +88,9 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         nc?.popViewController(animated: true)
     }
     
-    
-    @IBAction func updateText(_ sender: Any) {
-
-    }
-    
     @IBAction func downloadMemeToPhone(_ sender: Any) {
         guard memeImageView.image != nil else { return }
-        
         let image = memeImageView.makeImageFromView()
-        
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
     
@@ -244,7 +228,7 @@ extension MemeDaddyCreatorViewController: UIPickerViewDelegate, UIPickerViewData
         textPicker.translatesAutoresizingMaskIntoConstraints = false
         
         let pickerBottom = NSLayoutConstraint(item: textPicker, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
-        let topPicker = NSLayoutConstraint(item: textPicker, attribute: .top, relatedBy: .equal, toItem: downloadMemeButton, attribute: .bottom, multiplier: 1, constant: 0)
+        let topPicker = NSLayoutConstraint(item: textPicker, attribute: .top, relatedBy: .equal, toItem: addTextButton, attribute: .bottom, multiplier: 1, constant: 0)
         let leadPicker = NSLayoutConstraint(item: textPicker, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
         let trailPicker = NSLayoutConstraint(item: textPicker, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
         
