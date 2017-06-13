@@ -29,6 +29,7 @@
 		5914E6EA1EE87799007D9C81 /* MemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */; };
 		5914E7111EE9CD59007D9C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914E7101EE9CD59007D9C81 /* Main.storyboard */; };
 		59446AF91EF03AE200C0B1DD /* fire2.png in Resources */ = {isa = PBXBuildFile; fileRef = 59446AF81EF03AE200C0B1DD /* fire2.png */; };
+		59446B011EF09B0E00C0B1DD /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59446B001EF09B0E00C0B1DD /* CommentsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewCell.swift; sourceTree = "<group>"; };
 		5914E7101EE9CD59007D9C81 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		59446AF81EF03AE200C0B1DD /* fire2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire2.png; sourceTree = "<group>"; };
+		59446B001EF09B0E00C0B1DD /* CommentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentsTableViewController.swift; path = ../CommentsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 		5914E6EB1EE877F9007D9C81 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				59446B001EF09B0E00C0B1DD /* CommentsTableViewController.swift */,
 				3B2C86301EEB0FA900FDE53D /* MemeDaddyCreatorViewController.swift */,
 				3B616A821EE8A283002E0B03 /* MemeCreatorViewController.swift */,
 				5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */,
@@ -277,6 +280,7 @@
 				4D4A890C1EE5B7F7004A2AC3 /* MemeController.swift in Sources */,
 				3B2C86331EEB0FC600FDE53D /* MemeImageView.swift in Sources */,
 				5914E6EA1EE87799007D9C81 /* MemeTableViewCell.swift in Sources */,
+				59446B011EF09B0E00C0B1DD /* CommentsTableViewController.swift in Sources */,
 				4DA2D8041EEB41FF006D056D /* MemeLocationManager.swift in Sources */,
 				3B616A831EE8A283002E0B03 /* MemeCreatorViewController.swift in Sources */,
 				5914E6E41EE87562007D9C81 /* ShowMemesTableViewController.swift in Sources */,
