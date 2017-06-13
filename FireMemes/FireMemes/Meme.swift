@@ -125,3 +125,22 @@ extension CKRecord {
     }
     
 }
+
+//MARK: - Equatable
+extension Meme: Equatable {}
+func ==(lhs: Meme, rhs: Meme) -> Bool {
+    //if lhs.date != rhs.date { return false }
+    if lhs.identifier != rhs.identifier { return false }
+    if lhs.imageData != rhs.imageData { return false }
+    if lhs.image != rhs.image { return false }
+    if lhs.memeOwnerReference != rhs.memeOwnerReference { return false }
+    if lhs.flagCount != rhs.flagCount { return false }
+    if lhs.isBanned != rhs.isBanned { return false }
+    if lhs.thumbsUp != rhs.thumbsUp { return false }
+    if lhs.comments != rhs.comments { return false }
+    if lhs.location != rhs.location { return false }
+    if lhs.ckRecordID != rhs.ckRecordID { return false }
+    if lhs.ckReference != rhs.ckReference { return false }
+    if lhs.recordType != rhs.recordType { return false }
+    return true
+}
