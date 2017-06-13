@@ -209,14 +209,6 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnX-gw-B3M">
-                                        <rect key="frame" x="279" y="568" width="30" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                        <state key="normal" title="+"/>
-                                        <connections>
-                                            <action selector="addCommentClicked:" destination="05e-fx-T71" eventType="touchUpInside" id="9dQ-Mw-Voc"/>
-                                        </connections>
-                                    </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZD-mb-QOp">
                                         <rect key="frame" x="0.0" y="573" width="280" height="30"/>
                                         <constraints>
@@ -226,6 +218,14 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnX-gw-B3M">
+                                        <rect key="frame" x="279" y="568" width="30" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="addCommentClicked:" destination="05e-fx-T71" eventType="touchUpInside" id="yLU-ax-b16"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -241,9 +241,6 @@
                                     <constraint firstAttribute="trailing" secondItem="dUj-g4-8q8" secondAttribute="trailing" id="qmI-Bp-N9d"/>
                                     <constraint firstItem="AZD-mb-QOp" firstAttribute="leading" secondItem="d3z-pj-Af8" secondAttribute="leading" id="vDy-AV-hcv"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="vF9-zV-xdg" appends="YES" id="96O-Bz-LhC"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -273,14 +270,10 @@
                         <outlet property="makeAMemeButton" destination="lgS-mr-IxA" id="bJu-0B-k9c"/>
                         <outlet property="tableView" destination="6OP-bg-0eh" id="nj3-7x-caA"/>
                         <outlet property="trailingConstraint" destination="f8u-WI-nJ5" id="4lQ-Xd-nxC"/>
+                        <outlet property="viewForComments" destination="d3z-pj-Af8" id="eI2-SJ-fcR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adm-2f-zZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <gestureRecognizer id="vF9-zV-xdg">
-                    <connections>
-                        <action selector="swipeRightGesture:" destination="05e-fx-T71" id="3Nt-bR-Bjq"/>
-                    </connections>
-                </gestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1060" y="174.96251874062969"/>
         </scene>
