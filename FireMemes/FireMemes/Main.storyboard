@@ -189,7 +189,7 @@
                                     <constraint firstAttribute="width" constant="310" id="OqV-fL-kjY"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="euf-RF-V4G" kind="embed" id="6oJ-xN-98M"/>
+                                    <segue destination="PFd-8Y-0TO" kind="embed" id="ta1-FC-awV"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -224,6 +224,34 @@
             </objects>
             <point key="canvasLocation" x="1060" y="174.96251874062969"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="z8M-kq-41e">
+            <objects>
+                <tableViewController id="PFd-8Y-0TO" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2jo-bL-itw">
+                        <rect key="frame" x="0.0" y="0.0" width="310" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentsShown" id="DX3-Ph-1et">
+                                <rect key="frame" x="0.0" y="28" width="310" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DX3-Ph-1et" id="3nC-NG-MfQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="310" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PFd-8Y-0TO" id="GN1-hg-i5O"/>
+                            <outlet property="delegate" destination="PFd-8Y-0TO" id="2r0-x6-fsD"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="swq-4S-3TX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="892"/>
+        </scene>
         <!--MemeDaddy-->
         <scene sceneID="7jt-9B-Xnh">
             <objects>
@@ -249,14 +277,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E83-gP-hoz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="120.8" y="174.96251874062969"/>
-        </scene>
-        <!--Comments Table View Controller-->
-        <scene sceneID="sT5-rm-eOi">
-            <objects>
-                <viewController id="euf-RF-V4G" customClass="CommentsTableViewController" customModule="FireMemes" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aOT-9I-Z88" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1059" y="921"/>
         </scene>
     </scenes>
     <resources>
