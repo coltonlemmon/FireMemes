@@ -11,7 +11,6 @@ import CoreLocation
 
 class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
-    
     @IBOutlet weak var memeImageView: MemeImageView!
     
     @IBOutlet weak var pickingButton: UIButton!

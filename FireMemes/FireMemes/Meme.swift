@@ -13,10 +13,6 @@ import MapKit
 
 class Meme: CloudKitSync {
     
-    static let ownerKey = "memeOwnerKey"
-    static let flagKey = "memeFlagKey"
-    static let isMemeBanedKey = "isMemeBannedKey"
-    
     let imageData: Data?
     var image: UIImage? { // WTF
         guard let imageData = self.imageData else { return nil }
@@ -67,9 +63,9 @@ class Meme: CloudKitSync {
             let id = record[Keys.identifier] as? String,
             let thumbsUp = record[Keys.thumbsUp] as? Int,
             let comments = record[Keys.comments] as? [String],
-            let flagCount = record[Meme.flagKey] as? Int,
-            let isBanned = record[Meme.isMemeBanedKey] as? Bool,
-            let memeOwner = record[Meme.ownerKey] as? CKReference,
+            let flagCount = record[Keys.flag] as? Int,
+            let isBanned = record[Keys.isMemeBaned] as? Bool,
+            let memeOwner = record[Keys.owner] as? CKReference,
             let location = record[Keys.location] as? CLLocation else { return nil }
         self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned)
         cloudKitRecordID = record.recordID
@@ -80,7 +76,6 @@ class Meme: CloudKitSync {
         let temporaryDirectory = NSTemporaryDirectory()
         let temporaryDirectoryURL = URL(fileURLWithPath: temporaryDirectory)
         let fileURL = temporaryDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("png")
-        
         
         try? imageData?.write(to: fileURL, options: [.atomic])
         
@@ -118,9 +113,9 @@ extension CKRecord {
             }
         }
         
-        self[Meme.isMemeBanedKey] = meme.isBanned as CKRecordValue?
-        self[Meme.flagKey] = meme.flagCount as CKRecordValue?
-        self[Meme.ownerKey] = CKReference(recordID: userRecordID, action: .deleteSelf)
+        self[Keys.isMemeBaned] = meme.isBanned as CKRecordValue?
+        self[Keys.flag] = meme.flagCount as CKRecordValue?
+        self[Keys.owner] = CKReference(recordID: userRecordID, action: .deleteSelf)
         self[Keys.date] = meme.date as CKRecordValue?
         self[Keys.identifier] = meme.identifier as CKRecordValue?
         self[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue?

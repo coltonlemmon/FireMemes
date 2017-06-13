@@ -251,20 +251,20 @@ class CloudKitManager {
         publicDatabase.fetch(withRecordID: memeID) { (record, error) in
             
             guard let record = record else { return }
-            guard var flagCount = record[Meme.flagKey] as? Int else { return }
+            guard var flagCount = record[Keys.flag] as? Int else { return }
             
             flagCount += 1
             
             if flagCount >= 3 {
                 
-                guard var isBanned = record[Meme.isMemeBanedKey] as? Bool else { return }
+                guard var isBanned = record[Keys.isMemeBaned] as? Bool else { return }
                 isBanned = true
-                record[Meme.isMemeBanedKey] = isBanned as CKRecordValue
+                record[Keys.isMemeBaned] = isBanned as CKRecordValue
                 //delete the record, but i set the isBanned boolean value just in case
                 self.deleteRecordWithID(record.recordID, completion: { (_, _) in})
                 
                 
-                guard let userID = record[Meme.ownerKey] as? CKRecordID else { return }
+                guard let userID = record[Keys.owner] as? CKRecordID else { return }
                 
                 self.fetchRecord(withID: userID, completion: { (record, error) in
                     guard let record = record else { return }
@@ -272,7 +272,7 @@ class CloudKitManager {
                 })
             }
             
-            record[Meme.flagKey] = flagCount as CKRecordValue?
+            record[Keys.flag] = flagCount as CKRecordValue?
             
             self.publicDatabase.save(record, completionHandler: { (record, error) in
                 

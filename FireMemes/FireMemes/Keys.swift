@@ -25,6 +25,10 @@ enum Keys {
     static let comments = "Comments"
     static let location = "Location"
     
+    static let owner = "memeOwnerKey"
+    static let flag = "memeFlagKey"
+    static let isMemeBaned = "isMemeBannedKey"
+    
     //MARK: - User
     
     static let flagCount = "FlagCount"
