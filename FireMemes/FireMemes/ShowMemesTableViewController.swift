@@ -12,6 +12,8 @@ import Social
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
+  
+    
     //Comment text field
     @IBOutlet weak var commentTextField: UITextField!
     
@@ -116,6 +118,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.dataSource = self
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
+       
 
         
         //Custom button for Make a Meme button
@@ -153,19 +156,21 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     //IB-Actions
     @IBAction func addCommentClicked(_ sender: Any) {
         
-        guard let index = commentsTableView.indexPathForSelectedRow else { return }
-        
+        /*guard let newIndexPath = tableView.indexPath(for: sender as! UIButton) else { return }
     
-        let meme = MemeController.shared.memes[index.row]
+        let meme = MemeController.shared.memes[newIndexPath.row]
         
-        if let comment = commentTextField.text {
+        let comment = commentTextField.text
             
-            MemeController.shared.addCommentToMeme(meme: meme, comment: comment)
+            MemeController.shared.addCommentToMeme(meme: meme, comment: comment!)
             
-            comments.append(comment)
-            
-        }
-        commentsTableView.reloadData()
+            comments.append(comment!)*/
+        
+        comments.append(commentTextField.text!)
+        
+          commentsTableView.reloadData()
+      
+        
     }
   
 
@@ -188,6 +193,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
         if tableView == self.tableView{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
         
@@ -204,7 +211,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
              guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentsDisplayed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
             
                 cell.textLabel?.text = comments[indexPath.row]
-                cell.delegate = self
+
             return cell
         }
         
@@ -214,7 +221,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
  
     func numberOfSections(in tableView: UITableView) -> Int {
+        if tableView == self.tableView{
         return 1
+        } else {
+            return 1
+        }
     }
     
     func setupView() {
