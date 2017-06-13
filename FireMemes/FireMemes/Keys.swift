@@ -24,4 +24,10 @@ enum Keys {
     static let thumbsUp = "ThumbsUp"
     static let comments = "Comments"
     static let location = "Location"
+    
+    //MARK: - User
+    
+    static let flagCount = "FlagCount"
+    static let isBanned = "UserBanned"
+    static let userType = "FireMemeUsers"
 }

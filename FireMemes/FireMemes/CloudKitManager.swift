@@ -290,17 +290,17 @@ class CloudKitManager {
         publicDatabase.fetch(withRecordID: userRecord.recordID) { (record, error) in
             guard let record = record else { return }
             
-            guard var userFlagCount = record[User.flagCountKey] as? Int else { return }
+            guard var userFlagCount = record[Keys.flagCount] as? Int else { return }
             
             userFlagCount += 1
             
-            record[User.flagCountKey] = userFlagCount as CKRecordValue
+            record[Keys.flagCount] = userFlagCount as CKRecordValue
             
             if userFlagCount >= 3 {
                 
-                var isBanned = record[User.isBannedKey] as? Bool
+                var isBanned = record[Keys.isBanned] as? Bool
                 isBanned = true
-                record[User.isBannedKey] = isBanned as CKRecordValue?
+                record[Keys.isBanned] = isBanned as CKRecordValue?
                 
                 self.deleteRecordWithID(userRecord.recordID, completion: { (_, _) in
                     print("deleted record")
