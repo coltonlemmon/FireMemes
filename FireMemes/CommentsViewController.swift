@@ -8,14 +8,16 @@
 
 import UIKit
 
-class CommentsTableViewController: UITableViewController {
+class CommentsViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var meme: Meme?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-      
+        tableView.delegate = self
+        tableView.dataSource = self
     }
    
  
@@ -23,13 +25,13 @@ class CommentsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return meme?.comments.count ?? 0
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentsShown", for: indexPath)
 
         // Configure the cell...
