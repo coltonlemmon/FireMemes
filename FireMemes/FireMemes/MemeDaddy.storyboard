@@ -65,10 +65,13 @@
                                     <action selector="pickImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGz-rA-smv"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fUo-cd-nck" customClass="FireAnimation" customModule="FireMemes" customModuleProvider="target">
-                                <rect key="frame" x="162" y="561" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUo-cd-nck" customClass="FireAnimationForPicker" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="162" y="548" width="51" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="Uf6-aJ-1Cr"/>
+                                    <constraint firstAttribute="height" constant="51" id="hze-NF-Z5q"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -81,10 +84,12 @@
                             <constraint firstItem="v0C-Ev-f0K" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="CDB-rV-Ran"/>
                             <constraint firstItem="F2V-mH-P1e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HiI-8q-hqN"/>
                             <constraint firstItem="YPO-PP-8bx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="KXf-7l-glm"/>
+                            <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="fUo-cd-nck" secondAttribute="bottom" constant="20" id="QNk-tU-4xM"/>
+                            <constraint firstItem="fUo-cd-nck" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QcP-2A-USc"/>
                             <constraint firstItem="v0C-Ev-f0K" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="8" id="Uxt-Kq-lgY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YPO-PP-8bx" secondAttribute="trailing" constant="100" id="XLi-9r-Zy8"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j3L-lt-VDl" secondAttribute="bottom" constant="8" symbolic="YES" id="Xwz-I6-1Pl"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="YPO-PP-8bx" secondAttribute="bottom" constant="-153" id="ZD9-Dy-0u1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j3L-lt-VDl" secondAttribute="bottom" constant="8" id="c4H-co-dvm"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="trailing" secondItem="F2V-mH-P1e" secondAttribute="trailing" id="l87-SB-RFI"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="u5d-1A-PyA"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uEb-ic-ZEl"/>
