@@ -16,6 +16,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     @IBOutlet weak var pickingButton: UIButton!
     @IBOutlet weak var postMemeButton: UIButton!
     @IBOutlet weak var addTextButton: UIButton!
+    @IBOutlet weak var fireView: UIView!
     
     //MARK: picker properties 
     
@@ -36,6 +37,10 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
                 setupButtons()
+        
+        let fireAnimation = FireAnimation()
+        
+        fireView = fireAnimation
         
         pickerData = [colorData, fontData]
         

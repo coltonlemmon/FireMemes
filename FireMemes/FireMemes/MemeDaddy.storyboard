@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,6 +67,11 @@
                                     <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0uH-e5-gBK"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-5a-OYZ">
+                                <rect key="frame" x="124" y="353" width="126" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
@@ -87,6 +92,7 @@
                     <navigationItem key="navigationItem" title="Meme Creator" id="MQb-az-aH2" userLabel="Meme Creator"/>
                     <connections>
                         <outlet property="addTextButton" destination="v0C-Ev-f0K" id="7To-UC-wdM"/>
+                        <outlet property="fireView" destination="ahX-5a-OYZ" id="d8f-59-4HJ"/>
                         <outlet property="memeImageView" destination="rvw-Vm-whk" id="P0m-3M-Tgo"/>
                         <outlet property="pickingButton" destination="YPO-PP-8bx" id="77z-JL-9kA"/>
                         <outlet property="postMemeButton" destination="j3L-lt-VDl" id="T2v-Az-ISX"/>
