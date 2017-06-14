@@ -12,17 +12,10 @@ import Social
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
-    //Comment text field
-    @IBOutlet weak var commentTextField: UITextField!
+    var meme = MemeController.shared.memes
+    var destinationVC: CommentsViewController?
     
-
-    
-    //Side menu constraint
-    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
-    let test = UIButton()
-    
-    //Comments table view
-    @IBOutlet weak var commentsTableView: UITableView!
+    @IBOutlet weak var containerTrailingConstant: NSLayoutConstraint!
     
     //Show memes table view
     @IBOutlet weak var tableView: UITableView!
@@ -123,8 +116,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         //Table View Delegates
         tableView.delegate = self
         tableView.dataSource = self
-        commentsTableView.delegate = self
-        commentsTableView.dataSource = self
+       
 
         
         //Custom button for Make a Meme button
@@ -132,8 +124,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         createButtonClick.layer.backgroundColor = UIColor(red:52/255 , green: 152/255, blue: 219/255, alpha: 0.8).cgColor
         createButtonClick.layer.borderWidth = 2
         createButtonClick.layer.borderColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0).cgColor
+
         
-        //Swipe right gesture 
+        //Swipe right gesture
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightGesture(swipe:)))
         rightSwipe.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(rightSwipe)
@@ -159,24 +152,12 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     var comments = [String]()
     
-    var data = ["Jose", "Eddie", "James"]
-    
     //IB-Actions
     @IBAction func addCommentClicked(_ sender: Any) {
         
-        guard let newIndexPath = tableView.indexPath(for: sender as! UITableViewCell) else { return }
-        
-        let meme = MemeController.shared.memes[newIndexPath.row]
-        
-        if let comment = commentTextField.text {
-            
-        MemeController.shared.addCommentToMeme(meme: meme, comment: comment)
-            
-        comments.append(comment)
-            
-        }
         
     }
+  
 
     // MARK: - Table view data source
     
@@ -184,7 +165,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       
         
-        return MemeController.shared.memes.count
+        if tableView == self.tableView{
+            return MemeController.shared.memes.count
+        } else {
+            return  comments.count
+        }
             
    
     }
@@ -193,6 +178,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
+        if tableView == self.tableView{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
         
         let meme = MemeController.shared.memes.reversed()[indexPath.row]
@@ -204,12 +192,31 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         cell.delegate = self
         
         return cell
+        } else {
+             guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentsDisplayed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
+            
+                cell.textLabel?.text = comments[indexPath.row]
+            
+            return cell
+        }
         
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "commentSegue" {
+            destinationVC = segue.destination as? CommentsViewController
+        }
     }
     
  
     func numberOfSections(in tableView: UITableView) -> Int {
+        if tableView == self.tableView{
         return 1
+        } else {
+            return 1
+        }
     }
     
     func setupView() {
@@ -228,21 +235,21 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 //MARK: - Location manager delegate functions
 
 extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableViewCellDelegate {
-    
+
     //Swipe right gesture regonizer, Hides the comment section when user swipes right
     func swipeRightGesture(swipe: UISwipeGestureRecognizer) {
         switch swipe.direction.rawValue {
         case 1:
-            trailingConstraint.constant = -310
+            containerTrailingConstant.constant = -310
             UIView.animate(withDuration: 0.6, animations: {
                 self.view.layoutIfNeeded()
             })
-
+            
         default:
             break
         }
-        
     }
+
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -313,14 +320,19 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         
         self.present(activityViewController,animated: true,completion: nil)
     }
-    //Comment clicked 
-    func commentClicked(_ sender: MemeTableViewCell) {
+    //CommentButton tapped
+    func commentButtonTapped(_ sender: MemeTableViewCell){
         
-        trailingConstraint.constant = 0
+        containerTrailingConstant.constant = 0
         UIView.animate(withDuration: 0.6, animations: {
             self.view.layoutIfNeeded()
-        })
-
+            })
+        guard let newIndexPath = self.tableView.indexPath(for: sender) else { return }
+        let meme = MemeController.shared.memes[newIndexPath.row]
+        if let destinationVC = self.destinationVC {
+            destinationVC.meme = meme
+            destinationVC.tableView.reloadData()
+        }
+        
     }
 }
-
