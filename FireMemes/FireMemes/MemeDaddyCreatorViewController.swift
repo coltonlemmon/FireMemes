@@ -223,7 +223,36 @@ extension MemeDaddyCreatorViewController: UIPickerViewDelegate, UIPickerViewData
         let pickerComponent = pickerData[component]
         let componentString = pickerComponent[row]
         
-        return NSAttributedString(string: componentString, attributes: [NSForegroundColorAttributeName: UIColor.white])
+        let color: UIColor
+
+        switch componentString {
+        case "red":
+            color = .red
+        case "orange":
+            color = .orange
+        case "yellow":
+            color = .yellow
+        case "blue":
+            color = .blue
+        case "green":
+            color = .green
+        case "cyan":
+            color = .cyan
+        case "purple":
+            color = .purple
+        case "magenta":
+            color = .magenta
+        case "gray":
+            color = .gray
+        case "black":
+            color = .black
+        case "white":
+            color = .white
+        default:
+            color = .darkText
+        }
+        
+        return NSAttributedString(string: componentString, attributes: [NSForegroundColorAttributeName: color])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
