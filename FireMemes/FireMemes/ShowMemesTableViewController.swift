@@ -272,6 +272,8 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         print("Error with locationManager: \(error.localizedDescription)")
     }
     
+    //MARK: - Delegate Methods
+    
     //FacebookShare
     func facebookClicked(_ sender: MemeTableViewCell, image: UIImage) {
         
@@ -334,5 +336,19 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
             destinationVC.tableView.reloadData()
         }
         
+    }
+    
+    //Report button
+    func reportButtonTapped(sender: MemeTableViewCell) {
+        let alertController = UIAlertController(title: "Report Meme?", message: "Are you sure you want to report this meme?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let yesAction = UIAlertAction(title: "Yes Report", style: .default) { (_) in
+            guard let indexPath = self.tableView.indexPath(for: sender) else { return }
+            let meme = MemeController.shared.memes[indexPath.row]
+            MemeController.shared.flag(meme)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(yesAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
