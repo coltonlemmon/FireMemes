@@ -58,6 +58,13 @@
                                     <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0uH-e5-gBK"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-5a-OYZ">
+                                <rect key="frame" x="124" y="353" width="126" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+=======
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPO-PP-8bx">
                                 <rect key="frame" x="116" y="157" width="143" height="30"/>
                                 <state key="normal" title="Tap to choose image"/>
@@ -65,6 +72,7 @@
                                     <action selector="pickImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGz-rA-smv"/>
                                 </connections>
                             </button>
+>>>>>>> a73dc99b7fcb68e63001d02be8c017ad8777ed53
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
