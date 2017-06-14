@@ -60,6 +60,10 @@ class MemeTableViewCell: UITableViewCell {
         numberOfUpvotes.text = "\(upVoteCount)"
     }
     
+    @IBAction func reportButtonTapped(_ sender: Any) {
+        delegate?.reportButtonTapped(sender: self)
+    }
+    
 }
 
 //MARK: - UpdateViews Method
@@ -68,6 +72,7 @@ extension MemeTableViewCell {
     
     func updateViews(meme: Meme) {
         memeImageView.image = meme.image
+        numberOfComments.text = "\(meme.comments.count)"
         
         facebookButton.layer.cornerRadius = 15
         twitterButton.layer.cornerRadius = 15
@@ -91,5 +96,7 @@ protocol MemeTableViewCellDelegate: class{
     func messageClicked(_ sender: MemeTableViewCell, image: UIImage)
     
     func commentButtonTapped(_ sender: MemeTableViewCell)
+    
+    func reportButtonTapped(sender: MemeTableViewCell)
 }
 
