@@ -223,36 +223,62 @@ extension MemeDaddyCreatorViewController: UIPickerViewDelegate, UIPickerViewData
         let pickerComponent = pickerData[component]
         let componentString = pickerComponent[row]
         
-        let color: UIColor
-
-        switch componentString {
-        case "red":
-            color = .red
-        case "orange":
-            color = .orange
-        case "yellow":
-            color = .yellow
-        case "blue":
-            color = .blue
-        case "green":
-            color = .green
-        case "cyan":
-            color = .cyan
-        case "purple":
-            color = .purple
-        case "magenta":
-            color = .magenta
-        case "gray":
-            color = .gray
-        case "black":
-            color = .black
-        case "white":
-            color = .white
+        var color: UIColor = .darkText
+        let fontSize: CGFloat = 24
+        var font = UIFont(name:  "HelveticaNeue-CondensedBlack", size: fontSize)!
+        
+        switch component {
+        case 0:
+            let pickerComponent = pickerData[component]
+            let componentString = pickerComponent[row]
+            
+            switch componentString {
+            case "red":
+                color = .red
+            case "orange":
+                color = .orange
+            case "yellow":
+                color = .yellow
+            case "blue":
+                color = .blue
+            case "green":
+                color = .green
+            case "cyan":
+                color = .cyan
+            case "purple":
+                color = .purple
+            case "magenta":
+                color = .magenta
+            case "gray":
+                color = .gray
+            case "black":
+                color = .black
+            case "white":
+                color = .white
+            default:
+                color = .darkText
+            }
+        case 1:
+            let pickerComponent = pickerData[component]
+            let componentString = pickerComponent[row]
+            
+            switch componentString {
+            case "Impact":
+                font = UIFont(name: "HelveticaNeue-CondensedBlack", size: fontSize)!
+            case "American":
+                font = UIFont(name: "AmericanTypewriter", size: fontSize)!
+            case "Avenir":
+                font = UIFont(name: "AvenirNext-HeavyItalic", size: fontSize)!
+            case "Helvetica":
+                font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)!
+            default:
+                font = UIFont(name:  "HelveticaNeue-CondensedBlack", size: fontSize)!
+            }
         default:
-            color = .darkText
+            break
         }
         
-        return NSAttributedString(string: componentString, attributes: [NSForegroundColorAttributeName: color])
+        return NSAttributedString(string: componentString, attributes: [NSForegroundColorAttributeName: color, NSFontAttributeName: font])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
