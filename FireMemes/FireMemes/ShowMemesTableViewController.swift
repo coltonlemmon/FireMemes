@@ -13,6 +13,7 @@ import Social
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
     var meme = MemeController.shared.memes
+    var destinationVC: CommentsViewController?
     
     @IBOutlet weak var containerTrailingConstant: NSLayoutConstraint!
     
@@ -195,10 +196,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "commentSegue" {
-            guard let destinationVC = segue.destination as? CommentsViewController,
-            let indexPath = tableView.indexPathForSelectedRow else { return }
-            let meme = MemeController.shared.memes[indexPath.row]
-            destinationVC.meme = meme
+            destinationVC = segue.destination as? CommentsViewController
         }
     }
     
@@ -321,6 +319,10 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
             })
         guard let newIndexPath = self.tableView.indexPath(for: sender) else { return }
         let meme = MemeController.shared.memes[newIndexPath.row]
-        let destinationVC = CommentsViewController.self
+        if let destinationVC = self.destinationVC {
+            destinationVC.meme = meme
+            destinationVC.tableView.reloadData()
+        }
+        
     }
 }
