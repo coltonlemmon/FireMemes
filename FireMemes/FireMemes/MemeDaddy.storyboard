@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,82 +22,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rvw-Vm-whk" customClass="MemeImageView" customModule="FireMemes" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="342"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="F2V-mH-P1e">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addImage" translatesAutoresizingMaskIntoConstraints="NO" id="rvw-Vm-whk" customClass="MemeImageView" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="34" width="375" height="243"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="342" id="1eN-Y2-jGF"/>
-                                    <constraint firstAttribute="height" constant="342" id="GbS-gz-uJa"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="bvV-zQ-pew"/>
+                                    <constraint firstAttribute="height" constant="243" id="iJI-Qf-bDZ"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPO-PP-8bx">
-                                <rect key="frame" x="112" y="176" width="151" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPO-PP-8bx">
+                                <rect key="frame" x="750" y="133" width="151" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Click to choose image"/>
                                 <connections>
                                     <action selector="pickImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGz-rA-smv"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZUp-Le-CuH">
-                                <rect key="frame" x="16" y="382" width="343" height="79.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-lt-VDl">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
-                                        <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="M4S-e2-684"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="🔥                  POST                  🔥">
-                                            <color key="titleColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0uH-e5-gBK"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="avk-0F-MQq">
-                                        <rect key="frame" x="143" y="32" width="57" height="47.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0C-Ev-f0K">
-                                                <rect key="frame" x="0.0" y="0.0" width="57" height="47.5"/>
-                                                <state key="normal" title="add text">
-                                                    <color key="titleColor" red="0.92549020049999997" green="0.23529411850000001" blue="0.1019607857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="addText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fng-St-cUp"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0C-Ev-f0K">
+                                <rect key="frame" x="124" y="285" width="126" height="31"/>
+                                <color key="backgroundColor" red="0.99228101968765259" green="0.98448854684829712" blue="0.97593551874160767" alpha="0.27469499143835613" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="j3L-lt-VDl" firstAttribute="leading" secondItem="ZUp-Le-CuH" secondAttribute="leading" id="xOf-H9-Ecn"/>
+                                    <constraint firstAttribute="height" constant="31" id="Vn3-9p-QqC"/>
+                                    <constraint firstAttribute="width" constant="126" id="a76-Y1-Fk8"/>
                                 </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCg-JE-PL6">
-                                <rect key="frame" x="16" y="461.5" width="343" height="205.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="172"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <state key="normal" title="Add Text">
+                                    <color key="titleColor" red="0.059010490775108337" green="0.0509534552693367" blue="0.050871066749095917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fng-St-cUp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-lt-VDl">
+                                <rect key="frame" x="16" y="619" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="0.1737746147260274" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <state key="normal" title="POST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0uH-e5-gBK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZUp-Le-CuH" secondAttribute="trailing" id="5uS-rh-Pzu"/>
-                            <constraint firstItem="SCg-JE-PL6" firstAttribute="top" secondItem="ZUp-Le-CuH" secondAttribute="bottom" id="69m-PV-oen"/>
-                            <constraint firstItem="YPO-PP-8bx" firstAttribute="centerY" secondItem="rvw-Vm-whk" secondAttribute="centerY" id="9gc-Uw-z1Z"/>
-                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="20" id="LYw-HC-8FF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SCg-JE-PL6" secondAttribute="trailing" id="SmC-Et-KZw"/>
-                            <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YBr-X8-RdZ"/>
-                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="leading" secondItem="SCg-JE-PL6" secondAttribute="leading" id="e7z-VR-BAO"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SCg-JE-PL6" secondAttribute="bottom" id="iqx-lZ-Mc6"/>
-                            <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mHn-NQ-o0F"/>
-                            <constraint firstItem="YPO-PP-8bx" firstAttribute="centerX" secondItem="SCg-JE-PL6" secondAttribute="centerX" id="mrJ-oD-Vhb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="305" id="oxL-AY-bWr"/>
-                            <constraint firstItem="YPO-PP-8bx" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="pNe-VF-TYw"/>
-                            <constraint firstItem="SCg-JE-PL6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qjO-sZ-2P0"/>
-                            <constraint firstItem="ZUp-Le-CuH" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="20" id="vPv-0v-4ha"/>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="F2V-mH-P1e" secondAttribute="leading" id="00b-LH-UIW"/>
+                            <constraint firstItem="F2V-mH-P1e" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="3bV-oh-0Jf"/>
+                            <constraint firstItem="j3L-lt-VDl" firstAttribute="centerX" secondItem="v0C-Ev-f0K" secondAttribute="centerX" id="3m6-pU-GK2"/>
+                            <constraint firstAttribute="trailing" secondItem="rvw-Vm-whk" secondAttribute="trailing" id="4mz-qm-K4Q"/>
+                            <constraint firstItem="j3L-lt-VDl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8ll-yR-bHJ"/>
+                            <constraint firstItem="v0C-Ev-f0K" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="CDB-rV-Ran"/>
+                            <constraint firstItem="F2V-mH-P1e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HiI-8q-hqN"/>
+                            <constraint firstItem="v0C-Ev-f0K" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="8" symbolic="YES" id="Uxt-Kq-lgY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j3L-lt-VDl" secondAttribute="bottom" constant="8" symbolic="YES" id="Xwz-I6-1Pl"/>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="trailing" secondItem="F2V-mH-P1e" secondAttribute="trailing" id="l87-SB-RFI"/>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="u5d-1A-PyA"/>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uEb-ic-ZEl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meme Creator" id="MQb-az-aH2" userLabel="Meme Creator"/>
@@ -113,4 +97,8 @@
             <point key="canvasLocation" x="3892" y="138.0809595202399"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Background" width="750" height="1334"/>
+        <image name="addImage" width="1000" height="600"/>
+    </resources>
 </document>
