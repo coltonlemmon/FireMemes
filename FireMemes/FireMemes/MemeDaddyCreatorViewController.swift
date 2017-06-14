@@ -42,6 +42,14 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         hideKeyboardWhenTappedAround()
         
         postMemeButton.layer.cornerRadius = 15
+        postMemeButton.titleLabel?.alpha = 0.7
+        postMemeButton.layer.borderWidth = 1
+        postMemeButton.layer.borderColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1.0).cgColor
+        
+        addTextButton.layer.cornerRadius = 10
+        addTextButton.titleLabel?.alpha = 0.7
+        addTextButton.layer.borderWidth = 1
+        addTextButton.layer.borderColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1.0).cgColor
         
         textPicker.delegate = self
         textPicker.dataSource = self
@@ -294,7 +302,7 @@ extension MemeDaddyCreatorViewController: UIPickerViewDelegate, UIPickerViewData
         
         textPicker.translatesAutoresizingMaskIntoConstraints = false
         
-        let pickerBottom = NSLayoutConstraint(item: textPicker, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
+        let pickerBottom = NSLayoutConstraint(item: textPicker, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 0.8, constant: 0)
         let topPicker = NSLayoutConstraint(item: textPicker, attribute: .top, relatedBy: .equal, toItem: addTextButton, attribute: .bottom, multiplier: 1, constant: 0)
         let leadPicker = NSLayoutConstraint(item: textPicker, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
         let trailPicker = NSLayoutConstraint(item: textPicker, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
