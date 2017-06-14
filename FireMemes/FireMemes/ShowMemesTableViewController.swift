@@ -193,6 +193,15 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "commentSegue" {
+            guard let destinationVC = segue.destination as? CommentsViewController,
+            let indexPath = tableView.indexPathForSelectedRow else { return }
+            let meme = MemeController.shared.memes[indexPath.row]
+            destinationVC.meme = meme
+        }
+    }
+    
  
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == self.tableView{
@@ -305,9 +314,13 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
     }
     //CommentButton tapped
     func commentButtonTapped(_ sender: MemeTableViewCell){
+        
         containerTrailingConstant.constant = 0
         UIView.animate(withDuration: 0.6, animations: {
             self.view.layoutIfNeeded()
             })
-        }
+        guard let newIndexPath = self.tableView.indexPath(for: sender) else { return }
+        let meme = MemeController.shared.memes[newIndexPath.row]
+        let destinationVC = CommentsViewController.self
     }
+}

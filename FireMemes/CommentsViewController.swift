@@ -13,6 +13,7 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var commentTextField: UITextField!
+    
     var meme: Meme?
     
     override func viewDidLoad() {
@@ -23,12 +24,12 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
    
     @IBAction func postCommentButton(_ sender: Any) {
         
-        let meme = 
+        guard let meme = meme else { return }
         
-        if let comment = commentTextField.text{
-        
-        MemeController.shared.addCommentToMeme(meme: meme, comment: comment )
-        }
+         let comment = commentTextField.text
+         
+         MemeController.shared.addCommentToMeme(meme: meme, comment: comment!)
+
         tableView.reloadData()
     }
  

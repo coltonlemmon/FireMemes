@@ -189,7 +189,7 @@
                                     <constraint firstAttribute="width" constant="310" id="OqV-fL-kjY"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="faQ-M2-raI" kind="embed" id="wFN-Mb-oT1"/>
+                                    <segue destination="faQ-M2-raI" kind="embed" identifier="commentSegue" id="wFN-Mb-oT1"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -244,7 +244,7 @@
                                         <rect key="frame" x="0.0" y="28" width="310" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRq-Sc-SVN" id="7Sa-g3-Buw">
-                                            <rect key="frame" x="0.0" y="0.0" width="310" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
