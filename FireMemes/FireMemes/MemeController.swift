@@ -59,7 +59,10 @@ class MemeController {
                 if let error = error {
                     print("Error adding comment: \(error.localizedDescription)")
                 }
-                
+                DispatchQueue.main.async {
+                    let nc = NotificationCenter.default
+                    nc.post(name: Keys.notification, object: self)
+                }
             }
         }
         
@@ -98,7 +101,6 @@ class MemeController {
         
         meme.flagCount += 1
         UserController.shared.currentUser?.flagCount += 1
-        
         CloudKitManager.shared.modifyFlagCount(meme)
     }
     

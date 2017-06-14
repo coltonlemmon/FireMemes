@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHJ-MC-8GD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IHJ-MC-8GD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -102,6 +102,16 @@
                                                                 <action selector="commentButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="3ux-cj-1Of"/>
                                                             </connections>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBL-GS-FdM">
+                                                            <rect key="frame" x="351" y="22" width="22" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="22" id="2sc-kT-5HF"/>
+                                                                <constraint firstAttribute="height" constant="22" id="PYG-u0-uOe"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <action selector="reportButtonTapped:" destination="M8H-m4-HF3" eventType="touchUpInside" id="Izn-wN-Vcm"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -119,6 +129,8 @@
                                                         <constraint firstItem="ExY-1s-ezt" firstAttribute="top" secondItem="skf-zH-oqf" secondAttribute="bottom" constant="6" id="Ijm-bD-h59"/>
                                                         <constraint firstItem="QwH-G4-Hk9" firstAttribute="leading" secondItem="ExY-1s-ezt" secondAttribute="trailing" constant="8" id="Jon-de-YRo"/>
                                                         <constraint firstItem="lfa-RW-0Bz" firstAttribute="bottom" secondItem="kCl-dI-Qil" secondAttribute="bottom" id="PQl-fN-1tN"/>
+                                                        <constraint firstItem="Cun-Fy-Lea" firstAttribute="top" secondItem="MBL-GS-FdM" secondAttribute="bottom" constant="312" id="QtE-6X-E5P"/>
+                                                        <constraint firstAttribute="trailing" secondItem="MBL-GS-FdM" secondAttribute="trailing" constant="2" id="Sbe-Em-Odh"/>
                                                         <constraint firstAttribute="bottom" secondItem="Cun-Fy-Lea" secondAttribute="bottom" constant="3" id="XLd-q9-U6d"/>
                                                         <constraint firstItem="ExY-1s-ezt" firstAttribute="bottom" secondItem="QwH-G4-Hk9" secondAttribute="bottom" constant="3" id="Y4B-ib-4Gj"/>
                                                         <constraint firstItem="skf-zH-oqf" firstAttribute="centerX" secondItem="hRA-QK-PF9" secondAttribute="centerX" id="YCU-wV-ohw"/>
@@ -126,6 +138,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="skf-zH-oqf" secondAttribute="bottom" constant="44" id="di6-fO-Twk"/>
                                                         <constraint firstItem="cZr-jB-LqM" firstAttribute="top" secondItem="skf-zH-oqf" secondAttribute="bottom" constant="8" symbolic="YES" id="g9i-kX-8lP"/>
                                                         <constraint firstItem="kCl-dI-Qil" firstAttribute="leading" secondItem="lfa-RW-0Bz" secondAttribute="trailing" constant="18" id="lc9-I3-8j5"/>
+                                                        <constraint firstItem="MBL-GS-FdM" firstAttribute="leading" secondItem="hRA-QK-PF9" secondAttribute="leading" constant="351" id="mqz-fa-koJ"/>
                                                         <constraint firstItem="lfa-RW-0Bz" firstAttribute="top" secondItem="kCl-dI-Qil" secondAttribute="top" id="oi2-O7-ddA"/>
                                                         <constraint firstAttribute="bottom" secondItem="cZr-jB-LqM" secondAttribute="bottom" constant="6" id="pdx-im-PKp"/>
                                                         <constraint firstItem="Dqq-Us-E9a" firstAttribute="top" secondItem="skf-zH-oqf" secondAttribute="bottom" constant="2.5" id="rkt-Pi-Vai"/>
@@ -133,6 +146,7 @@
                                                         <constraint firstItem="skf-zH-oqf" firstAttribute="top" secondItem="hRA-QK-PF9" secondAttribute="top" constant="18" id="so5-7R-Odm"/>
                                                         <constraint firstItem="Cun-Fy-Lea" firstAttribute="top" secondItem="skf-zH-oqf" secondAttribute="bottom" constant="12" id="svU-Eg-r7C"/>
                                                         <constraint firstItem="lfa-RW-0Bz" firstAttribute="leading" secondItem="cZr-jB-LqM" secondAttribute="trailing" constant="15" id="uLg-ar-ozC"/>
+                                                        <constraint firstItem="MBL-GS-FdM" firstAttribute="top" secondItem="hRA-QK-PF9" secondAttribute="top" constant="22" id="uwD-xB-iOS"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

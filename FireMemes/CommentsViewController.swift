@@ -38,8 +38,8 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return meme?.comments.count ?? 0
+        guard let meme = meme else { return 0 }
+        return meme.comments.count
     }
 
     
@@ -50,9 +50,9 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         guard let meme = meme else { return cell }
         
         let comment = meme.comments[indexPath.row]
-        
-        cell.textLabel?.text = comment
-        
+        if comment != "" {
+            cell.textLabel?.text = comment
+        }
         return cell
     }
  
