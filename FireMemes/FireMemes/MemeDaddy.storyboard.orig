@@ -85,9 +85,12 @@
                             <constraint firstItem="v0C-Ev-f0K" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="CDB-rV-Ran"/>
                             <constraint firstItem="F2V-mH-P1e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HiI-8q-hqN"/>
                             <constraint firstItem="YPO-PP-8bx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="KXf-7l-glm"/>
+<<<<<<< HEAD
+=======
                             <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="fUo-cd-nck" secondAttribute="bottom" constant="20" id="QNk-tU-4xM"/>
                             <constraint firstItem="fUo-cd-nck" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QcP-2A-USc"/>
                             <constraint firstItem="v0C-Ev-f0K" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="8" id="Uxt-Kq-lgY"/>
+>>>>>>> cleanup
                             <constraint firstAttribute="trailingMargin" secondItem="YPO-PP-8bx" secondAttribute="trailing" constant="100" id="XLi-9r-Zy8"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="YPO-PP-8bx" secondAttribute="bottom" constant="-153" id="ZD9-Dy-0u1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j3L-lt-VDl" secondAttribute="bottom" constant="8" id="c4H-co-dvm"/>
