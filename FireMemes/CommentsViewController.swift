@@ -31,12 +31,12 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
          MemeController.shared.addCommentToMeme(meme: meme, comment: comment!)
 
         tableView.reloadData()
+       
     }
  
 
     // MARK: - Table view data source
-
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return meme?.comments.count ?? 0
@@ -50,6 +50,7 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         guard let meme = meme else { return cell }
         
         let comment = meme.comments[indexPath.row]
+        
         cell.textLabel?.text = comment
         
         return cell
