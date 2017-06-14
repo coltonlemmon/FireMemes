@@ -65,6 +65,11 @@
                                     <action selector="pickImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGz-rA-smv"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fUo-cd-nck" customClass="FireAnimation" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="162" y="561" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
@@ -88,7 +93,7 @@
                     <navigationItem key="navigationItem" title="Meme Creator" id="MQb-az-aH2" userLabel="Meme Creator"/>
                     <connections>
                         <outlet property="addTextButton" destination="v0C-Ev-f0K" id="7To-UC-wdM"/>
-                        <outlet property="fireView" destination="ahX-5a-OYZ" id="d8f-59-4HJ"/>
+                        <outlet property="fireView" destination="fUo-cd-nck" id="dG1-qT-I5E"/>
                         <outlet property="memeImageView" destination="rvw-Vm-whk" id="P0m-3M-Tgo"/>
                         <outlet property="pickingButton" destination="YPO-PP-8bx" id="77z-JL-9kA"/>
                         <outlet property="postMemeButton" destination="j3L-lt-VDl" id="T2v-Az-ISX"/>
