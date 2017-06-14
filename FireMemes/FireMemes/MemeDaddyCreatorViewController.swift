@@ -11,22 +11,17 @@ import CoreLocation
 
 class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate {
     
-    
+    //MARK: - Outlets
     @IBOutlet weak var memeImageView: MemeImageView!
-    
     @IBOutlet weak var pickingButton: UIButton!
-    
     @IBOutlet weak var postMemeButton: UIButton!
-    @IBOutlet weak var downloadMemeButton: UIButton!
     @IBOutlet weak var addTextButton: UIButton!
-    
-    @IBOutlet weak var updateTextButton: UIButton!
     
     //MARK: picker properties 
     
     let textPicker = UIPickerView()
     
-    let colorData = ["red", "green", "blue", "white", "black"]
+    let colorData = ["black", "white", "red", "orange", "yellow", "green", "cyan", "blue", "purple", "magenta", "gray"]
     let fontData = ["Impact", "American", "Avenir", "Helvetica"]
     
     var pickerData: [[String]] = [[]]
@@ -36,6 +31,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     var myLocation: CLLocation?
     var locationManager = CLLocationManager()
 
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 setupButtons()
@@ -45,7 +42,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         hideKeyboardWhenTappedAround()
         
         postMemeButton.layer.cornerRadius = 15
-        updateTextButton.layer.cornerRadius = 15
         
         textPicker.delegate = self
         textPicker.dataSource = self
@@ -62,21 +58,14 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     func setupButtons() {
-        
         postMemeButton.layer.borderWidth = 2
         
-        updateTextButton.layer.borderWidth = 0.5
-        downloadMemeButton.layer.borderWidth = 0.5
         addTextButton.layer.borderWidth = 0.5
         
         postMemeButton.layer.borderColor = UIColor.red.cgColor
-        updateTextButton.layer.borderColor = UIColor.red.cgColor
         addTextButton.layer.borderColor = UIColor.red.cgColor
-        downloadMemeButton.layer.borderColor = UIColor.red.cgColor
         
         postMemeButton.layer.cornerRadius = 15
-        updateTextButton.layer.cornerRadius = 15
-        downloadMemeButton.layer.cornerRadius = 15
         addTextButton.layer.cornerRadius = 15
     }
     
@@ -99,29 +88,14 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         nc?.popViewController(animated: true)
     }
     
-    
-    @IBAction func updateText(_ sender: Any) {
-        
-        guard (memeImageView.image != nil) else { return }
-     
-        guard let font = getFontFromPicker() else { return }
-        let color = getColorFromPicker()
-        
-        memeImageView.updateTextForMemeWith(font: font, color: color)
-
-    }
-    
     @IBAction func downloadMemeToPhone(_ sender: Any) {
         guard memeImageView.image != nil else { return }
-        
         let image = memeImageView.makeImageFromView()
-        
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
     
     @IBAction func addText(_ sender: Any) {
         guard memeImageView.image != nil else { return }
-        
         memeImageView.addText()
     }
     
@@ -172,12 +146,10 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         self.memeImageView.set(image: originalImage, and: self.view.layer.bounds.size)
         picker.dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-
     }
     
     func getFontFromPicker() -> UIFont? {
@@ -202,17 +174,27 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     func getColorFromPicker() -> UIColor {
-        
         let int = textPicker.selectedRow(inComponent: 0)
         let color = colorData[int]
-        
         switch color {
         case "red":
             return .red
+        case "orange":
+            return .orange
+        case "yellow":
+            return .yellow
         case "blue":
             return .blue
         case "green":
             return .green
+        case "cyan":
+            return .cyan
+        case "purple":
+            return .purple
+        case "magenta":
+            return .magenta
+        case "gray":
+            return .gray
         case "black":
             return .black
         case "white":
@@ -223,8 +205,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
         
     }
 
@@ -243,7 +223,42 @@ extension MemeDaddyCreatorViewController: UIPickerViewDelegate, UIPickerViewData
         let pickerComponent = pickerData[component]
         let componentString = pickerComponent[row]
         
-        return NSAttributedString(string: componentString, attributes: [NSForegroundColorAttributeName: UIColor.white])
+        let color: UIColor
+
+        switch componentString {
+        case "red":
+            color = .red
+        case "orange":
+            color = .orange
+        case "yellow":
+            color = .yellow
+        case "blue":
+            color = .blue
+        case "green":
+            color = .green
+        case "cyan":
+            color = .cyan
+        case "purple":
+            color = .purple
+        case "magenta":
+            color = .magenta
+        case "gray":
+            color = .gray
+        case "black":
+            color = .black
+        case "white":
+            color = .white
+        default:
+            color = .darkText
+        }
+        
+        return NSAttributedString(string: componentString, attributes: [NSForegroundColorAttributeName: color])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let color = getColorFromPicker()
+        let font = getFontFromPicker()
+        memeImageView.updateTextForMemeWith(font: font, color: color)
     }
     
     func setupPicker() {
@@ -254,7 +269,7 @@ extension MemeDaddyCreatorViewController: UIPickerViewDelegate, UIPickerViewData
         textPicker.translatesAutoresizingMaskIntoConstraints = false
         
         let pickerBottom = NSLayoutConstraint(item: textPicker, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
-        let topPicker = NSLayoutConstraint(item: textPicker, attribute: .top, relatedBy: .equal, toItem: downloadMemeButton, attribute: .bottom, multiplier: 1, constant: 0)
+        let topPicker = NSLayoutConstraint(item: textPicker, attribute: .top, relatedBy: .equal, toItem: addTextButton, attribute: .bottom, multiplier: 1, constant: 0)
         let leadPicker = NSLayoutConstraint(item: textPicker, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
         let trailPicker = NSLayoutConstraint(item: textPicker, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1, constant: 0)
         
@@ -289,25 +304,14 @@ extension MemeDaddyCreatorViewController: CLLocationManagerDelegate {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 

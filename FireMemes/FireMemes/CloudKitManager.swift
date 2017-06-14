@@ -251,20 +251,20 @@ class CloudKitManager {
         publicDatabase.fetch(withRecordID: memeID) { (record, error) in
             
             guard let record = record else { return }
-            guard var flagCount = record[Meme.flagKey] as? Int else { return }
+            guard var flagCount = record[Keys.flag] as? Int else { return }
             
             flagCount += 1
             
             if flagCount >= 3 {
                 
-                guard var isBanned = record[Meme.isMemeBanedKey] as? Bool else { return }
+                guard var isBanned = record[Keys.isMemeBaned] as? Bool else { return }
                 isBanned = true
-                record[Meme.isMemeBanedKey] = isBanned as CKRecordValue
+                record[Keys.isMemeBaned] = isBanned as CKRecordValue
                 //delete the record, but i set the isBanned boolean value just in case
                 self.deleteRecordWithID(record.recordID, completion: { (_, _) in})
                 
                 
-                guard let userID = record[Meme.ownerKey] as? CKRecordID else { return }
+                guard let userID = record[Keys.owner] as? CKRecordID else { return }
                 
                 self.fetchRecord(withID: userID, completion: { (record, error) in
                     guard let record = record else { return }
@@ -272,7 +272,7 @@ class CloudKitManager {
                 })
             }
             
-            record[Meme.flagKey] = flagCount as CKRecordValue?
+            record[Keys.flag] = flagCount as CKRecordValue?
             
             self.publicDatabase.save(record, completionHandler: { (record, error) in
                 
@@ -290,17 +290,17 @@ class CloudKitManager {
         publicDatabase.fetch(withRecordID: userRecord.recordID) { (record, error) in
             guard let record = record else { return }
             
-            guard var userFlagCount = record[User.flagCountKey] as? Int else { return }
+            guard var userFlagCount = record[Keys.flagCount] as? Int else { return }
             
             userFlagCount += 1
             
-            record[User.flagCountKey] = userFlagCount as CKRecordValue
+            record[Keys.flagCount] = userFlagCount as CKRecordValue
             
             if userFlagCount >= 3 {
                 
-                var isBanned = record[User.isBannedKey] as? Bool
+                var isBanned = record[Keys.isBanned] as? Bool
                 isBanned = true
-                record[User.isBannedKey] = isBanned as CKRecordValue?
+                record[Keys.isBanned] = isBanned as CKRecordValue?
                 
                 self.deleteRecordWithID(userRecord.recordID, completion: { (_, _) in
                     print("deleted record")

@@ -33,7 +33,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         refreshControl.backgroundColor = .gray
         refreshControl.tintColor = .clear
         refreshControl.clipsToBounds = true
-        let box = CGRect(x: self.view.layer.bounds.midX - 15, y: 30, width: 30, height: 30)
+        let box = CGRect(x: self.view.layer.bounds.midX - 15, y: 15, width: 30, height: 30)
         var fireAnimation = FireAnimation(frame: box)
         fireAnimation.backgroundColor = .gray
         refreshControl.addSubview(fireAnimation)
@@ -44,11 +44,21 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         DispatchQueue.main.async {
             self.requestLocation()
         }
-        MemeController.shared.memes.removeAll()
         didFetch = false
+        MemeController.shared.memes.removeAll()
         fetch()
         refreshing()
+        timerAction()
+    }
+    
+    var timer: Timer!
+    func timerAction() {
+        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(endOfWork), userInfo: nil, repeats: true)
+    }
+    func endOfWork() {
         refreshControl.endRefreshing()
+        timer.invalidate()
+        timer = nil
     }
 
     //MARK: - Internal Properties
@@ -61,9 +71,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var makeAMemeButton: UIButton!
     
     func fetch() {
-        
         guard let myLocation = myLocation else { return }
         MemeController.shared.fetch(myLocation, radiusInMeters: 30000) // We can change radius
+        didFetch = true
     }
     
     func refreshing() {

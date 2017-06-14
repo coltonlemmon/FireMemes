@@ -153,7 +153,7 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         self.image = image
     }
     
-    func updateTextForMemeWith(font: UIFont, color: UIColor) {
+    func updateTextForMemeWith(font: UIFont?, color: UIColor?) {
         memeText.textColor = color
         memeText.font = font
     }

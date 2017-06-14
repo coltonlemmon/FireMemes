@@ -63,7 +63,6 @@ class MemeController {
     
     //MARK: - CloudKit Stuff
     func fetch(_ location: CLLocation, radiusInMeters: CGFloat) {
-        //let radiusInKilometers = radiusInMeters / 1000.0
         let locationPredicate = NSPredicate(format: "distanceToLocation:fromLocation:(Location,%@) < %f", location, radiusInMeters)
         cloudKitManager.fetchRecordsWithType(Keys.meme, predicate: locationPredicate, recordFetchedBlock: { (record) in }) { (_, records, error) in
 
