@@ -41,7 +41,7 @@ class MemeController {
     }
     
     func postMeme(meme: Meme) {
-        memes.append(meme)
+        memes.insert(meme, at: 0)
         self.saveUsingCloudKit(record: CKRecord(meme)) { (error) in
             if let error = error {
                 print("Error saving to cloudKit \(error.localizedDescription)")
@@ -118,7 +118,9 @@ class MemeController {
                 guard let meme = Meme(record: record) else { return }
             
                 if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
-                    self.memes.append(meme)
+                    if !self.memes.contains(meme) {
+                        self.memes.append(meme)
+                    }
                     self.memes.sort { $0.date > $1.date }
                 } else {
                     self.delete(meme)

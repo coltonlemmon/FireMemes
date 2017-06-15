@@ -47,7 +47,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
             self.requestLocation()
         }
         didFetch = false
-        MemeController.shared.memes.removeAll()
         fetch()
         refreshing()
         timerAction()
