@@ -67,6 +67,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(getImage), name: NSNotification.Name(rawValue: "getImage"), object: nil)
+        
     }
     
     func setupButtons() {

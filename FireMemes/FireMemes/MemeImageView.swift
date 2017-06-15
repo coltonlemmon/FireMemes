@@ -67,31 +67,6 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
     //this is the first function that's called after the user 
     //chooses an image
     
-    func addTextField() {
-        
-        contentMode = .scaleAspectFit
-        backgroundColor = .white
-        hideKeyboardWhenTappedAround()
-        
-        memeText.delegate = self
-        
-        memeText.textAlignment = .center
-        memeText.backgroundColor = .clear
-        memeText.text = "fire meme"
-        memeText.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)
-        memeText.textColor = .red
-        memeText.isUserInteractionEnabled = true
-        
-        self.addSubview(memeText)
-        
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(userDragged(_:)))
-        self.addGestureRecognizer(gesture)
-        
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(userPinched(_:)))
-        memeText.addGestureRecognizer(pinchGesture)
-        
-        memeTextFields.append(memeText)
-    }
     
     func addText() {
         
@@ -111,9 +86,7 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(userPinched(_:)))
         newText.addGestureRecognizer(pinchGesture)
-        
         memeTextFields.append(newText)
-        
     }
     
     
@@ -129,18 +102,15 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         return image
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+       
+        
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         memeText.layer.position = self.center
     }
     
-    func set(image: UIImage, and size: CGSize) {
-        originalImage = image
-        viewSize = size
-        self.image = image
-        addTextField()
-    }
     
     func resetTouchCount() {
         touchCount = 0
