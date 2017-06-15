@@ -34,7 +34,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0C-Ev-f0K">
-                                <rect key="frame" x="124" y="318" width="126" height="40"/>
+                                <rect key="frame" x="124" y="320" width="126" height="40"/>
                                 <color key="backgroundColor" red="0.99228101968765259" green="0.98448854684829712" blue="0.97593551874160767" alpha="0.27469499143835613" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="126" id="a76-Y1-Fk8"/>
@@ -58,13 +58,6 @@
                                     <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0uH-e5-gBK"/>
                                 </connections>
                             </button>
-<<<<<<< HEAD
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-5a-OYZ">
-                                <rect key="frame" x="124" y="353" width="126" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-=======
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPO-PP-8bx">
                                 <rect key="frame" x="116" y="157" width="143" height="30"/>
                                 <state key="normal" title="Tap to choose image"/>
@@ -72,7 +65,14 @@
                                     <action selector="pickImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGz-rA-smv"/>
                                 </connections>
                             </button>
->>>>>>> a73dc99b7fcb68e63001d02be8c017ad8777ed53
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUo-cd-nck" customClass="FireAnimationForPicker" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="162" y="548" width="51" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="Uf6-aJ-1Cr"/>
+                                    <constraint firstAttribute="height" constant="51" id="hze-NF-Z5q"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
@@ -81,13 +81,19 @@
                             <constraint firstItem="j3L-lt-VDl" firstAttribute="centerX" secondItem="v0C-Ev-f0K" secondAttribute="centerX" id="3m6-pU-GK2"/>
                             <constraint firstAttribute="trailing" secondItem="rvw-Vm-whk" secondAttribute="trailing" id="4mz-qm-K4Q"/>
                             <constraint firstItem="j3L-lt-VDl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8ll-yR-bHJ"/>
+                            <constraint firstItem="v0C-Ev-f0K" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="10" id="CAm-Jd-2e5"/>
                             <constraint firstItem="v0C-Ev-f0K" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="CDB-rV-Ran"/>
                             <constraint firstItem="F2V-mH-P1e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HiI-8q-hqN"/>
                             <constraint firstItem="YPO-PP-8bx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="KXf-7l-glm"/>
+<<<<<<< HEAD
+=======
+                            <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="fUo-cd-nck" secondAttribute="bottom" constant="20" id="QNk-tU-4xM"/>
+                            <constraint firstItem="fUo-cd-nck" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QcP-2A-USc"/>
                             <constraint firstItem="v0C-Ev-f0K" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="8" id="Uxt-Kq-lgY"/>
+>>>>>>> cleanup
                             <constraint firstAttribute="trailingMargin" secondItem="YPO-PP-8bx" secondAttribute="trailing" constant="100" id="XLi-9r-Zy8"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j3L-lt-VDl" secondAttribute="bottom" constant="8" symbolic="YES" id="Xwz-I6-1Pl"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="YPO-PP-8bx" secondAttribute="bottom" constant="-153" id="ZD9-Dy-0u1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j3L-lt-VDl" secondAttribute="bottom" constant="8" id="c4H-co-dvm"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="trailing" secondItem="F2V-mH-P1e" secondAttribute="trailing" id="l87-SB-RFI"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="u5d-1A-PyA"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uEb-ic-ZEl"/>
@@ -96,7 +102,7 @@
                     <navigationItem key="navigationItem" title="Meme Creator" id="MQb-az-aH2" userLabel="Meme Creator"/>
                     <connections>
                         <outlet property="addTextButton" destination="v0C-Ev-f0K" id="7To-UC-wdM"/>
-                        <outlet property="fireView" destination="ahX-5a-OYZ" id="d8f-59-4HJ"/>
+                        <outlet property="fireView" destination="fUo-cd-nck" id="dG1-qT-I5E"/>
                         <outlet property="memeImageView" destination="rvw-Vm-whk" id="P0m-3M-Tgo"/>
                         <outlet property="pickingButton" destination="YPO-PP-8bx" id="77z-JL-9kA"/>
                         <outlet property="postMemeButton" destination="j3L-lt-VDl" id="T2v-Az-ISX"/>

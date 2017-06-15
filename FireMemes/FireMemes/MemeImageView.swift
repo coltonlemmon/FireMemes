@@ -93,6 +93,8 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         memeTextFields.append(memeText)
     }
     
+    
+    
     func addText() {
         
         let newText = UITextField(frame: CGRect(x: -200, y: 0, width: 700, height: 30))
@@ -111,9 +113,7 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(userPinched(_:)))
         newText.addGestureRecognizer(pinchGesture)
-        
         memeTextFields.append(newText)
-        
     }
     
     
@@ -129,7 +129,10 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         return image
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+       
+        
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         memeText.layer.position = self.center
@@ -141,6 +144,8 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         self.image = image
         addTextField()
     }
+    
+    
     
     func resetTouchCount() {
         touchCount = 0

@@ -13,7 +13,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     //MARK: - Outlets
     @IBOutlet weak var memeImageView: MemeImageView!
-    @IBOutlet weak var pickingButton: UIButton!
     @IBOutlet weak var postMemeButton: UIButton!
     @IBOutlet weak var addTextButton: UIButton!
     @IBOutlet weak var fireView: UIView!
@@ -68,6 +67,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(getImage), name: NSNotification.Name(rawValue: "getImage"), object: nil)
+        
     }
     
     func setupButtons() {
@@ -84,9 +84,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
 
     //MARK: ACTIONS
-    @IBAction func pickImage(_ sender: Any) {
-        getImage()
-    }
+
     
     @IBAction func postMeme(_ sender: Any) {
         guard (memeImageView.image != nil) else { return }
@@ -101,23 +99,21 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         nc?.popViewController(animated: true)
     }
     
-    @IBAction func downloadMemeToPhone(_ sender: Any) {
-        guard memeImageView.image != nil else { return }
-        let image = memeImageView.makeImageFromView()
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-    }
-    
+
     @IBAction func addText(_ sender: Any) {
         guard memeImageView.image != nil else { return }
         memeImageView.addText()
     }
     
+    //Allow user to select image by tapping on the ImageView
+    @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
+        getImage()
+    }
+    
     //MARK: END ACTIONS
 
     func getImage() {
-        
-        pickingButton.isHidden = true
-        //Create an Instance of Image Picker Controller
+     
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
@@ -156,6 +152,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
         self.memeImageView.set(image: originalImage, and: self.view.layer.bounds.size)
         picker.dismiss(animated: true, completion: nil)
