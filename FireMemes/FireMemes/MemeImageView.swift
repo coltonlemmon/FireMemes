@@ -111,6 +111,14 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         memeText.layer.position = self.center
     }
     
+    func set(image: UIImage, and size: CGSize) {
+        originalImage = image
+        viewSize = size
+        self.image = image
+        addText()
+    }
+    
+    
     
     func resetTouchCount() {
         touchCount = 0
