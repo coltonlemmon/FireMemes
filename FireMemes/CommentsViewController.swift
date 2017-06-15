@@ -53,18 +53,10 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         
         let comment = meme.comments[indexPath.row]
         if comment != "" {
+            //commentLabel.text = comment
             cell.textLabel?.text = comment
         }
         return cell
-    }
- 
-
-       // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 }
 

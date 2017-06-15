@@ -32,22 +32,20 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(ShowMemesTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        refreshControl.backgroundColor = .gray
+        refreshControl.backgroundColor = .white
         refreshControl.tintColor = .clear
         refreshControl.clipsToBounds = true
         let box = CGRect(x: self.view.layer.bounds.midX - 15, y: 15, width: 30, height: 30)
         var fireAnimation = FireAnimation(frame: box)
-        fireAnimation.backgroundColor = .gray
+        //refreshControl.attributedTitle = NSAttributedString(string: "Loading Fresh Memes")
+        fireAnimation.backgroundColor = .white
         refreshControl.addSubview(fireAnimation)
         return refreshControl
     }()
     
     func handleRefresh(_ refreshControl: UIRefreshControl) {
-        DispatchQueue.main.async {
-            self.requestLocation()
-        }
+        self.requestLocation()
         didFetch = false
-        MemeController.shared.memes.removeAll()
         fetch()
         refreshing()
         timerAction()
@@ -95,10 +93,12 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         UserController.shared.checkUserIn()
         
+        
+        
         tableView.isHidden = true
-        view.backgroundColor = UIColor.gray
-        loadingAnimationView.backgroundColor = UIColor.gray
-        tableView.backgroundColor = .gray
+        view.backgroundColor = UIColor.white
+        loadingAnimationView.backgroundColor = UIColor.white
+        tableView.backgroundColor = .white
         
         // Location Services
         locationManager.delegate = self

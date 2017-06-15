@@ -79,7 +79,7 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         memeText.backgroundColor = .clear
         memeText.text = "fire meme"
         memeText.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)
-        memeText.textColor = .red
+        memeText.textColor = .black
         memeText.isUserInteractionEnabled = true
         
         self.addSubview(memeText)
@@ -145,8 +145,6 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         addTextField()
     }
     
-    
-    
     func resetTouchCount() {
         touchCount = 0
     }
@@ -158,9 +156,12 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         self.image = image
     }
     
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Maybe fix this
     func updateTextForMemeWith(font: UIFont?, color: UIColor?) {
-        memeText.textColor = color
-        memeText.font = font
+        for textField in memeTextFields {
+            textField.textColor = color
+            textField.font = font
+        }
     }
     
 }
@@ -176,21 +177,3 @@ extension UIView {
         self.endEditing(true)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

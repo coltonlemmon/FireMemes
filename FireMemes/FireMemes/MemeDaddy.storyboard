@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,9 +37,10 @@
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0C-Ev-f0K">
-                                <rect key="frame" x="124" y="320" width="126" height="40"/>
+                                <rect key="frame" x="124" y="325" width="126" height="40"/>
                                 <color key="backgroundColor" red="0.99228101968765259" green="0.98448854684829712" blue="0.97593551874160767" alpha="0.27469499143835613" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BbJ-Yq-tjD"/>
                                     <constraint firstAttribute="width" constant="126" id="a76-Y1-Fk8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
@@ -77,7 +78,6 @@
                             <constraint firstItem="j3L-lt-VDl" firstAttribute="centerX" secondItem="v0C-Ev-f0K" secondAttribute="centerX" id="3m6-pU-GK2"/>
                             <constraint firstAttribute="trailing" secondItem="rvw-Vm-whk" secondAttribute="trailing" id="4mz-qm-K4Q"/>
                             <constraint firstItem="j3L-lt-VDl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8ll-yR-bHJ"/>
-                            <constraint firstItem="v0C-Ev-f0K" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="10" id="CAm-Jd-2e5"/>
                             <constraint firstItem="v0C-Ev-f0K" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="CDB-rV-Ran"/>
                             <constraint firstItem="F2V-mH-P1e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HiI-8q-hqN"/>
                             <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="fUo-cd-nck" secondAttribute="bottom" constant="20" id="QNk-tU-4xM"/>
@@ -86,6 +86,7 @@
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="trailing" secondItem="F2V-mH-P1e" secondAttribute="trailing" id="l87-SB-RFI"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="u5d-1A-PyA"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uEb-ic-ZEl"/>
+                            <constraint firstItem="v0C-Ev-f0K" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="15" id="vh6-Ya-VjB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meme Creator" id="MQb-az-aH2" userLabel="Meme Creator"/>

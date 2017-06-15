@@ -112,6 +112,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     //MARK: END ACTIONS
 
+    //MARK: - Image picker methods
+    
     func getImage() {
      
         let imagePicker = UIImagePickerController()
@@ -153,7 +155,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        guard let originalImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         self.memeImageView.set(image: originalImage, and: self.view.layer.bounds.size)
         picker.dismiss(animated: true, completion: nil)
     }
@@ -161,6 +163,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    //MARK: -  Other Picker Methods
     
     func getFontFromPicker() -> UIFont? {
         
