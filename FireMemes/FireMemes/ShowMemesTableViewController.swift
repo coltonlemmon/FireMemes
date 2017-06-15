@@ -37,15 +37,14 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         refreshControl.clipsToBounds = true
         let box = CGRect(x: self.view.layer.bounds.midX - 15, y: 15, width: 30, height: 30)
         var fireAnimation = FireAnimation(frame: box)
+        //refreshControl.attributedTitle = NSAttributedString(string: "Loading Fresh Memes")
         fireAnimation.backgroundColor = .white
         refreshControl.addSubview(fireAnimation)
         return refreshControl
     }()
     
     func handleRefresh(_ refreshControl: UIRefreshControl) {
-        DispatchQueue.main.async {
-            self.requestLocation()
-        }
+        self.requestLocation()
         didFetch = false
         fetch()
         refreshing()
