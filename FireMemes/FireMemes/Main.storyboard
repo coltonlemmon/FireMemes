@@ -250,12 +250,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="310" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qvd-Fg-qlm">
-                                <rect key="frame" x="0.0" y="0.0" width="310" height="573"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qvd-Fg-qlm">
+                                <rect key="frame" x="0.0" y="15" width="310" height="588"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <stackView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="K6c-7h-4qM">
+                                    <rect key="frame" x="0.0" y="0.0" width="310" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdd-7J-syQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csx-JE-Knx">
+                                            <rect key="frame" x="270" y="0.0" width="40" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="FbY-q5-f9M"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                            <state key="normal" title="+"/>
+                                            <connections>
+                                                <action selector="postCommentButton:" destination="faQ-M2-raI" eventType="touchUpInside" id="Ksw-1f-9YG"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentsShown" id="sRq-Sc-SVN">
-                                        <rect key="frame" x="0.0" y="28" width="310" height="44"/>
+                                        <rect key="frame" x="0.0" y="58" width="310" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRq-Sc-SVN" id="7Sa-g3-Buw">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="43.5"/>
@@ -264,36 +288,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdd-7J-syQ">
-                                <rect key="frame" x="0.0" y="572" width="271" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csx-JE-Knx">
-                                <rect key="frame" x="270" y="573" width="40" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="FbY-q5-f9M"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="+"/>
-                                <connections>
-                                    <action selector="postCommentButton:" destination="faQ-M2-raI" eventType="touchUpInside" id="Ksw-1f-9YG"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Qvd-Fg-qlm" firstAttribute="trailing" secondItem="Csx-JE-Knx" secondAttribute="trailing" id="BBx-ad-MT6"/>
-                            <constraint firstItem="Csx-JE-Knx" firstAttribute="bottom" secondItem="fsa-9B-BhR" secondAttribute="top" id="V0O-Fi-E8P"/>
-                            <constraint firstItem="Qvd-Fg-qlm" firstAttribute="top" secondItem="PsU-mw-7UF" secondAttribute="bottom" id="Wfi-7J-HuP"/>
-                            <constraint firstItem="Qvd-Fg-qlm" firstAttribute="leading" secondItem="jdd-7J-syQ" secondAttribute="leading" id="Z2B-Ps-zgL"/>
-                            <constraint firstAttribute="trailing" secondItem="Qvd-Fg-qlm" secondAttribute="trailing" id="ZgM-Hc-e9g"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="jdd-7J-syQ" secondAttribute="trailing" constant="23" id="c9C-sh-wnn"/>
-                            <constraint firstItem="Csx-JE-Knx" firstAttribute="top" secondItem="Qvd-Fg-qlm" secondAttribute="bottom" id="kR9-Ie-rSW"/>
-                            <constraint firstItem="Qvd-Fg-qlm" firstAttribute="leading" secondItem="gDX-fX-avy" secondAttribute="leading" id="lmJ-el-MgX"/>
-                            <constraint firstItem="fsa-9B-BhR" firstAttribute="top" secondItem="jdd-7J-syQ" secondAttribute="bottom" constant="1" id="o24-rH-bHt"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="commentTextField" destination="jdd-7J-syQ" id="uHI-Wc-bvx"/>

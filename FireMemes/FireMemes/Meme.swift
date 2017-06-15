@@ -42,7 +42,7 @@ class Meme: CloudKitSync {
         self.identifier = id
         self.thumbsUp = thumbsUp
         self.comments = comments
-        self.comments.append("")
+//        self.comments.append("")
         
         self.memeOwner = memeOwner
         self.isBanned = isBanned

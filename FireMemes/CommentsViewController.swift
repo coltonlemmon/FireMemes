@@ -17,7 +17,8 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
     
     @IBAction func postCommentButton(_ sender: Any) {
         guard let meme = meme else { return }
-        guard let comment = commentTextField.text else { return }
+        guard let comment = commentTextField.text, !comment.isEmpty else { return }
+        commentTextField.text = ""
         MemeController.shared.addCommentToMeme(meme: meme, comment: comment)
         tableView.reloadData()
     }
@@ -34,6 +35,7 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         tableView.dataSource = self
         hideKeyboardWhenTappedAround()
     }
+    
 
     // MARK: - Table view data source
     
