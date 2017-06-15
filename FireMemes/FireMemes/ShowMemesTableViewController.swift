@@ -170,7 +170,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         // Loading Animation
         loadingAnimationView.isHidden = true
         tableView.isHidden = false
-        cell.updateViews(meme: meme)
+        cell.updateViews(meme: meme, hasBeenUpvoted: nil)
         cell.delegate = self
         
         return cell
@@ -274,6 +274,32 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
             destinationVC.tableView.reloadData()
         }
         
+    }
+    
+    //UpVote button tapped
+    func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
+        guard let indexPath = self.tableView.indexPath(for: sender) else { return }
+        let meme = MemeController.shared.memes[indexPath.row]
+        var localHasBeenUpvoted = hasBeenUpvoted
+        var upVoteCount = meme.thumbsUp
+        
+        if localHasBeenUpvoted == false {
+            upVoteCount += 1
+            MemeController.shared.addUpvoteToMeme(meme: meme)
+            localHasBeenUpvoted = true
+            sender.updateViews(meme: meme, hasBeenUpvoted: localHasBeenUpvoted)
+        } else {
+            if upVoteCount >= 1 {
+                upVoteCount -= 1
+                MemeController.shared.removeUpvoteToMeme(meme: meme)
+                localHasBeenUpvoted = false
+                sender.updateViews(meme: meme, hasBeenUpvoted: localHasBeenUpvoted)
+            } else {
+                MemeController.shared.removeUpvoteToMeme(meme: meme)
+                localHasBeenUpvoted = false
+                sender.updateViews(meme: meme, hasBeenUpvoted: localHasBeenUpvoted)
+            }
+        }
     }
     
     //Report button

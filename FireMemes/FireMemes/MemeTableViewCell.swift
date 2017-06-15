@@ -13,7 +13,7 @@ class MemeTableViewCell: UITableViewCell {
     
     //Variables
     var upVoteCount = 0
-    var upVoteButtonWasTapped = false
+    var hasBeenUpvoted = false
     
     //MARK: - Outlets and Actions
     
@@ -49,19 +49,20 @@ class MemeTableViewCell: UITableViewCell {
     }
   
     @IBAction func upvoteButtonTapped(_ sender: Any) {
-        if upVoteButtonWasTapped == false {
-            upVoteCount += 1
-            numberOfUpvotes.text = "\(upVoteCount)"
-            upVoteButtonWasTapped = true
-        } else {
-            if upVoteCount >= 1 {
-                upVoteCount -= 1
-                numberOfUpvotes.text = "\(upVoteCount)"
-                upVoteButtonWasTapped = false
-            } else {
-                upVoteButtonWasTapped = false
-            }
-        }
+        delegate?.upVoteButtonTapped(sender: self, hasBeenUpvoted: hasBeenUpvoted)
+//        if upVoteButtonWasTapped == false {
+//            upVoteCount += 1
+//            numberOfUpvotes.text = "\(upVoteCount)"
+//            upVoteButtonWasTapped = true
+//        } else {
+//            if upVoteCount >= 1 {
+//                upVoteCount -= 1
+//                numberOfUpvotes.text = "\(upVoteCount)"
+//                upVoteButtonWasTapped = false
+//            } else {
+//                upVoteButtonWasTapped = false
+//            }
+//        }
     }
     
     @IBAction func reportButtonTapped(_ sender: Any) {
@@ -74,7 +75,7 @@ class MemeTableViewCell: UITableViewCell {
 
 extension MemeTableViewCell {
     
-    func updateViews(meme: Meme) {
+    func updateViews(meme: Meme, hasBeenUpvoted: Bool?) {
         memeImageView.image = meme.image
         numberOfComments.text = "\(meme.comments.count)"
         
@@ -87,6 +88,10 @@ extension MemeTableViewCell {
         facebookButton.layer.borderWidth = 0.5
         twitterButton.layer.borderWidth = 0.5
         
+        numberOfUpvotes.text = "\(meme.thumbsUp)"
+        
+        guard let hasBeenUpvoted = hasBeenUpvoted else { return }
+        self.hasBeenUpvoted = hasBeenUpvoted
     }
 }
 
@@ -102,5 +107,7 @@ protocol MemeTableViewCellDelegate: class{
     func commentButtonTapped(_ sender: MemeTableViewCell)
     
     func reportButtonTapped(sender: MemeTableViewCell)
+    
+    func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool)
 }
 
