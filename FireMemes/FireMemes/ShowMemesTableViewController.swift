@@ -15,6 +15,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     var meme = MemeController.shared.memes
     var destinationVC: CommentsViewController?
     
+    //MARK: - Outlets
+    
     @IBOutlet weak var containerTrailingConstant: NSLayoutConstraint!
     
     //Show memes table view
@@ -118,7 +120,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.dataSource = self
        
 
-        
         //Custom button for Make a Meme button
         createButtonClick.layer.cornerRadius = 7
         createButtonClick.layer.backgroundColor = UIColor(red:52/255 , green: 152/255, blue: 219/255, alpha: 0.8).cgColor
@@ -131,21 +132,18 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         rightSwipe.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(rightSwipe)
         
-        
-        
     }
     
     //viewWillApear
     override func viewWillAppear(_ animated: Bool) {
         
         //Hided navigation bar
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = true
         //Set navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0)
     }
     
-
-   
+    
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
@@ -155,35 +153,19 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     //IB-Actions
     @IBAction func addCommentClicked(_ sender: Any) {
         
-        
     }
   
-
     // MARK: - Table view data source
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      
-        
-        if tableView == self.tableView{
-            return MemeController.shared.memes.count
-        } else {
-            return  comments.count
-        }
-            
-   
+        return MemeController.shared.memes.count
     }
     
-    
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-        
-        if tableView == self.tableView{
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeFeed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
         
-        let meme = MemeController.shared.memes.reversed()[indexPath.row]
+        let meme = MemeController.shared.memes[indexPath.row]
         
         // Loading Animation
         loadingAnimationView.isHidden = true
@@ -192,30 +174,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         cell.delegate = self
         
         return cell
-        } else {
-             guard let cell = tableView.dequeueReusableCell(withIdentifier: "commentsDisplayed", for: indexPath) as? MemeTableViewCell else { return UITableViewCell() }
-            
-                cell.textLabel?.text = comments[indexPath.row]
-            
-            return cell
-        }
-        
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "commentSegue" {
             destinationVC = segue.destination as? CommentsViewController
-        }
-    }
-    
- 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView == self.tableView{
-        return 1
-        } else {
-            return 1
         }
     }
     
@@ -226,15 +189,12 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
     }
-
 }
 
-//MARK: - Location manager delegate functions
+//MARK: MemeTableViewCellDelegate Methods
 
-extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableViewCellDelegate {
+extension ShowMemesTableViewController: MemeTableViewCellDelegate {
 
     //Swipe right gesture regonizer, Hides the comment section when user swipes right
     func swipeRightGesture(swipe: UISwipeGestureRecognizer) {
@@ -249,30 +209,6 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
             break
         }
     }
-
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            myLocation = location
-            
-            if !didFetch {
-                fetch()
-                didFetch = true
-            }
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error with locationManager: \(error.localizedDescription)")
-    }
-    
-    //MARK: - Delegate Methods
     
     //FacebookShare
     func facebookClicked(_ sender: MemeTableViewCell, image: UIImage) {
@@ -322,6 +258,7 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         
         self.present(activityViewController,animated: true,completion: nil)
     }
+    
     //CommentButton tapped
     func commentButtonTapped(_ sender: MemeTableViewCell){
         
@@ -329,6 +266,7 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         UIView.animate(withDuration: 0.6, animations: {
             self.view.layoutIfNeeded()
             })
+        
         guard let newIndexPath = self.tableView.indexPath(for: sender) else { return }
         let meme = MemeController.shared.memes[newIndexPath.row]
         if let destinationVC = self.destinationVC {
@@ -350,5 +288,31 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate, MemeTableView
         alertController.addAction(cancelAction)
         alertController.addAction(yesAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+//MARK: - Location Delegate Methods
+
+extension ShowMemesTableViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            myLocation = location
+            
+            if !didFetch {
+                fetch()
+                didFetch = true
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error with locationManager: \(error.localizedDescription)")
     }
 }

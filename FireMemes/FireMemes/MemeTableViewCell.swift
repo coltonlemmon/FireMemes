@@ -17,11 +17,8 @@ class MemeTableViewCell: UITableViewCell {
     //MARK: - Outlets and Actions
     
     @IBOutlet weak var memeImageView: UIImageView!
-    
     @IBOutlet weak var numberOfComments: UILabel!
-    
     @IBOutlet weak var numberOfUpvotes: UILabel!
-    
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var twitterButton: UIButton!
     
@@ -36,23 +33,18 @@ class MemeTableViewCell: UITableViewCell {
 
     @IBAction func commentButtonTapped(_ sender: Any) {
         delegate?.commentButtonTapped(self)
-        
     }
+    
     @IBAction func facebookButtonTapped(_ sender: Any) {
-        
         delegate?.facebookClicked(self, image: memeImageView.image!)
-    
     }
-    @IBAction func twitterButtonTapped(_ sender: Any) {
-        
-        delegate?.twitterClicked(self, image: memeImageView.image!)
     
+    @IBAction func twitterButtonTapped(_ sender: Any) {
+        delegate?.twitterClicked(self, image: memeImageView.image!)
     }
     
     @IBAction func messageButtonTapped(_ sender: Any) {
-        
         delegate?.messageClicked(self, image: memeImageView.image!)
-
     }
   
     @IBAction func upvoteButtonTapped(_ sender: Any) {

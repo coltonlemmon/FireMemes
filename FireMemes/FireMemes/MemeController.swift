@@ -81,6 +81,7 @@ class MemeController {
             
                 if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
                     self.memes.append(meme)
+                    self.memes.sort { $0.date > $1.date }
                 } else {
                     self.delete(meme)
                 }
