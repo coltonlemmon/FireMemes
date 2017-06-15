@@ -138,7 +138,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewWillAppear(_ animated: Bool) {
         
         //Hided navigation bar
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
         //Set navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0)
     }
