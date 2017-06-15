@@ -170,11 +170,14 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="763-uJ-t24">
-                                <rect key="frame" x="112" y="618" width="167" height="30"/>
+                                <rect key="frame" x="112" y="607" width="167" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgS-mr-IxA">
-                                        <rect key="frame" x="0.0" y="0.0" width="167" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="0.48335830479452052" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="HxX-kT-A9s"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Make A Meme"/>
@@ -184,8 +187,10 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="lgS-mr-IxA" firstAttribute="top" secondItem="763-uJ-t24" secondAttribute="top" id="4Oy-lq-pKw"/>
                                     <constraint firstAttribute="trailing" secondItem="lgS-mr-IxA" secondAttribute="trailing" id="AD1-Z0-krw"/>
-                                    <constraint firstItem="lgS-mr-IxA" firstAttribute="top" secondItem="763-uJ-t24" secondAttribute="top" id="gbl-Rc-APe"/>
+                                    <constraint firstAttribute="height" constant="30" id="ck6-Hw-y22"/>
+                                    <constraint firstAttribute="bottom" secondItem="lgS-mr-IxA" secondAttribute="bottom" id="mQh-JN-pAH"/>
                                     <constraint firstItem="lgS-mr-IxA" firstAttribute="leading" secondItem="763-uJ-t24" secondAttribute="leading" id="slG-9V-LMR"/>
                                 </constraints>
                             </view>
@@ -213,16 +218,14 @@
                             <constraint firstItem="763-uJ-t24" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leadingMargin" constant="96" id="5qk-Hz-18N"/>
                             <constraint firstAttribute="trailing" secondItem="6OP-bg-0eh" secondAttribute="trailing" id="6hA-O0-JHU"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="6OP-bg-0eh" secondAttribute="bottom" id="E1b-k6-6QT"/>
-                            <constraint firstItem="lgS-mr-IxA" firstAttribute="top" secondItem="6OP-bg-0eh" secondAttribute="bottom" constant="-49" id="MLZ-2d-B8M"/>
                             <constraint firstItem="aSc-Cf-m3z" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" id="NFx-H4-tNe"/>
+                            <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="763-uJ-t24" secondAttribute="bottom" constant="30" id="b1j-V3-TWE"/>
                             <constraint firstItem="6OP-bg-0eh" firstAttribute="top" secondItem="cei-ib-895" secondAttribute="top" id="b9E-Bb-KR2"/>
-                            <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="763-uJ-t24" secondAttribute="bottom" constant="19" id="bJ8-BA-JcD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="763-uJ-t24" secondAttribute="trailing" constant="80" id="bMM-0t-rEk"/>
                             <constraint firstItem="6OP-bg-0eh" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leading" id="bOq-Mp-7gK"/>
                             <constraint firstItem="P12-6K-sjL" firstAttribute="centerX" secondItem="6OP-bg-0eh" secondAttribute="centerX" id="d09-G8-inH"/>
                             <constraint firstAttribute="trailing" secondItem="aSc-Cf-m3z" secondAttribute="trailing" constant="-310" id="gLI-Q1-opT"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="aSc-Cf-m3z" secondAttribute="bottom" id="m0O-Dk-N2C"/>
-                            <constraint firstItem="763-uJ-t24" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="554" id="phw-lf-LBV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Fire Memes" id="EUv-w6-j0R"/>
