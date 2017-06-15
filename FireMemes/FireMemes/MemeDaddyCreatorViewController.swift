@@ -152,9 +152,10 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let selectedPhoto = info[UIImagePickerControllerOriginalImage] as! UIImage
-        memeImageView.image = selectedPhoto
-        dismiss(animated: true, completion: nil)
+        
+        guard let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        self.memeImageView.set(image: originalImage, and: self.view.layer.bounds.size)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
