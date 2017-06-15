@@ -13,6 +13,7 @@ class MemeTableViewCell: UITableViewCell {
     
     //Variables
     var upVoteCount = 0
+    var upVoteButtonWasTapped = false
     
     //MARK: - Outlets and Actions
     
@@ -48,8 +49,19 @@ class MemeTableViewCell: UITableViewCell {
     }
   
     @IBAction func upvoteButtonTapped(_ sender: Any) {
-        upVoteCount += 1
-        numberOfUpvotes.text = "\(upVoteCount)"
+        if upVoteButtonWasTapped == false {
+            upVoteCount += 1
+            numberOfUpvotes.text = "\(upVoteCount)"
+            upVoteButtonWasTapped = true
+        } else {
+            if upVoteCount >= 1 {
+                upVoteCount -= 1
+                numberOfUpvotes.text = "\(upVoteCount)"
+                upVoteButtonWasTapped = false
+            } else {
+                upVoteButtonWasTapped = false
+            }
+        }
     }
     
     @IBAction func reportButtonTapped(_ sender: Any) {
