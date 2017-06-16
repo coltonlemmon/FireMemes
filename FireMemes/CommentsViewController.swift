@@ -75,7 +75,7 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
             cell.textLabel?.textColor = UIColor.gray
             cell.backgroundColor = UIColor.white
             cell.layer.borderColor = UIColor.darkGray.cgColor
-            cell.layer.borderWidth = 0.05
+            cell.layer.borderWidth = 0.02
             cell.layer.cornerRadius = 3
             cell.clipsToBounds = true
             
