@@ -100,15 +100,15 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         MemeController.shared.postMeme(meme: meme)
         
         biggerFireView.isHidden = false
-        //timerAction()
+        timerAction()
         
-        let nc = navigationController
-        nc?.popViewController(animated: true)
+//        let nc = navigationController
+//        nc?.popViewController(animated: true)
     }
     
     var timer: Timer!
     func timerAction() {
-        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(endOfWork), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(endOfWork), userInfo: nil, repeats: true)
     }
     func endOfWork() {
         let nc = navigationController

@@ -93,8 +93,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         UserController.shared.checkUserIn()
         
-        
-        
         tableView.isHidden = true
         view.backgroundColor = UIColor.white
         loadingAnimationView.backgroundColor = UIColor.white
@@ -119,14 +117,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.delegate = self
         tableView.dataSource = self
        
-
         //Custom button for Make a Meme button
         createButtonClick.layer.cornerRadius = 7
         createButtonClick.layer.backgroundColor = UIColor(red:255/255 , green: 194/255, blue: 13/255, alpha: 0.8).cgColor
         createButtonClick.layer.borderWidth = 2
         createButtonClick.layer.borderColor = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1.0).cgColor
-        
-    
         
         //Swipe right gesture
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightGesture(swipe:)))
@@ -137,9 +132,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //viewWillApear
     override func viewWillAppear(_ animated: Bool) {
-        
-        //Hided navigation bar
-        self.navigationController?.isNavigationBarHidden = false
         //Set navigation bar color
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 255/255, green: 194/255, blue: 13/255, alpha: 1.0)
     }

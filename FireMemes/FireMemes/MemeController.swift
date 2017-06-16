@@ -124,6 +124,8 @@ class MemeController {
                     self.memes.sort { $0.date > $1.date }
                 } else {
                     self.delete(meme)
+                    guard let index = self.memes.index(of: meme) else { return }
+                    self.memes.remove(at: index)
                 }
             }
             
