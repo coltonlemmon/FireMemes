@@ -35,6 +35,9 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         hideKeyboardWhenTappedAround()
+        
+        //Stop the tableView from displaying empty cells
+        tableView.tableFooterView = UIView()
     }
     
 
