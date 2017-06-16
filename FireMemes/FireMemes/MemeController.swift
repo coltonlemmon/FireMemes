@@ -110,18 +110,17 @@ class MemeController {
     }
     
     //MARK: - CloudKit Stuff
-    func fetch(_ location: CLLocation, radiusInMeters: CGFloat, completion: @escaping ([Meme]?) -> Void) {
+    func fetch(_ location: CLLocation, radiusInMeters: CGFloat) {
         let locationPredicate = NSPredicate(format: "distanceToLocation:fromLocation:(Location,%@) < %f", location, radiusInMeters)
         cloudKitManager.fetchRecordsWithType(Keys.meme, predicate: locationPredicate, recordFetchedBlock: { (record) in }) { (_, records, error) in
 
-            guard let records = records else { completion(nil); return }
+            guard let records = records else { return }
             
             for record in records {
             
                 guard let meme = Meme(record: record) else { return }
             
                 if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
-                    completion([meme])
                     if !self.memes.contains(meme) {
                         self.memes.append(meme)
                     }
@@ -228,4 +227,18 @@ extension MemeController {
         }
     }
 }
+
+//MARK: - Subscriptions
+
+//extension MemeController {
+//    
+//    func subscribeToPushNotifications(completion: @escaping ((_ success: Bool, Error?) -> Void) = { _, _ in }) {
+//        let predicate = NSPredicate(value: true)
+//        
+//        cloudKitManager.subscribe(Keys.meme, predicate: predicate, subscriptionID: "allMemes", contentAvailable: true, alertBody: "New Meme Posted!", options: .firesOnRecordCreation) { (subscription, error) in
+//            let success = subscription != nil
+//            completion(success, error)
+//        }
+//    }
+//}
 

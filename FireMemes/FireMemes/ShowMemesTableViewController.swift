@@ -73,13 +73,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func fetch() {
         guard let myLocation = myLocation else { return }
-        MemeController.shared.fetch(myLocation, radiusInMeters: 30000) { (meme) in
-            if meme == nil {
-                self.loadingMemesLabel.text = "No fresh memes in your area. Click the button below to make one!"
-                self.loadingMemesLabel.textColor = .red
-                
-            }
-        }
+        MemeController.shared.fetch(myLocation, radiusInMeters: 30000)
         didFetch = true
     }
     
