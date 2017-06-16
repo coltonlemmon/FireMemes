@@ -36,8 +36,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-QK-PF9">
                                                     <rect key="frame" x="0.0" y="-20" width="375" height="388"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Default" translatesAutoresizingMaskIntoConstraints="NO" id="skf-zH-oqf">
-                                                            <rect key="frame" x="0.0" y="18" width="375" height="330"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default" translatesAutoresizingMaskIntoConstraints="NO" id="skf-zH-oqf">
+                                                            <rect key="frame" x="0.0" y="18" width="375" height="326"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZr-jB-LqM">
                                                             <rect key="frame" x="8" y="352" width="30" height="30"/>
@@ -196,6 +196,15 @@
                                     <constraint firstItem="lgS-mr-IxA" firstAttribute="leading" secondItem="763-uJ-t24" secondAttribute="leading" id="slG-9V-LMR"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Memes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvk-Ub-0f6">
+                                <rect key="frame" x="126.5" y="364" width="121.5" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="hBV-a1-KSs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P12-6K-sjL" customClass="LoadingAnimation" customModule="FireMemes" customModuleProvider="target">
                                 <rect key="frame" x="145" y="264" width="85" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -216,9 +225,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Cvk-Ub-0f6" firstAttribute="centerX" secondItem="cei-ib-895" secondAttribute="centerX" id="2P9-Se-NfB"/>
                             <constraint firstItem="P12-6K-sjL" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="200" id="5H8-bU-QnN"/>
                             <constraint firstItem="763-uJ-t24" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leadingMargin" constant="96" id="5qk-Hz-18N"/>
                             <constraint firstAttribute="trailing" secondItem="6OP-bg-0eh" secondAttribute="trailing" id="6hA-O0-JHU"/>
+                            <constraint firstItem="Cvk-Ub-0f6" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="300" id="Cje-b5-a81"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="6OP-bg-0eh" secondAttribute="bottom" id="E1b-k6-6QT"/>
                             <constraint firstItem="aSc-Cf-m3z" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" id="NFx-H4-tNe"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="763-uJ-t24" secondAttribute="bottom" constant="30" id="b1j-V3-TWE"/>
@@ -235,6 +246,7 @@
                         <outlet property="containerTrailingConstant" destination="gLI-Q1-opT" id="y4q-0g-BVo"/>
                         <outlet property="createButtonClick" destination="lgS-mr-IxA" id="pz3-FZ-3YX"/>
                         <outlet property="loadingAnimationView" destination="P12-6K-sjL" id="5D3-Z2-TE2"/>
+                        <outlet property="loadingMemesLabel" destination="Cvk-Ub-0f6" id="7sU-sL-0cv"/>
                         <outlet property="makeAMemeButton" destination="lgS-mr-IxA" id="bJu-0B-k9c"/>
                         <outlet property="tableView" destination="6OP-bg-0eh" id="nj3-7x-caA"/>
                     </connections>

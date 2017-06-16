@@ -27,6 +27,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
+    @IBOutlet weak var loadingMemesLabel: UILabel!
     
     //MARK: - Pull to Refresh
     lazy var refreshControl: UIRefreshControl = {
@@ -162,6 +163,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         // Loading Animation
         loadingAnimationView.isHidden = true
+        loadingMemesLabel.isHidden = true
         tableView.isHidden = false
         cell.updateViews(meme: meme, hasBeenUpvoted: nil)
         cell.delegate = self
