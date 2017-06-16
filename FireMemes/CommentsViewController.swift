@@ -10,6 +10,9 @@ import UIKit
 
 class CommentsViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
+    //Mark: Variables/Constants
+    let cellSpacingHeight: CGFloat = 7
+    
     //MARK: - Outlets and Actions
     
     @IBOutlet weak var tableView: UITableView!
@@ -35,6 +38,10 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         hideKeyboardWhenTappedAround()
+        
+        //Stop the tableView from displaying empty cells
+        tableView.tableFooterView = UIView()
+        tableView.separatorColor = UIColor.clear
     }
     
 
@@ -53,6 +60,7 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         guard let meme = meme else { return cell }
         
         
+        
         let comment = meme.comments[indexPath.row]
         if comment != "" {
             //commentLabel.text = comment
@@ -62,9 +70,23 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             cell.textLabel?.sizeToFit()
+            
+            //Stylize comments
+            cell.textLabel?.textColor = UIColor.gray
+            cell.backgroundColor = UIColor.white
+            cell.layer.borderColor = UIColor.darkGray.cgColor
+            cell.layer.borderWidth = 0.02
+            cell.layer.cornerRadius = 3
+            cell.clipsToBounds = true
+            
         }
         return cell
        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
 }
 
@@ -76,17 +98,6 @@ extension UITableViewController {
     }
    override func dismissKeyboard() {
         view.endEditing(true)
-    }
-    
-    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
-        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.font = font
-        label.text = text
-        label.sizeToFit()
-        
-        return label.frame.height
     }
 }
     
