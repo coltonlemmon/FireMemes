@@ -36,7 +36,10 @@ class MemeController {
         guard let user = UserController.shared.currentUser else { return nil }
         guard let data = UIImagePNGRepresentation(image) else { return nil }
         
-        let meme = Meme(imageData: data, image: image, location: location, creatorRef: user.ckReference, memeOwner: user)
+        guard let userID = UserController.shared.currentUser?.ckRecordID else { return nil }
+        let userReference = CKReference(recordID: userID, action: .deleteSelf)
+        
+        let meme = Meme(imageData: data, image: image, location: location, creatorRef: user.ckReference, memeOwner: user, likers: [userReference])
         return meme
     }
     
@@ -107,17 +110,18 @@ class MemeController {
     }
     
     //MARK: - CloudKit Stuff
-    func fetch(_ location: CLLocation, radiusInMeters: CGFloat) {
+    func fetch(_ location: CLLocation, radiusInMeters: CGFloat, completion: @escaping ([Meme]?) -> Void) {
         let locationPredicate = NSPredicate(format: "distanceToLocation:fromLocation:(Location,%@) < %f", location, radiusInMeters)
         cloudKitManager.fetchRecordsWithType(Keys.meme, predicate: locationPredicate, recordFetchedBlock: { (record) in }) { (_, records, error) in
 
-            guard let records = records else { return }
+            guard let records = records else { completion(nil); return }
             
             for record in records {
             
                 guard let meme = Meme(record: record) else { return }
             
                 if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
+                    completion([meme])
                     if !self.memes.contains(meme) {
                         self.memes.append(meme)
                     }
@@ -145,6 +149,31 @@ class MemeController {
         meme.flagCount += 1
         UserController.shared.currentUser?.flagCount += 1
         CloudKitManager.shared.modifyFlagCount(meme)
+    }
+    
+    func userLiked(_ meme: Meme) {
+        
+        guard var newLikers = meme.likers else { return }
+        guard let ownerID = meme.memeOwner?.ckRecordID else { return }
+        let ownerReference = CKReference(recordID: ownerID, action: .deleteSelf)
+        guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+        let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+        
+        if !newLikers.contains(likerReference) {
+            newLikers.append(likerReference)
+            cloudKitManager.increase(meme, with: newLikers)
+        } else if likerReference == ownerReference {
+            var checker = 0
+            for liker in newLikers {
+                if liker == ownerReference {
+                    checker += 1
+                }
+            }
+            if checker == 1 {
+                newLikers.append(ownerReference)
+                cloudKitManager.increase(meme, with: newLikers)
+            }
+        }
     }
     
     func TodayIsCloseEnoughTo(memeDate: Date) -> Bool {

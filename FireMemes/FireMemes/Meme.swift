@@ -27,6 +27,8 @@ class Meme: CloudKitSync {
     var flagCount: Int
     var isBanned = false
     
+    var likers: [CKReference]?
+    
     let date: Date
     let identifier: String
     var thumbsUp: Int
@@ -36,7 +38,7 @@ class Meme: CloudKitSync {
     var ckReference: CKReference?
     var recordType: String { return Keys.meme }
     
-    init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorRef: CKReference?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false) {
+    init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorRef: CKReference?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false, likers: [CKReference]) {
         self.imageData = imageData
         self.date = date
         self.identifier = id
@@ -46,6 +48,8 @@ class Meme: CloudKitSync {
         
         self.memeOwner = memeOwner
         self.isBanned = isBanned
+        
+        self.likers = likers
         
         self.memeOwnerReference = creatorRef
         
@@ -66,8 +70,9 @@ class Meme: CloudKitSync {
             let flagCount = record[Keys.flag] as? Int,
             let isBanned = record[Keys.isMemeBaned] as? Bool,
             let memeOwner = record[Keys.owner] as? CKReference,
-            let location = record[Keys.location] as? CLLocation else { return nil }
-        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned)
+            let location = record[Keys.location] as? CLLocation,
+            let likers = record["likers"] as? [CKReference] else { return nil }
+        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned, likers: likers)
         cloudKitRecordID = record.recordID
     }
     
@@ -112,6 +117,8 @@ extension CKRecord {
                 url = fileName
             }
         }
+        
+        self["likers"] = meme.likers as CKRecordValue?
         
         self[Keys.isMemeBaned] = meme.isBanned as CKRecordValue?
         self[Keys.flag] = meme.flagCount as CKRecordValue?

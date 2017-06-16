@@ -285,6 +285,21 @@ class CloudKitManager {
         
     }
     
+    //Gavin added
+    func increase(_ meme: Meme, with likers: [CKReference]) {
+        guard let memeID = meme.cloudKitRecordID else { return }
+        publicDatabase.fetch(withRecordID: memeID) { (record, error) in
+            guard let record = record else { return }
+            record["likers"] = likers as CKRecordValue?
+            
+            self.publicDatabase.save(record, completionHandler: { (record, error) in
+                if error != nil || record == nil {
+                    print("Error saving meme likers")
+                }
+            })
+        }
+    }
+    
     func verify(_ userRecord: CKRecord) {
         
         publicDatabase.fetch(withRecordID: userRecord.recordID) { (record, error) in
