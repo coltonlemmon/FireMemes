@@ -14,7 +14,6 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextView: UITextView!
-    
     @IBAction func postCommentButton(_ sender: Any) {
         guard let meme = meme else { return }
         guard let comment = commentTextView.text, !comment.isEmpty else { return }
@@ -36,6 +35,8 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         hideKeyboardWhenTappedAround()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
     }
     
 
@@ -52,6 +53,7 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
 
         // Configure the cell...
         guard let meme = meme else { return cell }
+        
         
         let comment = meme.comments[indexPath.row]
         if comment != "" {
