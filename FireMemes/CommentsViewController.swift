@@ -35,8 +35,6 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         hideKeyboardWhenTappedAround()
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 140
     }
     
 
