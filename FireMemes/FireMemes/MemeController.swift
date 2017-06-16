@@ -131,6 +131,7 @@ class MemeController {
             if let error = error {
                 print("Error fetching meme: \(error.localizedDescription)")
             }
+            completion([])
         }
     }
     

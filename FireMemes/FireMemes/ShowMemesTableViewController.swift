@@ -75,7 +75,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         guard let myLocation = myLocation else { return }
         MemeController.shared.fetch(myLocation, radiusInMeters: 30000) { (meme) in
             if meme.isEmpty {
-                self.loadingAnimationLabel.text = "No memes in your area"
+                DispatchQueue.main.async {
+                    self.loadingAnimationLabel.textColor = .red
+                    self.loadingAnimationLabel.numberOfLines = 0
+                    self.loadingAnimationLabel.text = "No memes in your area. Be the first to post today!"
+                }
             }
         }
         didFetch = true
