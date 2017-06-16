@@ -57,6 +57,8 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         if comment != "" {
             //commentLabel.text = comment
             cell.textLabel?.text = comment
+            
+            //Multi line comments
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             cell.textLabel?.sizeToFit()
