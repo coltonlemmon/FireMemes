@@ -16,6 +16,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     @IBOutlet weak var postMemeButton: UIButton!
     @IBOutlet weak var addTextButton: UIButton!
     @IBOutlet weak var fireView: UIView!
+    @IBOutlet weak var biggerFireView: FireAnimation!
     
     //MARK: picker properties 
     
@@ -40,6 +41,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         let fireAnimation = FireAnimation()
         
         fireView = fireAnimation
+        
+        biggerFireView.isHidden = true
         
         pickerData = [colorData, fontData]
         
@@ -84,7 +87,8 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
 
     //MARK: ACTIONS
-
+    
+    var fireAnimationForPicker = FireAnimationForPicker()
     
     @IBAction func postMeme(_ sender: Any) {
         guard (memeImageView.image != nil) else { return }
@@ -95,10 +99,23 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         guard let meme = MemeController.shared.createMeme(image: image, location: location) else { return }
         MemeController.shared.postMeme(meme: meme)
         
+        biggerFireView.isHidden = false
+        //timerAction()
+        
         let nc = navigationController
         nc?.popViewController(animated: true)
     }
     
+    var timer: Timer!
+    func timerAction() {
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(endOfWork), userInfo: nil, repeats: true)
+    }
+    func endOfWork() {
+        let nc = navigationController
+        nc?.popViewController(animated: true)
+        timer.invalidate()
+        timer = nil
+    }
 
     @IBAction func addText(_ sender: Any) {
         guard memeImageView.image != nil else { return }

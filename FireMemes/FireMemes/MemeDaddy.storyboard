@@ -70,6 +70,11 @@
                                     <constraint firstAttribute="height" constant="51" id="hze-NF-Z5q"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyi-gC-XxT" customClass="FireAnimation" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="162" y="548" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
@@ -92,6 +97,7 @@
                     <navigationItem key="navigationItem" title="Meme Creator" id="MQb-az-aH2" userLabel="Meme Creator"/>
                     <connections>
                         <outlet property="addTextButton" destination="v0C-Ev-f0K" id="7To-UC-wdM"/>
+                        <outlet property="biggerFireView" destination="dyi-gC-XxT" id="KL2-jX-NBc"/>
                         <outlet property="fireView" destination="fUo-cd-nck" id="dG1-qT-I5E"/>
                         <outlet property="memeImageView" destination="rvw-Vm-whk" id="P0m-3M-Tgo"/>
                         <outlet property="postMemeButton" destination="j3L-lt-VDl" id="T2v-Az-ISX"/>
