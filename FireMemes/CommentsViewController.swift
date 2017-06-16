@@ -57,8 +57,12 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         if comment != "" {
             //commentLabel.text = comment
             cell.textLabel?.text = comment
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.textLabel?.sizeToFit()
         }
         return cell
+       
     }
 }
 
@@ -70,6 +74,17 @@ extension UITableViewController {
     }
    override func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        
+        return label.frame.height
     }
 }
     
