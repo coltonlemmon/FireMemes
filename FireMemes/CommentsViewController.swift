@@ -13,17 +13,18 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
     //MARK: - Outlets and Actions
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var commentTextField: UITextField!
-    
+    @IBOutlet weak var commentTextView: UITextView!
     @IBAction func postCommentButton(_ sender: Any) {
         guard let meme = meme else { return }
-        guard let comment = commentTextField.text, !comment.isEmpty else { return }
-        commentTextField.text = ""
+        guard let comment = commentTextView.text, !comment.isEmpty else { return }
+        commentTextView.text = ""
         MemeController.shared.addCommentToMeme(meme: meme, comment: comment)
         tableView.reloadData()
     }
     
-    //MARK: - Internal Properties
+   
+    
+//MARK: - Internal Properties
     
     var meme: Meme?
     
@@ -34,6 +35,8 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         hideKeyboardWhenTappedAround()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
     }
     
 
@@ -50,6 +53,7 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
 
         // Configure the cell...
         guard let meme = meme else { return cell }
+        
         
         let comment = meme.comments[indexPath.row]
         if comment != "" {
