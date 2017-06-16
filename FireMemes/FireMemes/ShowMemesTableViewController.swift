@@ -77,8 +77,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
             if meme.isEmpty {
                 DispatchQueue.main.async {
                     self.loadingAnimationLabel.textColor = .red
-                    self.loadingAnimationLabel.numberOfLines = 0
-                    self.loadingAnimationLabel.text = "No memes in your area. Be the first to post today!"
+                    self.loadingAnimationLabel.numberOfLines = 2
+                    self.loadingAnimationLabel.text = "No memes in your area"
                 }
             }
         }
@@ -102,7 +102,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         UserController.shared.checkUserIn()
         
-        
+        loadingAnimationLabel.textColor = UIColor(red: 255/255, green: 194/255, blue: 13/255, alpha: 1.0)
         
         tableView.isHidden = true
         view.backgroundColor = UIColor.white
