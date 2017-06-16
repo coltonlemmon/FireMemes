@@ -27,6 +27,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
+    @IBOutlet weak var loadingAnimationLabel: UILabel!
     
     //MARK: - Pull to Refresh
     lazy var refreshControl: UIRefreshControl = {
@@ -72,7 +73,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func fetch() {
         guard let myLocation = myLocation else { return }
-        MemeController.shared.fetch(myLocation, radiusInMeters: 30000) // We can change radius
+        MemeController.shared.fetch(myLocation, radiusInMeters: 30000) { (meme) in
+            if meme.isEmpty {
+                self.loadingAnimationLabel.text = "No memes in your area"
+            }
+        }
         didFetch = true
     }
     
@@ -170,6 +175,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         // Loading Animation
         loadingAnimationView.isHidden = true
+        loadingAnimationLabel.isHidden = true
         tableView.isHidden = false
         cell.updateViews(meme: meme, hasBeenUpvoted: nil)
         cell.delegate = self

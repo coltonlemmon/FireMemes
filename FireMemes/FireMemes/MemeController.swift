@@ -107,19 +107,20 @@ class MemeController {
     }
     
     //MARK: - CloudKit Stuff
-    func fetch(_ location: CLLocation, radiusInMeters: CGFloat) {
+    func fetch(_ location: CLLocation, radiusInMeters: CGFloat, completion: @escaping ([Meme]) -> Void) {
         let locationPredicate = NSPredicate(format: "distanceToLocation:fromLocation:(Location,%@) < %f", location, radiusInMeters)
         cloudKitManager.fetchRecordsWithType(Keys.meme, predicate: locationPredicate, recordFetchedBlock: { (record) in }) { (_, records, error) in
 
-            guard let records = records else { return }
+            guard let records = records else { completion([]); return }
             
             for record in records {
-            
+                
                 guard let meme = Meme(record: record) else { return }
             
                 if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
                     if !self.memes.contains(meme) {
                         self.memes.append(meme)
+                        completion(self.memes)
                     }
                     self.memes.sort { $0.date > $1.date }
                 } else {

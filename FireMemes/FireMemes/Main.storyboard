@@ -213,6 +213,15 @@
                                     <segue destination="faQ-M2-raI" kind="embed" identifier="commentSegue" id="wFN-Mb-oT1"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Memes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFF-Vy-pPj">
+                                <rect key="frame" x="126.5" y="364" width="121.5" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="ZTw-VS-br9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -221,11 +230,13 @@
                             <constraint firstAttribute="trailing" secondItem="6OP-bg-0eh" secondAttribute="trailing" id="6hA-O0-JHU"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="6OP-bg-0eh" secondAttribute="bottom" id="E1b-k6-6QT"/>
                             <constraint firstItem="aSc-Cf-m3z" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" id="NFx-H4-tNe"/>
+                            <constraint firstItem="mFF-Vy-pPj" firstAttribute="centerX" secondItem="cei-ib-895" secondAttribute="centerX" id="UDS-xr-wDu"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="763-uJ-t24" secondAttribute="bottom" constant="30" id="b1j-V3-TWE"/>
                             <constraint firstItem="6OP-bg-0eh" firstAttribute="top" secondItem="cei-ib-895" secondAttribute="top" id="b9E-Bb-KR2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="763-uJ-t24" secondAttribute="trailing" constant="80" id="bMM-0t-rEk"/>
                             <constraint firstItem="6OP-bg-0eh" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leading" id="bOq-Mp-7gK"/>
                             <constraint firstItem="P12-6K-sjL" firstAttribute="centerX" secondItem="6OP-bg-0eh" secondAttribute="centerX" id="d09-G8-inH"/>
+                            <constraint firstItem="mFF-Vy-pPj" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="300" id="fC2-6c-Aiq"/>
                             <constraint firstAttribute="trailing" secondItem="aSc-Cf-m3z" secondAttribute="trailing" constant="-310" id="gLI-Q1-opT"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="aSc-Cf-m3z" secondAttribute="bottom" id="m0O-Dk-N2C"/>
                         </constraints>
@@ -234,6 +245,7 @@
                     <connections>
                         <outlet property="containerTrailingConstant" destination="gLI-Q1-opT" id="y4q-0g-BVo"/>
                         <outlet property="createButtonClick" destination="lgS-mr-IxA" id="pz3-FZ-3YX"/>
+                        <outlet property="loadingAnimationLabel" destination="mFF-Vy-pPj" id="PVD-d0-5Ye"/>
                         <outlet property="loadingAnimationView" destination="P12-6K-sjL" id="5D3-Z2-TE2"/>
                         <outlet property="makeAMemeButton" destination="lgS-mr-IxA" id="bJu-0B-k9c"/>
                         <outlet property="tableView" destination="6OP-bg-0eh" id="nj3-7x-caA"/>
