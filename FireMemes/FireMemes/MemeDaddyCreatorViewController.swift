@@ -92,6 +92,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     @IBAction func postMeme(_ sender: Any) {
         guard (memeImageView.image != nil) else { return }
+        guard (memeImageView.image != UIImage(named: "addImage")) else { return }
         self.locationManager.requestLocation()
         let image = memeImageView.makeImageFromView()
         
@@ -102,9 +103,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
         biggerFireView.isHidden = false
         timerAction()
-        
-//        let nc = navigationController
-//        nc?.popViewController(animated: true)
     }
     
     var timer: Timer!
