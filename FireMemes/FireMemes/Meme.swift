@@ -20,7 +20,6 @@ class Meme: CloudKitSync {
     }
     
     //for verification of flags, to keep
-    //the user in check...
     
     var memeOwner: User?
     var memeOwnerReference: CKReference?
