@@ -27,7 +27,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
-    @IBOutlet weak var loadingMemesLabel: UILabel!
+    @IBOutlet weak var loadingAnimationLabel: UILabel!
     
     //MARK: - Pull to Refresh
     lazy var refreshControl: UIRefreshControl = {
@@ -73,7 +73,15 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func fetch() {
         guard let myLocation = myLocation else { return }
-        MemeController.shared.fetch(myLocation, radiusInMeters: 30000)
+        MemeController.shared.fetch(myLocation, radiusInMeters: 5000000) { (meme) in
+            if meme.isEmpty {
+                DispatchQueue.main.async {
+                    self.loadingAnimationLabel.textColor = .red
+                    self.loadingAnimationLabel.numberOfLines = 2
+                    self.loadingAnimationLabel.text = "No memes in your area"
+                }
+            }
+        }
         didFetch = true
     }
     
@@ -93,6 +101,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         setupView()
         
         UserController.shared.checkUserIn()
+        
+        loadingAnimationLabel.textColor = UIColor(red: 255/255, green: 194/255, blue: 13/255, alpha: 1.0)
         
         tableView.isHidden = true
         view.backgroundColor = UIColor.white
@@ -118,6 +128,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tableView.delegate = self
         tableView.dataSource = self
        
+
         //Custom button for Make a Meme button
         createButtonClick.layer.cornerRadius = 7
         createButtonClick.layer.backgroundColor = UIColor(red:255/255 , green: 194/255, blue: 13/255, alpha: 0.8).cgColor
@@ -163,7 +174,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         // Loading Animation
         loadingAnimationView.isHidden = true
-        loadingMemesLabel.isHidden = true
+        loadingAnimationLabel.isHidden = true
         tableView.isHidden = false
         cell.updateViews(meme: meme, hasBeenUpvoted: nil)
         cell.delegate = self

@@ -193,10 +193,13 @@
 				5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */,
 				5914E6E31EE87562007D9C81 /* ShowMemesTableViewController.swift */,
 				3B2C86321EEB0FC600FDE53D /* MemeImageView.swift */,
+<<<<<<< HEAD
+=======
 				4DA2D7DC1EEA3023006D056D /* LoadingAnimation.swift */,
 				4DE80D811EEF6FEE00A745B8 /* FireAnimation.swift */,
 				4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */,
 				4D1BFA201EF4849C00D440A9 /* BigFireAnimation.swift */,
+>>>>>>> fd6eb42ca85e66d9538960600255b10776971215
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
