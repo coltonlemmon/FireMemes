@@ -84,7 +84,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         postMemeButton.layer.cornerRadius = 15
         addTextButton.layer.cornerRadius = 15
     }
-    
 
     //MARK: ACTIONS
     

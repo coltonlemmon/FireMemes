@@ -194,6 +194,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
             destinationVC = segue.destination as? CommentsViewController
             destinationVC?.vc = self
         }
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
     
     func setupView() {
