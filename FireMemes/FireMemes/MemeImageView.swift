@@ -10,6 +10,8 @@ import UIKit
 
 class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelegate, UITextViewDelegate {
     
+    //MARK: - Internal Properties
+    
     let memeText = UITextField(frame: CGRect(x: -200, y: 0, width: 700, height: 30))
     
     var memeTextFields: [UITextField] = []
@@ -26,12 +28,13 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         }
     }
     
+    //MARK: - Touch Methods
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard touchCount != 0 else { touchCount += 1; return}
     }
     
     func userDragged(_ gesture: UIPanGestureRecognizer) {
-        
         var draggedText = UITextField()
         let touchPoint = gesture.location(in: self)
         
@@ -52,32 +55,26 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         } else {
             draggedText.center = gesture.location(in: self)
         }
-        
-        
     }
     
     func userPinched(_ sender: UIPinchGestureRecognizer) {
-        
         guard let transform = sender.view?.transform else { return }
         
         sender.view?.transform = transform.scaledBy(x: sender.scale, y: sender.scale)
         sender.scale = 1
     }
     
-    //this is the first function that's called after the user 
-    //chooses an image
+    //MARK: - Textfield Methods
     
     func addTextField() {
-        
         contentMode = .scaleToFill
         backgroundColor = .white
         hideKeyboardWhenTappedAround()
         
         memeText.delegate = self
-        
         memeText.textAlignment = .center
         memeText.backgroundColor = .clear
-        memeText.text = "Enter text here"
+        memeText.text = ""
         memeText.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)
         memeText.textColor = .black
         memeText.isUserInteractionEnabled = true
@@ -92,8 +89,6 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         
         memeTextFields.append(memeText)
     }
-    
-    
     
     func addText() {
         let newText = UITextField(frame: CGRect(x: -200, y: 0, width: 700, height: 30))
@@ -115,15 +110,22 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         memeTextFields.append(newText)
     }
     
-    //TextField Delegate method
+    func updateTextForMemeWith(font: UIFont?, color: UIColor?) {
+        for textField in memeTextFields {
+            textField.textColor = color
+            textField.font = font
+        }
+    }
+    
+    //MARK: - Textfield delegate Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.endEditing(true)
         return true
     }
     
+    //MARK: - Image Methods
     
     func makeImageFromView() -> UIImage {
-        
         //takes away the cursor
         memeText.tintColor = .clear
         
@@ -132,12 +134,6 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
             self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
         }
         return image
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
     }
     
     func set(image: UIImage, and size: CGSize) {
@@ -152,21 +148,14 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
     }
 
     func redrawImageWithTextAt(point: CGPoint) {
-        
         self.image = originalImage
         let image = makeImageFromView()
         self.image = image
     }
-    
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Maybe fix this
-    func updateTextForMemeWith(font: UIFont?, color: UIColor?) {
-        for textField in memeTextFields {
-            textField.textColor = color
-            textField.font = font
-        }
-    }
-    
+
 }
+
+//MARK: - HideKeyboard extension
 
 extension UIView {
     func hideKeyboardWhenTappedAround() {
