@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -221,15 +222,16 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Cvk-Ub-0f6" firstAttribute="centerX" secondItem="cei-ib-895" secondAttribute="centerX" id="2P9-Se-NfB"/>
+                            <constraint firstAttribute="centerX" secondItem="cei-ib-895" secondAttribute="centerX" id="2P9-Se-NfB"/>
                             <constraint firstItem="P12-6K-sjL" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="200" id="5H8-bU-QnN"/>
                             <constraint firstItem="763-uJ-t24" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leadingMargin" constant="96" id="5qk-Hz-18N"/>
                             <constraint firstAttribute="trailing" secondItem="6OP-bg-0eh" secondAttribute="trailing" id="6hA-O0-JHU"/>
-                            <constraint firstItem="Cvk-Ub-0f6" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="300" id="Cje-b5-a81"/>
                             <constraint firstItem="hSw-Z4-w4G" firstAttribute="top" secondItem="6OP-bg-0eh" secondAttribute="bottom" id="E1b-k6-6QT"/>
                             <constraint firstItem="aSc-Cf-m3z" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" id="NFx-H4-tNe"/>
                             <constraint firstItem="mFF-Vy-pPj" firstAttribute="top" secondItem="P12-6K-sjL" secondAttribute="bottom" constant="30" id="Ofs-OY-RCM"/>
@@ -249,7 +251,6 @@
                         <outlet property="createButtonClick" destination="lgS-mr-IxA" id="pz3-FZ-3YX"/>
                         <outlet property="loadingAnimationLabel" destination="mFF-Vy-pPj" id="PVD-d0-5Ye"/>
                         <outlet property="loadingAnimationView" destination="P12-6K-sjL" id="5D3-Z2-TE2"/>
-                        <outlet property="loadingMemesLabel" destination="Cvk-Ub-0f6" id="7sU-sL-0cv"/>
                         <outlet property="makeAMemeButton" destination="lgS-mr-IxA" id="bJu-0B-k9c"/>
                         <outlet property="tableView" destination="6OP-bg-0eh" id="nj3-7x-caA"/>
                     </connections>

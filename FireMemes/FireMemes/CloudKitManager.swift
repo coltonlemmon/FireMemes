@@ -246,7 +246,7 @@ class CloudKitManager {
     
     func modifyFlagCount(_ meme: Meme) {
         
-        guard let memeID = meme.ckRecordID else { return }
+        guard let memeID = meme.cloudKitRecordID else { return }
         
         publicDatabase.fetch(withRecordID: memeID) { (record, error) in
             
@@ -262,7 +262,6 @@ class CloudKitManager {
                 record[Keys.isMemeBaned] = isBanned as CKRecordValue
                 //delete the record, but i set the isBanned boolean value just in case
                 self.deleteRecordWithID(record.recordID, completion: { (_, _) in})
-                
                 
                 guard let userID = record[Keys.owner] as? CKRecordID else { return }
                 

@@ -59,11 +59,8 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         // Configure the cell...
         guard let meme = meme else { return cell }
         
-        
-        
         let comment = meme.comments[indexPath.row]
         if comment != "" {
-            //commentLabel.text = comment
             cell.textLabel?.text = comment
             
             //Multi line comments
@@ -78,12 +75,10 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
             cell.layer.borderWidth = 0.02
             cell.layer.cornerRadius = 3
             cell.clipsToBounds = true
-            
+
         }
         return cell
-       
     }
-    
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
