@@ -37,6 +37,7 @@ class MemeController {
         guard let data = UIImagePNGRepresentation(image) else { return nil }
         
         let meme = Meme(imageData: data, image: image, location: location, creatorRef: user.ckReference, memeOwner: user)
+        meme.comments.append("")
         return meme
     }
     

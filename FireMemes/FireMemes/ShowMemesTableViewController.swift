@@ -159,6 +159,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         let meme = MemeController.shared.memes.reversed()[indexPath.row]
         
+        MemeController.shared.flag(meme)
+        
+        print("record: \(String(describing: meme.cloudKitRecordID))")
+        print("flag count: \(meme.flagCount)")
+        
         // Loading Animation
         loadingAnimationView.isHidden = true
         tableView.isHidden = false
