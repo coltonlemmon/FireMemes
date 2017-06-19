@@ -96,15 +96,14 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
     
     
     func addText() {
-        
         let newText = UITextField(frame: CGRect(x: -200, y: 0, width: 700, height: 30))
         
         newText.delegate = self
         newText.textAlignment = .center
         newText.backgroundColor = .clear
-        newText.text = "fire meme"
+        newText.text = "Enter text here"
         newText.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)
-        newText.textColor = .white
+        newText.textColor = .black
         
         self.addSubview(newText)
         
@@ -136,12 +135,9 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-       
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        memeText.layer.position = self.center
     }
     
     func set(image: UIImage, and size: CGSize) {
