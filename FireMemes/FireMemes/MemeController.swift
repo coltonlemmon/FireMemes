@@ -44,12 +44,12 @@ class MemeController {
     }
     
     func postMeme(meme: Meme) {
-        memes.insert(meme, at: 0)
         self.saveUsingCloudKit(record: CKRecord(meme)) { (error) in
             if let error = error {
                 print("Error saving to cloudKit \(error.localizedDescription)")
             }
         }
+        memes.insert(meme, at: 0)
     }
     
     func addCommentToMeme(meme: Meme, comment: String) {
