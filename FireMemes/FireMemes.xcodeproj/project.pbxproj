@@ -78,6 +78,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D1BFA401EF8261100D440A9 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				4DA2D7DC1EEA3023006D056D /* LoadingAnimation.swift */,
+				4DE80D811EEF6FEE00A745B8 /* FireAnimation.swift */,
+				4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
 		4D4A88E91EE5B208004A2AC3 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 				59446AF81EF03AE200C0B1DD /* fire2.png */,
 				4DA2D7D71EE8A4A2006D056D /* Storyboards */,
 				5914E6EB1EE877F9007D9C81 /* ViewControllers */,
+				4D1BFA401EF8261100D440A9 /* Animation */,
 				4D4A89091EE5B586004A2AC3 /* Model */,
 				4D4A890A1EE5B7E9004A2AC3 /* ModelControllers */,
 				4D4A890D1EE5BA21004A2AC3 /* CloudKitManager */,
@@ -177,9 +188,6 @@
 				5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */,
 				5914E6E31EE87562007D9C81 /* ShowMemesTableViewController.swift */,
 				3B2C86321EEB0FC600FDE53D /* MemeImageView.swift */,
-				4DA2D7DC1EEA3023006D056D /* LoadingAnimation.swift */,
-				4DE80D811EEF6FEE00A745B8 /* FireAnimation.swift */,
-				4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

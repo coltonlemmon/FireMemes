@@ -280,7 +280,7 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         
         if localHasBeenUpvoted == false {
             upVoteCount += 1
-            MemeController.shared.addUpvoteToMeme(meme: meme)
+            MemeController.shared.userLiked(meme)
             localHasBeenUpvoted = true
             sender.updateViews(meme: meme, hasBeenUpvoted: localHasBeenUpvoted)
         } else {
