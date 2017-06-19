@@ -77,7 +77,7 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         
         memeText.textAlignment = .center
         memeText.backgroundColor = .clear
-        memeText.text = "fire meme"
+        memeText.text = "Enter text here"
         memeText.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)
         memeText.textColor = .black
         memeText.isUserInteractionEnabled = true
@@ -114,6 +114,12 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(userPinched(_:)))
         newText.addGestureRecognizer(pinchGesture)
         memeTextFields.append(newText)
+    }
+    
+    //TextField Delegate method
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return true
     }
     
     
