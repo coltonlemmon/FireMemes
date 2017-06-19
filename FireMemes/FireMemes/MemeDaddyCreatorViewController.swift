@@ -84,7 +84,6 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         postMemeButton.layer.cornerRadius = 15
         addTextButton.layer.cornerRadius = 15
     }
-    
 
     //MARK: ACTIONS
     
@@ -92,18 +91,17 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
     
     @IBAction func postMeme(_ sender: Any) {
         guard (memeImageView.image != nil) else { return }
+        guard (memeImageView.image != UIImage(named: "addImage")) else { return }
         self.locationManager.requestLocation()
         let image = memeImageView.makeImageFromView()
         
         guard let location = myLocation else { return }
         guard let meme = MemeController.shared.createMeme(image: image, location: location) else { return }
         MemeController.shared.postMeme(meme: meme)
+        MemeController.shared.memes.insert(meme, at: 0)
         
         biggerFireView.isHidden = false
         timerAction()
-        
-//        let nc = navigationController
-//        nc?.popViewController(animated: true)
     }
     
     var timer: Timer!

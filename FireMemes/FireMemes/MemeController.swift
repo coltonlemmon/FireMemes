@@ -49,7 +49,7 @@ class MemeController {
                 print("Error saving to cloudKit \(error.localizedDescription)")
             }
         }
-        memes.insert(meme, at: 0)
+        //memes.insert(meme, at: 0)
     }
     
     func addCommentToMeme(meme: Meme, comment: String) {
@@ -73,7 +73,6 @@ class MemeController {
     
     func addUpvoteToMeme(meme: Meme) {
         meme.thumbsUp += 1
-        guard let owner = meme.memeOwner else { return }
         guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
         cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
             guard let record = record else { return }

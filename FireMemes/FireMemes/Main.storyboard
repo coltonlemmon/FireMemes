@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -228,7 +227,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="cei-ib-895" secondAttribute="centerX" id="2P9-Se-NfB"/>
                             <constraint firstItem="P12-6K-sjL" firstAttribute="top" secondItem="ubY-Pk-sU9" secondAttribute="bottom" constant="200" id="5H8-bU-QnN"/>
                             <constraint firstItem="763-uJ-t24" firstAttribute="leading" secondItem="cei-ib-895" secondAttribute="leadingMargin" constant="96" id="5qk-Hz-18N"/>
                             <constraint firstAttribute="trailing" secondItem="6OP-bg-0eh" secondAttribute="trailing" id="6hA-O0-JHU"/>
