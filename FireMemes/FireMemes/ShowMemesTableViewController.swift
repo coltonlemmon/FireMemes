@@ -328,6 +328,9 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
             guard let indexPath = self.tableView.indexPath(for: sender) else { return }
             let meme = MemeController.shared.memes[indexPath.row]
             MemeController.shared.flag(meme)
+            guard let index = MemeController.shared.memes.index(of: meme) else { return }
+            MemeController.shared.memes.remove(at: index)
+            self.tableView.reloadData()
         }
         alertController.addAction(cancelAction)
         alertController.addAction(yesAction)

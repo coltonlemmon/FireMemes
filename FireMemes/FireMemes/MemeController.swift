@@ -73,7 +73,6 @@ class MemeController {
     
     func addUpvoteToMeme(meme: Meme) {
         meme.thumbsUp += 1
-        guard let owner = meme.memeOwner else { return }
         guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
         cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
             guard let record = record else { return }
