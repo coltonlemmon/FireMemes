@@ -98,6 +98,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         guard let location = myLocation else { return }
         guard let meme = MemeController.shared.createMeme(image: image, location: location) else { return }
         MemeController.shared.postMeme(meme: meme)
+        MemeController.shared.memes.insert(meme, at: 0)
         
         biggerFireView.isHidden = false
         timerAction()

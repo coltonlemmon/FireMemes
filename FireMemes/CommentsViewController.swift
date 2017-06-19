@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommentsViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class CommentsViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, SwipeRightDelegate {
     
     //Mark: Variables/Constants
     let cellSpacingHeight: CGFloat = 7
@@ -30,6 +30,7 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
 //MARK: - Internal Properties
     
     var meme: Meme?
+    var vc: ShowMemesTableViewController?
     
     //MARK: - Lifecycle
     
@@ -42,8 +43,18 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         //Stop the tableView from displaying empty cells
         tableView.tableFooterView = UIView()
         tableView.separatorColor = UIColor.clear
+        commentTextView.delegate = self
+        
+        if let vc = vc {
+            vc.swipeDelegate = self
+        }
+        
     }
     
+    func CommentsViewControllerDismissed(_ sender: ShowMemesTableViewController) {
+        commentTextView.resignFirstResponder()
+        commentTextView.text = ""
+    }
 
     // MARK: - Table view data source
     

@@ -71,6 +71,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     var locationManager = CLLocationManager()
     var myLocation: CLLocation?
     
+    //Swipe right delegate
+    var swipeDelegate: SwipeRightDelegate?
+    
     //for fetching
     var didFetch: Bool = false
     
@@ -142,6 +145,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightGesture(swipe:)))
         rightSwipe.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(rightSwipe)
+        hideKeyboardWhenTappedAround()
         
     }
     
@@ -188,6 +192,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "commentSegue" {
             destinationVC = segue.destination as? CommentsViewController
+            destinationVC?.vc = self
         }
     }
     
@@ -217,6 +222,7 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         default:
             break
         }
+        swipeDelegate?.CommentsViewControllerDismissed(self)
     }
     
     //FacebookShare
@@ -349,4 +355,10 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error with locationManager: \(error.localizedDescription)")
     }
+}
+
+//MARK: - SwipeRightDelegate
+
+protocol SwipeRightDelegate {
+    func CommentsViewControllerDismissed(_ sender: ShowMemesTableViewController)
 }
