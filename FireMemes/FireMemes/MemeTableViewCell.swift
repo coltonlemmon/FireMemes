@@ -88,7 +88,8 @@ extension MemeTableViewCell {
         facebookButton.layer.borderWidth = 0.5
         twitterButton.layer.borderWidth = 0.5
         
-        numberOfUpvotes.text = "\(meme.thumbsUp)"
+        let voteNumber = meme.likers?.count ?? 0
+        numberOfUpvotes.text = "\(voteNumber)"
         
         guard let hasBeenUpvoted = hasBeenUpvoted else { return }
         self.hasBeenUpvoted = hasBeenUpvoted

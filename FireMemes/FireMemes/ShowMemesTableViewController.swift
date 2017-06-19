@@ -29,7 +29,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
     @IBOutlet weak var loadingAnimationLabel: UILabel!
     
+    //Make a meme button
+    @IBOutlet weak var makeAMemeButton: UIButton!
+    
     //MARK: - Pull to Refresh
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(ShowMemesTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
@@ -63,13 +67,12 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     //MARK: - Internal Properties
+    
     var locationManager = CLLocationManager()
     var myLocation: CLLocation?
     
     //for fetching
     var didFetch: Bool = false
-    
-    @IBOutlet weak var makeAMemeButton: UIButton!
     
     func fetch() {
         guard let myLocation = myLocation else { return }
@@ -287,7 +290,7 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         guard let indexPath = self.tableView.indexPath(for: sender) else { return }
         let meme = MemeController.shared.memes[indexPath.row]
         var localHasBeenUpvoted = hasBeenUpvoted
-        var upVoteCount = meme.thumbsUp
+        var upVoteCount = meme.likers?.count ?? 0
         
         if localHasBeenUpvoted == false {
             upVoteCount += 1
