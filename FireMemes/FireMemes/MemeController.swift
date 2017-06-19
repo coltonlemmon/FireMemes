@@ -147,7 +147,6 @@ class MemeController {
     // if they have 3+ flags too.
     
     func flag(_ meme: Meme) {
-        
         meme.flagCount += 1
         UserController.shared.currentUser?.flagCount += 1
         CloudKitManager.shared.modifyFlagCount(meme)

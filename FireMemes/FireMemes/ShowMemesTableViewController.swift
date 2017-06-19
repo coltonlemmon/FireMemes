@@ -339,7 +339,6 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             myLocation = location
-            
             if !didFetch {
                 fetch()
                 didFetch = true
