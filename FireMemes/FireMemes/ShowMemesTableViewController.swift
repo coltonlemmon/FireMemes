@@ -88,6 +88,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
                     self.loadingAnimationLabel.textColor = .red
                     self.loadingAnimationLabel.numberOfLines = 2
                     self.loadingAnimationLabel.text = "No memes in your area"
+                    
                 }
             }
         }
