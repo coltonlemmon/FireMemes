@@ -13,7 +13,6 @@
 		3BEE226B1EEEE45A00A9ED3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE226A1EEEE45A00A9ED3F /* User.swift */; };
 		3BEE226D1EEEE8EB00A9ED3F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE226C1EEEE8EB00A9ED3F /* UserController.swift */; };
 		4D1BF9CB1EF1ED4200D440A9 /* FireAnimationForPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */; };
-		4D1BFA211EF4849C00D440A9 /* BigFireAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1BFA201EF4849C00D440A9 /* BigFireAnimation.swift */; };
 		4D4A88F61EE5B208004A2AC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */; };
 		4D4A88FD1EE5B208004A2AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A88FC1EE5B208004A2AC3 /* Assets.xcassets */; };
 		4D4A89001EE5B208004A2AC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A88FE1EE5B208004A2AC3 /* LaunchScreen.storyboard */; };
@@ -39,7 +38,6 @@
 		3BEE226A1EEEE45A00A9ED3F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3BEE226C1EEEE8EB00A9ED3F /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireAnimationForPicker.swift; sourceTree = "<group>"; };
-		4D1BFA201EF4849C00D440A9 /* BigFireAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BigFireAnimation.swift; path = ../../../../../../../../Desktop/BigFireAnimation.swift; sourceTree = "<group>"; };
 		4D4A88F21EE5B208004A2AC3 /* FireMemes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireMemes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D4A88FC1EE5B208004A2AC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				4DA2D7DC1EEA3023006D056D /* LoadingAnimation.swift */,
-				4D1BFA201EF4849C00D440A9 /* BigFireAnimation.swift */,
 				4DE80D811EEF6FEE00A745B8 /* FireAnimation.swift */,
 				4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */,
 			);
@@ -334,7 +331,6 @@
 				3BEE226B1EEEE45A00A9ED3F /* User.swift in Sources */,
 				4D4A89081EE5B575004A2AC3 /* Meme.swift in Sources */,
 				4D1BF9CB1EF1ED4200D440A9 /* FireAnimationForPicker.swift in Sources */,
-				4D1BFA211EF4849C00D440A9 /* BigFireAnimation.swift in Sources */,
 				4D4A89121EE5BCF4004A2AC3 /* Keys.swift in Sources */,
 				3B2C86311EEB0FA900FDE53D /* MemeDaddyCreatorViewController.swift in Sources */,
 				4DE80D821EEF6FEE00A745B8 /* FireAnimation.swift in Sources */,
