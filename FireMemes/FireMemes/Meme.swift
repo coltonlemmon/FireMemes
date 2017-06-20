@@ -117,7 +117,7 @@ extension CKRecord {
             }
         }
         
-        self["likers"] = meme.likers as CKRecordValue?
+        self[Keys.liker] = meme.likers as CKRecordValue?
         
         self[Keys.isMemeBaned] = meme.isBanned as CKRecordValue?
         self[Keys.flag] = meme.flagCount as CKRecordValue?

@@ -89,6 +89,54 @@ class MemeController {
         }
     }
     
+    func upvoteMeme(meme: Meme) {
+        guard var likers = meme.likers else { return }
+        guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+        let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+        guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
+
+        likers.append(likerReference)
+        
+        cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
+            guard let record = record else { return }
+            record[Keys.liker] = likers as CKRecordValue
+            self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
+                if let error = error {
+                    print("Error liking meme: \(error.localizedDescription)")
+                }
+                DispatchQueue.main.async {
+                    let nc = NotificationCenter.default
+                    nc.post(name: Keys.notification, object: self)
+                }
+            })
+        }
+    }
+    
+    func removeUpvote(meme: Meme) {
+        guard var likers = meme.likers else { return }
+        guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+        let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+        guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
+        
+        guard let index = likers.index(of: likerReference) else { return }
+        likers.remove(at: index)
+        
+        cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
+            guard let record = record else { return }
+            record[Keys.liker] = likers as CKRecordValue
+            self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
+                if let error = error {
+                    print("Error removing upvote: \(error.localizedDescription)")
+                }
+                DispatchQueue.main.async {
+                    let nc = NotificationCenter.default
+                    nc.post(name: Keys.notification, object: self)
+                }
+            })
+        }
+        
+    }
+    
     func removeUpvoteToMeme(meme: Meme) {
         if meme.thumbsUp >= 1 {
             meme.thumbsUp -= 1
@@ -152,7 +200,6 @@ class MemeController {
     }
     
     func userLiked(_ meme: Meme) {
-        
         guard var newLikers = meme.likers else { return }
         guard let ownerID = meme.memeOwner?.ckRecordID else { return }
         let ownerReference = CKReference(recordID: ownerID, action: .deleteSelf)

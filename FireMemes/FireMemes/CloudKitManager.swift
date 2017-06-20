@@ -289,7 +289,7 @@ class CloudKitManager {
         guard let memeID = meme.cloudKitRecordID else { return }
         publicDatabase.fetch(withRecordID: memeID) { (record, error) in
             guard let record = record else { return }
-            record["likers"] = likers as CKRecordValue?
+            record[Keys.liker] = likers as CKRecordValue?
             
             self.publicDatabase.save(record, completionHandler: { (record, error) in
                 if error != nil || record == nil {
