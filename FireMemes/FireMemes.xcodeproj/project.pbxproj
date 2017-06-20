@@ -12,6 +12,7 @@
 		3B2C86331EEB0FC600FDE53D /* MemeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C86321EEB0FC600FDE53D /* MemeImageView.swift */; };
 		3BEE226B1EEEE45A00A9ED3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE226A1EEEE45A00A9ED3F /* User.swift */; };
 		3BEE226D1EEEE8EB00A9ED3F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE226C1EEEE8EB00A9ED3F /* UserController.swift */; };
+		4D15203F1EF9BB61000A1E79 /* BigFireAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15203E1EF9BB61000A1E79 /* BigFireAnimation.swift */; };
 		4D1BF9CB1EF1ED4200D440A9 /* FireAnimationForPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */; };
 		4D4A88F61EE5B208004A2AC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */; };
 		4D4A88FD1EE5B208004A2AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A88FC1EE5B208004A2AC3 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		3B2C86321EEB0FC600FDE53D /* MemeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeImageView.swift; sourceTree = "<group>"; };
 		3BEE226A1EEEE45A00A9ED3F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3BEE226C1EEEE8EB00A9ED3F /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		4D15203E1EF9BB61000A1E79 /* BigFireAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFireAnimation.swift; sourceTree = "<group>"; };
 		4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireAnimationForPicker.swift; sourceTree = "<group>"; };
 		4D4A88F21EE5B208004A2AC3 /* FireMemes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireMemes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				4DA2D7DC1EEA3023006D056D /* LoadingAnimation.swift */,
 				4DE80D811EEF6FEE00A745B8 /* FireAnimation.swift */,
 				4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */,
+				4D15203E1EF9BB61000A1E79 /* BigFireAnimation.swift */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				3BEE226D1EEEE8EB00A9ED3F /* UserController.swift in Sources */,
 				4D4A88F61EE5B208004A2AC3 /* AppDelegate.swift in Sources */,
 				4DA2D7DD1EEA3023006D056D /* LoadingAnimation.swift in Sources */,
+				4D15203F1EF9BB61000A1E79 /* BigFireAnimation.swift in Sources */,
 				4D4A890C1EE5B7F7004A2AC3 /* MemeController.swift in Sources */,
 				3B2C86331EEB0FC600FDE53D /* MemeImageView.swift in Sources */,
 				5914E6EA1EE87799007D9C81 /* MemeTableViewCell.swift in Sources */,
