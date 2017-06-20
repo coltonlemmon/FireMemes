@@ -83,7 +83,6 @@ extension MemeTableViewCell {
             numberOfUpvotes.textColor = .black
         }
         
-        
     }
 
 }

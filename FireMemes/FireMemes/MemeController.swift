@@ -80,23 +80,23 @@ class MemeController {
         
     }
     
-    func addUpvoteToMeme(meme: Meme) {
-        meme.thumbsUp += 1
-        guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
-        cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
-            guard let record = record else { return }
-            record[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue
-            self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
-                if let error = error {
-                    print("Error upvoting meme: \(error.localizedDescription)")
-                }
-                DispatchQueue.main.async {
-                    let nc = NotificationCenter.default
-                    nc.post(name: Keys.notification, object: self)
-                }
-            })
-        }
-    }
+//    func addUpvoteToMeme(meme: Meme) {
+//        meme.thumbsUp += 1
+//        guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
+//        cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
+//            guard let record = record else { return }
+//            record[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue
+//            self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
+//                if let error = error {
+//                    print("Error upvoting meme: \(error.localizedDescription)")
+//                }
+//                DispatchQueue.main.async {
+//                    let nc = NotificationCenter.default
+//                    nc.post(name: Keys.notification, object: self)
+//                }
+//            })
+//        }
+//    }
     
     func upvoteMeme(meme: Meme) {
         guard var likers = meme.likers else { return }
@@ -147,25 +147,25 @@ class MemeController {
         }
     }
     
-    func removeUpvoteToMeme(meme: Meme) {
-        if meme.thumbsUp >= 1 {
-            meme.thumbsUp -= 1
-            guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
-            cloudKitManager.fetchRecord(withID: cloudKitRecordID, completion: { (record, error) in
-                guard let record = record else { return }
-                record[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue
-                self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
-                    if let error = error {
-                        print("Error removing upvote: \(error.localizedDescription)")
-                    }
-                    DispatchQueue.main.async {
-                        let nc = NotificationCenter.default
-                        nc.post(name: Keys.notification, object: self)
-                    }
-                })
-            })
-        }
-    }
+//    func removeUpvoteToMeme(meme: Meme) {
+//        if meme.thumbsUp >= 1 {
+//            meme.thumbsUp -= 1
+//            guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
+//            cloudKitManager.fetchRecord(withID: cloudKitRecordID, completion: { (record, error) in
+//                guard let record = record else { return }
+//                record[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue
+//                self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
+//                    if let error = error {
+//                        print("Error removing upvote: \(error.localizedDescription)")
+//                    }
+//                    DispatchQueue.main.async {
+//                        let nc = NotificationCenter.default
+//                        nc.post(name: Keys.notification, object: self)
+//                    }
+//                })
+//            })
+//        }
+//    }
     
     //MARK: - CloudKit Stuff
     func fetch(_ location: CLLocation, radiusInMeters: CGFloat, completion: @escaping ([Meme]) -> Void) {
