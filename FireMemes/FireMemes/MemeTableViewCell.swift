@@ -62,7 +62,7 @@ class MemeTableViewCell: UITableViewCell {
 
 extension MemeTableViewCell {
     
-    func updateViews(meme: Meme, upVoteCount: Int?) {
+    func updateViews(meme: Meme, upVoteCount: Int, hasUpvoted: Bool) {
         memeImageView.image = meme.image
         numberOfComments.text = "\(meme.comments.count)"
         
@@ -75,9 +75,17 @@ extension MemeTableViewCell {
         facebookButton.layer.borderWidth = 0.5
         twitterButton.layer.borderWidth = 0.5
         
-        let voteNumber = upVoteCount ?? 0
+        let voteNumber = upVoteCount
         numberOfUpvotes.text = "\(voteNumber)"
+        if hasUpvoted == true {
+            numberOfUpvotes.textColor = .red
+        } else {
+            numberOfUpvotes.textColor = .black
+        }
+        
+        
     }
+
 }
 
 //Protocols

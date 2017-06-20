@@ -132,6 +132,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         // Notification Center
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
+        nc.addObserver(self, selector: #selector(refreshing), name: Keys.likerNotification, object: nil)
         
         //Table View Delegates
         tableView.delegate = self
@@ -186,8 +187,23 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         loadingAnimationView.isHidden = true
         loadingAnimationLabel.isHidden = true
         tableView.isHidden = false
-        let upvoteCount = meme.likers?.count
-        cell.updateViews(meme: meme, upVoteCount: upvoteCount)
+        
+        var hasUpvoted = false
+        
+        guard let likers = meme.likers else { return cell }
+        if let likerID = UserController.shared.currentUser?.ckRecordID {
+            let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+            
+            if likers.contains(likerReference) {
+                hasUpvoted = true
+            } else {
+                hasUpvoted = false
+            }
+        }
+        
+        let upvoteCount = likers.count
+        cell.updateViews(meme: meme, upVoteCount: upvoteCount, hasUpvoted: hasUpvoted)
+        
         cell.delegate = self
         
         return cell
@@ -305,16 +321,10 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         guard let likers = meme.likers else { return }
         guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
         let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
-        var upVoteCount = meme.likers?.count ?? 0
-        
         if !likers.contains(likerReference) {
-            upVoteCount += 1
             MemeController.shared.upvoteMeme(meme: meme)
-            sender.updateViews(meme: meme, upVoteCount: upVoteCount)
         } else {
-            upVoteCount -= 1
             MemeController.shared.removeUpvote(meme: meme)
-            sender.updateViews(meme: meme, upVoteCount: upVoteCount)
         }
     }
     

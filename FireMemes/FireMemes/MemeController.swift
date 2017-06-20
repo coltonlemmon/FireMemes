@@ -30,6 +30,15 @@ class MemeController {
         }
     }
     
+    var likers: [CKReference] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                let nc = NotificationCenter.default
+                nc.post(name: Keys.likerNotification, object: self)
+            }
+        }
+    }
+    
     //MARK: - CRUD
     func createMeme(image: UIImage, location: CLLocation) -> Meme? {
         
@@ -96,6 +105,7 @@ class MemeController {
         guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
 
         likers.append(likerReference)
+        self.likers = likers
         
         cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
             guard let record = record else { return }
@@ -120,6 +130,7 @@ class MemeController {
         
         guard let index = likers.index(of: likerReference) else { return }
         likers.remove(at: index)
+        self.likers = likers
         
         cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
             guard let record = record else { return }
@@ -134,7 +145,6 @@ class MemeController {
                 }
             })
         }
-        
     }
     
     func removeUpvoteToMeme(meme: Meme) {
