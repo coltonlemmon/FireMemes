@@ -375,6 +375,10 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error with locationManager: \(error.localizedDescription)")
+        let alertController = UIAlertController(title: "Could not find location", message: "Unable to find location. Change user setting to allow FireMemes to use your location in Settings.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
