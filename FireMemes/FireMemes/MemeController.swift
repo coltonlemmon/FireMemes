@@ -64,7 +64,7 @@ class MemeController {
         self.memes.insert(meme, at: 0)
     }
     
-    func addCommentToMeme(meme: Meme, comment: String) {
+    func addCommentToMeme(meme: Meme, comment: String, completion: @escaping (Error?) -> Void) {
         meme.comments.append(comment)
         guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
         cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
@@ -72,6 +72,7 @@ class MemeController {
             record[Keys.comments] = meme.comments as CKRecordValue
             self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil) { (records, error) in
                 if let error = error {
+                    completion(error)
                     print("Error adding comment: \(error.localizedDescription)")
                 }
                 DispatchQueue.main.async {

@@ -21,7 +21,14 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         guard let meme = meme else { return }
         guard let comment = commentTextView.text, !comment.isEmpty else { return }
         commentTextView.text = ""
-        MemeController.shared.addCommentToMeme(meme: meme, comment: comment)
+        MemeController.shared.addCommentToMeme(meme: meme, comment: comment) { (error) in
+            if error != nil {
+                let alertController = UIAlertController(title: "Unable to post comment", message: "Unable to post comment at this time check your network connection or try again in a few minutes.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
         tableView.reloadData()
     }
     
