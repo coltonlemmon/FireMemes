@@ -29,9 +29,6 @@ enum Keys {
     static let flag = "memeFlagKey"
     static let isMemeBaned = "isMemeBannedKey"
     
-    static let usersThatLiked = "usersThatLiked"
-    static let usersThatFlagged = "usersThatFlagged"
-    
     //MARK: - User
     
     static let flagCount = "FlagCount"

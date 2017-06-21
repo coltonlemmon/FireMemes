@@ -50,8 +50,6 @@ class Meme: CloudKitSync {
         self.memeOwner = memeOwner
         self.isBanned = isBanned
         
-        self.likers = likers
-        
         self.memeOwnerReference = creatorRef
         
         self.flagCount = flagCount
@@ -123,8 +121,6 @@ extension CKRecord {
                 url = fileName
             }
         }
-        
-        self[Keys.liker] = meme.likers as CKRecordValue?
         
         self[Keys.isMemeBaned] = meme.isBanned as CKRecordValue?
         self[Keys.flag] = meme.flagCount as CKRecordValue?

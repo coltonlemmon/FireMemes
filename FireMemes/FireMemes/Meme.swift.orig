@@ -20,16 +20,19 @@ class Meme: CloudKitSync {
     }
     
     //for verification of flags, to keep
-    //the user in check...
     
     var memeOwner: User?
     var memeOwnerReference: CKReference?
     var flagCount: Int
     var isBanned = false
     
+<<<<<<< HEAD
+    var likers: [CKReference]?
+=======
     //gavin added
     var usersThatLikedRefs: [CKReference] = []
     var usersThatFlaggedRefs: [CKReference] = []
+>>>>>>> flagging
     
     let date: Date
     let identifier: String
@@ -40,7 +43,11 @@ class Meme: CloudKitSync {
     var ckReference: CKReference?
     var recordType: String { return Keys.meme }
     
+<<<<<<< HEAD
+    init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorRef: CKReference?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false, likers: [CKReference]) {
+=======
     init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorRef: CKReference?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false, usersThatLiked: [CKReference] = [], usersThatFlagged: [CKReference] = []) {
+>>>>>>> flagging
         self.imageData = imageData
         self.date = date
         self.identifier = id
@@ -75,10 +82,15 @@ class Meme: CloudKitSync {
             let isBanned = record[Keys.isMemeBaned] as? Bool,
             let memeOwner = record[Keys.owner] as? CKReference,
             let location = record[Keys.location] as? CLLocation,
+<<<<<<< HEAD
+            let likers = record["likers"] as? [CKReference] else { return nil }
+        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned, likers: likers)
+=======
             let usersThatLiked = record[Keys.usersThatLiked] as? [CKReference],
             let usersThatFlagged = record[Keys.usersThatFlagged] as? [CKReference] else { return nil }
         
         self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned, usersThatLiked: usersThatLiked, usersThatFlagged: usersThatFlagged)
+>>>>>>> flagging
         cloudKitRecordID = record.recordID
     }
     

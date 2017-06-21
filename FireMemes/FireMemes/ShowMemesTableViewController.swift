@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import Social
-import CloudKit
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
@@ -184,6 +183,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         let meme = MemeController.shared.memes[indexPath.row]
         
+        print("record: \(String(describing: meme.cloudKitRecordID))")
+        print("flag count: \(meme.flagCount)")
+        
         // Loading Animation
         loadingAnimationView.isHidden = true
         loadingAnimationLabel.isHidden = true
@@ -318,12 +320,19 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
     //UpVote button tapped
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
         guard let indexPath = self.tableView.indexPath(for: sender) else { return }
+        
         let meme = MemeController.shared.memes[indexPath.row]
-        guard let likers = meme.likers else { return }
-        guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
-        let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
-        if !likers.contains(likerReference) {
-            MemeController.shared.upvoteMeme(meme: meme)
+        
+        guard MemeController.shared.userCanLike(meme) else { return }
+        
+        var localHasBeenUpvoted = hasBeenUpvoted
+        var upVoteCount = meme.thumbsUp
+        
+        if localHasBeenUpvoted == false {
+            upVoteCount += 1
+            MemeController.shared.addUpvoteToMeme(meme: meme)
+            localHasBeenUpvoted = true
+            sender.updateViews(meme: meme, hasBeenUpvoted: localHasBeenUpvoted)
         } else {
             MemeController.shared.removeUpvote(meme: meme)
         }
