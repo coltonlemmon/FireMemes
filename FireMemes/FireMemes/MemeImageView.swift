@@ -69,7 +69,7 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
     
     func addTextField() {
         
-        contentMode = .scaleAspectFit
+        contentMode = .scaleToFill
         backgroundColor = .white
         hideKeyboardWhenTappedAround()
         
@@ -79,7 +79,7 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         memeText.backgroundColor = .clear
         memeText.text = "fire meme"
         memeText.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)
-        memeText.textColor = .red
+        memeText.textColor = .black
         memeText.isUserInteractionEnabled = true
         
         self.addSubview(memeText)
@@ -92,6 +92,8 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         
         memeTextFields.append(memeText)
     }
+    
+    
     
     func addText() {
         
@@ -111,9 +113,7 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(userPinched(_:)))
         newText.addGestureRecognizer(pinchGesture)
-        
         memeTextFields.append(newText)
-        
     }
     
     
@@ -129,7 +129,10 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         return image
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+       
+        
+    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         memeText.layer.position = self.center
@@ -153,9 +156,12 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         self.image = image
     }
     
-    func updateTextForMemeWith(font: UIFont, color: UIColor) {
-        memeText.textColor = color
-        memeText.font = font
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Maybe fix this
+    func updateTextForMemeWith(font: UIFont?, color: UIColor?) {
+        for textField in memeTextFields {
+            textField.textColor = color
+            textField.font = font
+        }
     }
     
 }
@@ -171,21 +177,3 @@ extension UIView {
         self.endEditing(true)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

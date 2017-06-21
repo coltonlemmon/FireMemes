@@ -42,7 +42,7 @@ class MemeController {
     }
     
     func postMeme(meme: Meme) {
-        memes.append(meme)
+        memes.insert(meme, at: 0)
         self.saveUsingCloudKit(record: CKRecord(meme)) { (error) in
             if let error = error {
                 print("Error saving to cloudKit \(error.localizedDescription)")
@@ -52,30 +52,104 @@ class MemeController {
     
     func addCommentToMeme(meme: Meme, comment: String) {
         meme.comments.append(comment)
-        let record = CKRecord(meme)
-        record[Keys.comments] = meme.comments as CKRecordValue
-        
-        cloudKitManager.modifyRecords([record], perRecordCompletion: nil) { (records, error) in
-            if let error = error {
-                print("Error adding comment: \(error.localizedDescription)")
+        guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
+        cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
+            guard let record = record else { return }
+            record[Keys.comments] = meme.comments as CKRecordValue
+            self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil) { (records, error) in
+                if let error = error {
+                    print("Error adding comment: \(error.localizedDescription)")
+                }
+                DispatchQueue.main.async {
+                    let nc = NotificationCenter.default
+                    nc.post(name: Keys.notification, object: self)
+                }
             }
+        }
+        
+    }
+    
+    //checking if user is in meme
+    
+    func userCanLike(_ meme: Meme) -> Bool {
+        
+        guard let currentUserRef = UserController.shared.currentUser?.ckReference else {return false}
+        
+        if !meme.usersThatLikedRefs.contains(currentUserRef) {
+            return true
+        } else {
+            return false
+        }
+        
+    }
+    
+    func userCanFlag(_ meme: Meme) -> Bool {
+        
+        guard let currentUserRef = UserController.shared.currentUser?.ckReference else {return false}
+        
+        if !meme.usersThatFlaggedRefs.contains(currentUserRef) {
+            return true
+        } else {
+            return false
+        }
+        
+    }
+    
+    func addUpvoteToMeme(meme: Meme) {
+        meme.thumbsUp += 1
+        guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
+        cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
+            guard let record = record else { return }
+            record[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue
+            self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
+                if let error = error {
+                    print("Error upvoting meme: \(error.localizedDescription)")
+                }
+                DispatchQueue.main.async {
+                    let nc = NotificationCenter.default
+                    nc.post(name: Keys.notification, object: self)
+                }
+            })
+        }
+    }
+    
+    func removeUpvoteToMeme(meme: Meme) {
+        if meme.thumbsUp >= 1 {
+            meme.thumbsUp -= 1
+            guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
+            cloudKitManager.fetchRecord(withID: cloudKitRecordID, completion: { (record, error) in
+                guard let record = record else { return }
+                record[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue
+                self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
+                    if let error = error {
+                        print("Error removing upvote: \(error.localizedDescription)")
+                    }
+                    DispatchQueue.main.async {
+                        let nc = NotificationCenter.default
+                        nc.post(name: Keys.notification, object: self)
+                    }
+                })
+            })
         }
     }
     
     //MARK: - CloudKit Stuff
-    func fetch(_ location: CLLocation, radiusInMeters: CGFloat) {
-        //let radiusInKilometers = radiusInMeters / 1000.0
+    func fetch(_ location: CLLocation, radiusInMeters: CGFloat, completion: @escaping ([Meme]) -> Void) {
         let locationPredicate = NSPredicate(format: "distanceToLocation:fromLocation:(Location,%@) < %f", location, radiusInMeters)
         cloudKitManager.fetchRecordsWithType(Keys.meme, predicate: locationPredicate, recordFetchedBlock: { (record) in }) { (_, records, error) in
 
-            guard let records = records else { return }
+            guard let records = records else { completion([]); return }
             
             for record in records {
-            
+                
                 guard let meme = Meme(record: record) else { return }
             
                 if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
-                    self.memes.append(meme)
+                    if !self.memes.contains(meme) {
+                        self.memes.append(meme)
+                        completion(self.memes)
+                    }
+                    self.memes.sort { $0.date > $1.date }
                 } else {
                     self.delete(meme)
                 }
@@ -84,6 +158,7 @@ class MemeController {
             if let error = error {
                 print("Error fetching meme: \(error.localizedDescription)")
             }
+            completion([])
         }
     }
     
@@ -94,9 +169,10 @@ class MemeController {
     
     func flag(_ meme: Meme) {
         
+        guard userCanFlag(meme) else { return }
+        
         meme.flagCount += 1
         UserController.shared.currentUser?.flagCount += 1
-        
         CloudKitManager.shared.modifyFlagCount(meme)
     }
     

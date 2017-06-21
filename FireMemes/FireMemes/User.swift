@@ -11,14 +11,10 @@ import CloudKit
 
 class User: CloudKitSync {
     
-    static let flagCountKey = "FlagCount"
-    static let isBannedKey = "UserBanned"
-    static let typeKey = "FireMemeUsers"
-    
     var ckRecordID: CKRecordID?
     var ckReference: CKReference?
     var recordType: String {
-        return User.typeKey
+        return Keys.userType
     }
     var flagCount: Int
     var isBanned: Bool = false
@@ -31,7 +27,7 @@ class User: CloudKitSync {
     }
     
     convenience required init?(record: CKRecord) {
-        guard let flagCount = record[User.flagCountKey] as? Int, let isBanned = record[User.isBannedKey] as? Bool else { return nil }
+        guard let flagCount = record[Keys.flagCount] as? Int, let isBanned = record[Keys.isBanned] as? Bool else { return nil }
         self.init(flagCount: flagCount, isBanned: isBanned, recordID: record.recordID)
     }
     
@@ -43,14 +39,13 @@ extension CKRecord {
         
         let recordID = CKRecordID(recordName: UUID().uuidString)
         
-        self.init(recordType: User.typeKey, recordID: recordID)
+        self.init(recordType: Keys.userType, recordID: recordID)
         
         user.ckRecordID = recordID
         
-        self[User.flagCountKey] = user.flagCount as CKRecordValue?
-        self[User.isBannedKey] = user.isBanned as CKRecordValue?
+        self[Keys.flagCount] = user.flagCount as CKRecordValue?
+        self[Keys.isBanned] = user.isBanned as CKRecordValue?
         
     }
-    
     
 }

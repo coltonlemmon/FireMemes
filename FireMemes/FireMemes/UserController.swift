@@ -17,7 +17,7 @@ class UserController {
     
     func checkUserIn() {
         
-        CloudKitManager.shared.fetchCurrentUserRecords(User.typeKey) { (_, records, error) in
+        CloudKitManager.shared.fetchCurrentUserRecords(Keys.userType) { (_, records, error) in
             if error != nil {
                 print("error: \(String(describing: error?.localizedDescription))")
             }
@@ -48,52 +48,4 @@ class UserController {
             
         }
     }
-    
-    
-    
-    
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
