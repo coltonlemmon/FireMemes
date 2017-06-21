@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import Lottie
 
 class MemeTableViewCell: UITableViewCell {
     
@@ -49,7 +50,10 @@ class MemeTableViewCell: UITableViewCell {
     }
   
     @IBAction func upvoteButtonTapped(_ sender: Any) {
+        
         delegate?.upVoteButtonTapped(sender: self, hasBeenUpvoted: hasBeenUpvoted)
+        
+              
     }
     
     @IBAction func reportButtonTapped(_ sender: Any) {
@@ -76,9 +80,10 @@ extension MemeTableViewCell {
         twitterButton.layer.borderWidth = 0.5
         
         let voteNumber = upVoteCount
-        numberOfUpvotes.text = "\(voteNumber)"
+           numberOfUpvotes.text = "\(voteNumber)"
         if hasUpvoted == true {
             numberOfUpvotes.textColor = .red
+         
         } else {
             numberOfUpvotes.textColor = .black
         }
@@ -102,5 +107,6 @@ protocol MemeTableViewCellDelegate: class{
     func reportButtonTapped(sender: MemeTableViewCell)
     
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool)
+    
 }
 

@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Social
 import CloudKit
+import Lottie
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
@@ -28,6 +29,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
+    
     @IBOutlet weak var loadingAnimationLabel: UILabel!
     
     //Make a meme button
@@ -134,6 +136,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.likerNotification, object: nil)
         
+        
         //Table View Delegates
         tableView.delegate = self
         tableView.dataSource = self
@@ -170,6 +173,27 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     @IBAction func addCommentClicked(_ sender: Any) {
         
     }
+    @IBAction func doubleTappLikeGestureRecognizer(_ sender: Any) {
+        
+        //Animation Upvote
+        
+            let animationView = LOTAnimationView(name: "LikeAnimation")
+            
+            animationView?.frame = CGRect(x: 0, y: 50, width: self.view.frame.width, height: self.view.frame.height)
+            
+            animationView?.contentMode = .scaleAspectFill
+            
+            self.view.addSubview(animationView!)
+            
+            animationView?.loopAnimation = false
+            
+            animationView?.play(completion: { (finished) in
+                
+                animationView?.removeFromSuperview()
+                
+            })
+        }
+
   
     // MARK: - Table view data source
     
@@ -228,6 +252,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
 }
+
+
 
 //MARK: MemeTableViewCellDelegate Methods
 
@@ -314,17 +340,29 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         
     }
     
+ 
     //UpVote button tapped
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
+        
         guard let indexPath = self.tableView.indexPath(for: sender) else { return }
+        
         let meme = MemeController.shared.memes[indexPath.row]
+        
         guard let likers = meme.likers else { return }
+        
         guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+        
         let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+        
         if !likers.contains(likerReference) {
+            
             MemeController.shared.upvoteMeme(meme: meme)
+    
+            
         } else {
+            
             MemeController.shared.removeUpvote(meme: meme)
+            
         }
     }
     
