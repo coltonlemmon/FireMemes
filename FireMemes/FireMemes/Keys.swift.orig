@@ -30,10 +30,12 @@ enum Keys {
     static let flag = "memeFlagKey"
     static let isMemeBaned = "isMemeBannedKey"
     
+<<<<<<< HEAD
+    static let liker = "likers"
+=======
     static let usersThatLiked = "usersThatLiked"
     static let usersThatFlagged = "usersThatFlagged"
-    
-    static let liker = "likers"
+>>>>>>> flagging
     
     //MARK: - User
     

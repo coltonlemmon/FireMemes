@@ -13,7 +13,6 @@ enum Keys {
     //MARK: - General
     
     static let notification = Notification.Name("memeNotification")
-    static let likerNotification = Notification.Name("likerNotification")
     
     //MARK: - Meme
     
@@ -29,11 +28,6 @@ enum Keys {
     static let owner = "memeOwnerKey"
     static let flag = "memeFlagKey"
     static let isMemeBaned = "isMemeBannedKey"
-    
-    static let usersThatLiked = "usersThatLiked"
-    static let usersThatFlagged = "usersThatFlagged"
-    
-    static let liker = "likers"
     
     //MARK: - User
     

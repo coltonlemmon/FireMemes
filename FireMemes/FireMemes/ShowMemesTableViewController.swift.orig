@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Social
+import CloudKit
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
@@ -27,13 +28,13 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
-<<<<<<< HEAD
-    @IBOutlet weak var loadingMemesLabel: UILabel!
-=======
     @IBOutlet weak var loadingAnimationLabel: UILabel!
->>>>>>> fd6eb42ca85e66d9538960600255b10776971215
+    
+    //Make a meme button
+    @IBOutlet weak var makeAMemeButton: UIButton!
     
     //MARK: - Pull to Refresh
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(ShowMemesTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
@@ -67,29 +68,30 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     //MARK: - Internal Properties
+    
     var locationManager = CLLocationManager()
     var myLocation: CLLocation?
+    
+    var currentUser = UserController.shared.currentUser
+    
+    //Swipe right delegate
+    var swipeDelegate: SwipeRightDelegate?
     
     //for fetching
     var didFetch: Bool = false
     
-    @IBOutlet weak var makeAMemeButton: UIButton!
-    
     func fetch() {
         guard let myLocation = myLocation else { return }
-<<<<<<< HEAD
-        MemeController.shared.fetch(myLocation, radiusInMeters: 30000)
-=======
         MemeController.shared.fetch(myLocation, radiusInMeters: 5000000) { (meme) in
             if meme.isEmpty {
                 DispatchQueue.main.async {
                     self.loadingAnimationLabel.textColor = .red
                     self.loadingAnimationLabel.numberOfLines = 2
                     self.loadingAnimationLabel.text = "No memes in your area"
+                    
                 }
             }
         }
->>>>>>> fd6eb42ca85e66d9538960600255b10776971215
         didFetch = true
     }
     
@@ -110,11 +112,8 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         UserController.shared.checkUserIn()
         
-<<<<<<< HEAD
-=======
         loadingAnimationLabel.textColor = UIColor(red: 255/255, green: 194/255, blue: 13/255, alpha: 1.0)
         
->>>>>>> fd6eb42ca85e66d9538960600255b10776971215
         tableView.isHidden = true
         view.backgroundColor = UIColor.white
         loadingAnimationView.backgroundColor = UIColor.white
@@ -134,11 +133,13 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         // Notification Center
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
+        nc.addObserver(self, selector: #selector(refreshing), name: Keys.likerNotification, object: nil)
         
         //Table View Delegates
         tableView.delegate = self
         tableView.dataSource = self
        
+
         //Custom button for Make a Meme button
         createButtonClick.layer.cornerRadius = 7
         createButtonClick.layer.backgroundColor = UIColor(red:255/255 , green: 194/255, blue: 13/255, alpha: 0.8).cgColor
@@ -149,6 +150,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightGesture(swipe:)))
         rightSwipe.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(rightSwipe)
+        hideKeyboardWhenTappedAround()
         
     }
     
@@ -182,15 +184,30 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         let meme = MemeController.shared.memes[indexPath.row]
         
+        print("record: \(String(describing: meme.cloudKitRecordID))")
+        print("flag count: \(meme.flagCount)")
+        
         // Loading Animation
         loadingAnimationView.isHidden = true
-<<<<<<< HEAD
-        loadingMemesLabel.isHidden = true
-=======
         loadingAnimationLabel.isHidden = true
->>>>>>> fd6eb42ca85e66d9538960600255b10776971215
         tableView.isHidden = false
-        cell.updateViews(meme: meme, hasBeenUpvoted: nil)
+        
+        var hasUpvoted = false
+        
+        guard let likers = meme.likers else { return cell }
+        if let likerID = UserController.shared.currentUser?.ckRecordID {
+            let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+            
+            if likers.contains(likerReference) {
+                hasUpvoted = true
+            } else {
+                hasUpvoted = false
+            }
+        }
+        
+        let upvoteCount = likers.count
+        cell.updateViews(meme: meme, upVoteCount: upvoteCount, hasUpvoted: hasUpvoted)
+        
         cell.delegate = self
         
         return cell
@@ -199,7 +216,11 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "commentSegue" {
             destinationVC = segue.destination as? CommentsViewController
+            destinationVC?.vc = self
         }
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
     
     func setupView() {
@@ -228,6 +249,7 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         default:
             break
         }
+        swipeDelegate?.CommentsViewControllerDismissed(self)
     }
     
     //FacebookShare
@@ -299,26 +321,29 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
     //UpVote button tapped
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
         guard let indexPath = self.tableView.indexPath(for: sender) else { return }
+        
         let meme = MemeController.shared.memes[indexPath.row]
+<<<<<<< HEAD
+        guard let likers = meme.likers else { return }
+        guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+        let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+        if !likers.contains(likerReference) {
+            MemeController.shared.upvoteMeme(meme: meme)
+=======
+        
+        guard MemeController.shared.userCanLike(meme) else { return }
+        
         var localHasBeenUpvoted = hasBeenUpvoted
         var upVoteCount = meme.thumbsUp
         
         if localHasBeenUpvoted == false {
             upVoteCount += 1
-            MemeController.shared.userLiked(meme)
+            MemeController.shared.addUpvoteToMeme(meme: meme)
             localHasBeenUpvoted = true
             sender.updateViews(meme: meme, hasBeenUpvoted: localHasBeenUpvoted)
+>>>>>>> flagging
         } else {
-            if upVoteCount >= 1 {
-                upVoteCount -= 1
-                MemeController.shared.removeUpvoteToMeme(meme: meme)
-                localHasBeenUpvoted = false
-                sender.updateViews(meme: meme, hasBeenUpvoted: localHasBeenUpvoted)
-            } else {
-                MemeController.shared.removeUpvoteToMeme(meme: meme)
-                localHasBeenUpvoted = false
-                sender.updateViews(meme: meme, hasBeenUpvoted: localHasBeenUpvoted)
-            }
+            MemeController.shared.removeUpvote(meme: meme)
         }
     }
     
@@ -330,6 +355,9 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
             guard let indexPath = self.tableView.indexPath(for: sender) else { return }
             let meme = MemeController.shared.memes[indexPath.row]
             MemeController.shared.flag(meme)
+            guard let index = MemeController.shared.memes.index(of: meme) else { return }
+            MemeController.shared.memes.remove(at: index)
+            self.tableView.reloadData()
         }
         alertController.addAction(cancelAction)
         alertController.addAction(yesAction)
@@ -350,7 +378,6 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             myLocation = location
-            
             if !didFetch {
                 fetch()
                 didFetch = true
@@ -361,4 +388,10 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error with locationManager: \(error.localizedDescription)")
     }
+}
+
+//MARK: - SwipeRightDelegate
+
+protocol SwipeRightDelegate {
+    func CommentsViewControllerDismissed(_ sender: ShowMemesTableViewController)
 }

@@ -90,15 +90,15 @@ class MemeImageView: UIImageView, UITextFieldDelegate, UIGestureRecognizerDelega
         memeTextFields.append(memeText)
     }
     
-    func addText() {
+    func addText(with font: UIFont?, color: UIColor?) {
         let newText = UITextField(frame: CGRect(x: -200, y: 0, width: 700, height: 30))
         
         newText.delegate = self
         newText.textAlignment = .center
         newText.backgroundColor = .clear
         newText.text = "Enter text here"
-        newText.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)
-        newText.textColor = .black
+        newText.font = font ?? UIFont(name: "HelveticaNeue-CondensedBlack", size: 24)
+        newText.textColor = color ?? .black
         
         self.addSubview(newText)
         

@@ -90,6 +90,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
                     self.loadingAnimationLabel.textColor = .red
                     self.loadingAnimationLabel.numberOfLines = 2
                     self.loadingAnimationLabel.text = "No memes in your area"
+                    
                 }
             }
         }
@@ -198,6 +199,9 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         let meme = MemeController.shared.memes[indexPath.row]
         
+        print("record: \(String(describing: meme.cloudKitRecordID))")
+        print("flag count: \(meme.flagCount)")
+        
         // Loading Animation
         loadingAnimationView.isHidden = true
         loadingAnimationLabel.isHidden = true
@@ -250,29 +254,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 
 extension ShowMemesTableViewController: MemeTableViewCellDelegate {
 
-    //Animation to be performed to a specific cell
-    func didDoubleTapOnImage(sender: MemeTableViewCell, recognizer: UITapGestureRecognizer) {
-        
-        if recognizer.state == UIGestureRecognizerState.ended {
-            
-            //Animation for didLikeImage
-            let animationView = LOTAnimationView(name: "LikeAnimation")
-            
-            animationView?.frame = CGRect(x: 0, y: -100, width: self.tableView.frame.width, height: self.tableView.frame.height)
-            
-            animationView?.contentMode = .scaleAspectFill
-            
-            self.tableView.addSubview(animationView!)
-            
-            animationView?.loopAnimation = false
-            
-            animationView?.play(completion: { (finished) in
-                
-                animationView?.removeFromSuperview()
-                
-            })
-        }
-    }
+
 
     //Swipe right gesture regonizer, Hides the comment section when user swipes right
     func swipeRightGesture(swipe: UISwipeGestureRecognizer) {

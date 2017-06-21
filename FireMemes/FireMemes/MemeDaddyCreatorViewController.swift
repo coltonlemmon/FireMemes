@@ -117,7 +117,9 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
 
     @IBAction func addText(_ sender: Any) {
         guard memeImageView.image != nil else { return }
-        memeImageView.addText()
+        let color = getColorFromPicker()
+        let font = getFontFromPicker()
+        memeImageView.addText(with: font, color: color)
     }
     
     //Allow user to select image by tapping on the ImageView

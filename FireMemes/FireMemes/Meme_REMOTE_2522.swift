@@ -28,9 +28,8 @@ class Meme: CloudKitSync {
     var isBanned = false
     
     //gavin added
-    var usersThatLikedRefs: [CKReference]?
-    var usersThatFlaggedRefs: [CKReference]?
-    var likers: [CKReference]?
+    var usersThatLikedRefs: [CKReference] = []
+    var usersThatFlaggedRefs: [CKReference] = []
     
     let date: Date
     let identifier: String
@@ -41,7 +40,7 @@ class Meme: CloudKitSync {
     var ckReference: CKReference?
     var recordType: String { return Keys.meme }
     
-    init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorRef: CKReference?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false, usersThatLiked: [CKReference], usersThatFlagged: [CKReference], likers: [CKReference]) {
+    init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorRef: CKReference?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false, usersThatLiked: [CKReference] = [], usersThatFlagged: [CKReference] = []) {
         self.imageData = imageData
         self.date = date
         self.identifier = id
@@ -50,8 +49,6 @@ class Meme: CloudKitSync {
         
         self.memeOwner = memeOwner
         self.isBanned = isBanned
-        
-        self.likers = likers
         
         self.memeOwnerReference = creatorRef
         
@@ -77,10 +74,9 @@ class Meme: CloudKitSync {
             let memeOwner = record[Keys.owner] as? CKReference,
             let location = record[Keys.location] as? CLLocation,
             let usersThatLiked = record[Keys.usersThatLiked] as? [CKReference],
-            let usersThatFlagged = record[Keys.usersThatFlagged] as? [CKReference],
-            let likers = record[Keys.liker] as? [CKReference] else { return nil }
+            let usersThatFlagged = record[Keys.usersThatFlagged] as? [CKReference] else { return nil }
         
-        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned, usersThatLiked: usersThatLiked, usersThatFlagged: usersThatFlagged, likers: likers)
+        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned, usersThatLiked: usersThatLiked, usersThatFlagged: usersThatFlagged)
         cloudKitRecordID = record.recordID
     }
     
@@ -126,8 +122,6 @@ extension CKRecord {
             }
         }
         
-        self[Keys.liker] = meme.likers as CKRecordValue?
-        
         self[Keys.isMemeBaned] = meme.isBanned as CKRecordValue?
         self[Keys.flag] = meme.flagCount as CKRecordValue?
         self[Keys.owner] = CKReference(recordID: userRecordID, action: .deleteSelf)
@@ -137,8 +131,8 @@ extension CKRecord {
         self[Keys.comments] = meme.comments as CKRecordValue?
         self[Keys.location] = meme.location as CKRecordValue?
         
-        self[Keys.usersThatLiked] = meme.usersThatLikedRefs as CKRecordValue?
-        self[Keys.usersThatFlagged] = meme.usersThatFlaggedRefs as CKRecordValue?
+        self[Keys.usersThatLiked] = meme.usersThatLikedRefs as CKRecordValue
+        self[Keys.usersThatFlagged] = meme.usersThatFlaggedRefs as CKRecordValue
         
         self[Keys.imageData] = CKAsset(fileURL: url)
     }

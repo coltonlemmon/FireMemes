@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeFeed" rowHeight="369" id="M8H-m4-HF3" customClass="MemeTableViewCell" customModule="FireMemes" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="memeFeed" rowHeight="369" id="M8H-m4-HF3" customClass="MemeTableViewCell" customModule="FireMemes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="369"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M8H-m4-HF3" id="m0t-Il-tmo">
@@ -197,7 +197,7 @@
                                     <constraint firstItem="lgS-mr-IxA" firstAttribute="leading" secondItem="763-uJ-t24" secondAttribute="leading" id="slG-9V-LMR"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P12-6K-sjL" customClass="BigFireAnimation" customModule="FireMemes" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P12-6K-sjL" customClass="LoadingAnimation" customModule="FireMemes" customModuleProvider="target">
                                 <rect key="frame" x="145" y="264" width="85" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -220,7 +220,7 @@
                                     <constraint firstAttribute="height" constant="25" id="ZTw-VS-br9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="0.48335830480000003" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>

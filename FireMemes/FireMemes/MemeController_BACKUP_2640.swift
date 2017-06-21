@@ -45,12 +45,15 @@ class MemeController {
         guard let user = UserController.shared.currentUser else { return nil }
         guard let data = UIImagePNGRepresentation(image) else { return nil }
         
+<<<<<<< HEAD
         guard let userID = UserController.shared.currentUser?.ckRecordID else { return nil }
         let userReference = CKReference(recordID: userID, action: .deleteSelf)
-        let randomID = CKRecordID(recordName: "random")
-        let randomReference = CKReference(recordID: randomID, action: .deleteSelf)
         
-        let meme = Meme(imageData: data, image: image, location: location, creatorRef: user.ckReference, memeOwner: user, usersThatLiked: [userReference], usersThatFlagged: [randomReference], likers: [userReference])
+        let meme = Meme(imageData: data, image: image, location: location, creatorRef: user.ckReference, memeOwner: user, likers: [userReference])
+=======
+        let meme = Meme(imageData: data, image: image, location: location, creatorRef: user.ckReference, memeOwner: user)
+        meme.comments.append("")
+>>>>>>> flagging
         return meme
     }
     
@@ -82,13 +85,37 @@ class MemeController {
         
     }
     
+<<<<<<< HEAD
+//    func addUpvoteToMeme(meme: Meme) {
+//        meme.thumbsUp += 1
+//        guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
+//        cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
+//            guard let record = record else { return }
+//            record[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue
+//            self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
+//                if let error = error {
+//                    print("Error upvoting meme: \(error.localizedDescription)")
+//                }
+//                DispatchQueue.main.async {
+//                    let nc = NotificationCenter.default
+//                    nc.post(name: Keys.notification, object: self)
+//                }
+//            })
+//        }
+//    }
+    
+    func upvoteMeme(meme: Meme) {
+        guard var likers = meme.likers else { return }
+        guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+        let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+=======
     //checking if user is in meme
     
     func userCanLike(_ meme: Meme) -> Bool {
         
         guard let currentUserRef = UserController.shared.currentUser?.ckReference else {return false}
-        guard let usersThatLikedRefs = meme.usersThatLikedRefs else { return false }
-        if !usersThatLikedRefs.contains(currentUserRef) {
+        
+        if !meme.usersThatLikedRefs.contains(currentUserRef) {
             return true
         } else {
             return false
@@ -99,8 +126,8 @@ class MemeController {
     func userCanFlag(_ meme: Meme) -> Bool {
         
         guard let currentUserRef = UserController.shared.currentUser?.ckReference else {return false}
-        guard let usersThatFlaggedRefs = meme.usersThatFlaggedRefs else { return false }
-        if !usersThatFlaggedRefs.contains(currentUserRef) {
+        
+        if !meme.usersThatFlaggedRefs.contains(currentUserRef) {
             return true
         } else {
             return false
@@ -108,14 +135,13 @@ class MemeController {
         
     }
     
-    func upvoteMeme(meme: Meme) {
-        guard var likers = meme.likers else { return }
-        guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
-        let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+    func addUpvoteToMeme(meme: Meme) {
+        meme.thumbsUp += 1
+>>>>>>> flagging
         guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
-        
+
         likers.append(likerReference)
-        meme.likers = likers
+        self.likers = likers
         
         cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
             guard let record = record else { return }
@@ -140,7 +166,7 @@ class MemeController {
         
         guard let index = likers.index(of: likerReference) else { return }
         likers.remove(at: index)
-        meme.likers = likers
+        self.likers = likers
         
         cloudKitManager.fetchRecord(withID: cloudKitRecordID) { (record, error) in
             guard let record = record else { return }
@@ -157,6 +183,26 @@ class MemeController {
         }
     }
     
+//    func removeUpvoteToMeme(meme: Meme) {
+//        if meme.thumbsUp >= 1 {
+//            meme.thumbsUp -= 1
+//            guard let cloudKitRecordID = meme.cloudKitRecordID else { return }
+//            cloudKitManager.fetchRecord(withID: cloudKitRecordID, completion: { (record, error) in
+//                guard let record = record else { return }
+//                record[Keys.thumbsUp] = meme.thumbsUp as CKRecordValue
+//                self.cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: { (records, error) in
+//                    if let error = error {
+//                        print("Error removing upvote: \(error.localizedDescription)")
+//                    }
+//                    DispatchQueue.main.async {
+//                        let nc = NotificationCenter.default
+//                        nc.post(name: Keys.notification, object: self)
+//                    }
+//                })
+//            })
+//        }
+//    }
+    
     //MARK: - CloudKit Stuff
     func fetch(_ location: CLLocation, radiusInMeters: CGFloat, completion: @escaping ([Meme]) -> Void) {
         let locationPredicate = NSPredicate(format: "distanceToLocation:fromLocation:(Location,%@) < %f", location, radiusInMeters)
@@ -167,23 +213,17 @@ class MemeController {
             for record in records {
                 
                 guard let meme = Meme(record: record) else { return }
-                
-                guard let userID = UserController.shared.currentUser?.ckRecordID else { return }
-                let userReference = CKReference(recordID: userID, action: .deleteSelf)
-                guard let usersThatFlaggedRefs = meme.usersThatFlaggedRefs else { return }
-                if !usersThatFlaggedRefs.contains(userReference) {
             
-                    if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
-                        if !self.memes.contains(meme) {
-                            self.memes.append(meme)
-                            completion(self.memes)
-                        }
-                        self.memes.sort { $0.date > $1.date }
-                    } else {
-                        self.delete(meme)
-                        guard let index = self.memes.index(of: meme) else { return }
-                        self.memes.remove(at: index)
+                if self.TodayIsCloseEnoughTo(memeDate: meme.date) {
+                    if !self.memes.contains(meme) {
+                        self.memes.append(meme)
+                        completion(self.memes)
                     }
+                    self.memes.sort { $0.date > $1.date }
+                } else {
+                    self.delete(meme)
+                    guard let index = self.memes.index(of: meme) else { return }
+                    self.memes.remove(at: index)
                 }
             }
             
@@ -200,8 +240,12 @@ class MemeController {
     // if they have 3+ flags too.
     
     func flag(_ meme: Meme) {
+<<<<<<< HEAD
+=======
         
         guard userCanFlag(meme) else { return }
+        
+>>>>>>> flagging
         meme.flagCount += 1
         UserController.shared.currentUser?.flagCount += 1
         CloudKitManager.shared.modifyFlagCount(meme)
