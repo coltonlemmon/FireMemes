@@ -149,5 +149,6 @@ extension CKRecord {
 extension Meme: Equatable {}
 func ==(lhs: Meme, rhs: Meme) -> Bool {
     if lhs.cloudKitRecordID != rhs.cloudKitRecordID { return false }
+    if lhs.identifier != rhs.identifier { return false }
     return true
 }

@@ -98,7 +98,7 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         guard let location = myLocation else { return }
         guard let meme = MemeController.shared.createMeme(image: image, location: location) else { return }
         MemeController.shared.postMeme(meme: meme)
-        MemeController.shared.memes.insert(meme, at: 0)
+        //MemeController.shared.memes.insert(meme, at: 0)
         
         biggerFireView.isHidden = false
         timerAction()
@@ -151,6 +151,10 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
                 self.present(imagePicker, animated: true, completion: nil)
             } else {
                 print("Camera not available")
+                let alertController = UIAlertController(title: "Camera not available", message: "You have not given permission to use the camera or there is no available camera to use.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
             }
         }))
         
@@ -358,6 +362,10 @@ extension MemeDaddyCreatorViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error getting location to create meme: \(error.localizedDescription)")
+        let alertController = UIAlertController(title: "Could not find location", message: "Unable to find location. Change user setting to allow FireMemes to use your location in Settings.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

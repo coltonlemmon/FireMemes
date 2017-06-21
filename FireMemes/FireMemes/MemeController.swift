@@ -60,7 +60,7 @@ class MemeController {
                 print("Error saving to cloudKit \(error.localizedDescription)")
             }
         }
-        //memes.insert(meme, at: 0)
+        self.memes.insert(meme, at: 0)
     }
     
     func addCommentToMeme(meme: Meme, comment: String) {
