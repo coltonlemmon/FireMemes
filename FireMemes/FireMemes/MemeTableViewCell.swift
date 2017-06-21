@@ -75,8 +75,8 @@ extension MemeTableViewCell {
         facebookButton.layer.borderWidth = 0.5
         twitterButton.layer.borderWidth = 0.5
         
-        let voteNumber = upVoteCount
-        numberOfUpvotes.text = "\(voteNumber)"
+        //let voteNumber = upVoteCount
+        numberOfUpvotes.text = "\(upVoteCount)"
         if hasUpvoted == true {
             numberOfUpvotes.textColor = .red
         } else {
