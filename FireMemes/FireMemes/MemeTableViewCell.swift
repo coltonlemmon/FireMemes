@@ -25,8 +25,11 @@ class MemeTableViewCell: UITableViewCell {
     @IBOutlet weak var twitterButton: UIButton!
     
     
-    //each cell will have a meme,
-
+    
+    //each cell will have a meme
+    
+    //Animation for Likes
+  
     //Delegates
     var delegate: MemeTableViewCellDelegate?
     
@@ -67,6 +70,7 @@ class MemeTableViewCell: UITableViewCell {
 extension MemeTableViewCell {
     
     func updateViews(meme: Meme, upVoteCount: Int, hasUpvoted: Bool) {
+        
         memeImageView.image = meme.image
         numberOfComments.text = "\(meme.comments.count)"
         
@@ -87,12 +91,8 @@ extension MemeTableViewCell {
         } else {
             numberOfUpvotes.textColor = .black
         }
-        
-        
     }
-
 }
-
 //Protocols
 protocol MemeTableViewCellDelegate: class{
     
@@ -107,6 +107,8 @@ protocol MemeTableViewCellDelegate: class{
     func reportButtonTapped(sender: MemeTableViewCell)
     
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool)
+    
+    func didDoubleTapOnImage(sender: MemeTableViewCell, recognizer: UITapGestureRecognizer)
     
 }
 

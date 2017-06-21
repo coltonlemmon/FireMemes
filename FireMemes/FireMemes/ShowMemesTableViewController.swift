@@ -154,7 +154,18 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         self.view.addGestureRecognizer(rightSwipe)
         hideKeyboardWhenTappedAround()
         
+        //Adding Tap gesture recognizer, So user can like image
+        let didLikedImage = UITapGestureRecognizer(target: self, action: #selector(ShowMemesTableViewController.didDoubleTapOnImage(sender:recognizer:)))
+        
+        //requires two taps for didLikeImage recognizer
+        didLikedImage.numberOfTapsRequired = 2
+        
+        //Add didLikeGesture to tableView
+        self.tableView.addGestureRecognizer(didLikedImage)
+        
     }
+    
+
     
     //viewWillApear
     override func viewWillAppear(_ animated: Bool) {
@@ -173,26 +184,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     @IBAction func addCommentClicked(_ sender: Any) {
         
     }
-    @IBAction func doubleTappLikeGestureRecognizer(_ sender: Any) {
-        
-        //Animation Upvote
-        
-            let animationView = LOTAnimationView(name: "LikeAnimation")
-            
-            animationView?.frame = CGRect(x: 0, y: 50, width: self.view.frame.width, height: self.view.frame.height)
-            
-            animationView?.contentMode = .scaleAspectFill
-            
-            self.view.addSubview(animationView!)
-            
-            animationView?.loopAnimation = false
-            
-            animationView?.play(completion: { (finished) in
-                
-                animationView?.removeFromSuperview()
-                
-            })
-        }
 
   
     // MARK: - Table view data source
@@ -258,6 +249,30 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 //MARK: MemeTableViewCellDelegate Methods
 
 extension ShowMemesTableViewController: MemeTableViewCellDelegate {
+
+    //Animation to be performed to a specific cell
+    func didDoubleTapOnImage(sender: MemeTableViewCell, recognizer: UITapGestureRecognizer) {
+        
+        if recognizer.state == UIGestureRecognizerState.ended {
+            
+            //Animation for didLikeImage
+            let animationView = LOTAnimationView(name: "LikeAnimation")
+            
+            animationView?.frame = CGRect(x: 0, y: -100, width: self.tableView.frame.width, height: self.tableView.frame.height)
+            
+            animationView?.contentMode = .scaleAspectFill
+            
+            self.tableView.addSubview(animationView!)
+            
+            animationView?.loopAnimation = false
+            
+            animationView?.play(completion: { (finished) in
+                
+                animationView?.removeFromSuperview()
+                
+            })
+        }
+    }
 
     //Swipe right gesture regonizer, Hides the comment section when user swipes right
     func swipeRightGesture(swipe: UISwipeGestureRecognizer) {
@@ -408,6 +423,8 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
         print("Error with locationManager: \(error.localizedDescription)")
     }
 }
+
+
 
 //MARK: - SwipeRightDelegate
 

@@ -39,9 +39,6 @@
                                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default" translatesAutoresizingMaskIntoConstraints="NO" id="skf-zH-oqf">
                                                             <rect key="frame" x="0.0" y="18" width="375" height="330"/>
                                                             <gestureRecognizers/>
-                                                            <connections>
-                                                                <outletCollection property="gestureRecognizers" destination="CCL-pe-312" appends="YES" id="lwT-8t-Tlv"/>
-                                                            </connections>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZr-jB-LqM">
                                                             <rect key="frame" x="8" y="352" width="30" height="30"/>
@@ -164,6 +161,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="facebookButton" destination="cZr-jB-LqM" id="IT9-10-9Hu"/>
                                             <outlet property="memeImageView" destination="skf-zH-oqf" id="ieX-vr-fIm"/>
@@ -257,11 +255,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adm-2f-zZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="CCL-pe-312">
-                    <connections>
-                        <action selector="doubleTappLikeGestureRecognizer:" destination="05e-fx-T71" id="gQ4-lv-GAj"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1060" y="174.96251874062969"/>
         </scene>
