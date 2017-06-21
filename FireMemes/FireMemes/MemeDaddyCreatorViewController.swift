@@ -97,9 +97,14 @@ class MemeDaddyCreatorViewController: UIViewController, UIImagePickerControllerD
         
         guard let location = myLocation else { return }
         guard let meme = MemeController.shared.createMeme(image: image, location: location) else { return }
-        MemeController.shared.postMeme(meme: meme)
-        //MemeController.shared.memes.insert(meme, at: 0)
-        
+        MemeController.shared.postMeme(meme: meme) { (error) in
+            if error != nil {
+                let alertController = UIAlertController(title: "Unable to post meme", message: "Unable to post meme at this time. Make sure you are signed into your icloud account or try again in a few minutes.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
         biggerFireView.isHidden = false
         timerAction()
     }

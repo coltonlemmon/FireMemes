@@ -54,9 +54,10 @@ class MemeController {
         return meme
     }
     
-    func postMeme(meme: Meme) {
+    func postMeme(meme: Meme, completion: @escaping (Error?) -> Void) {
         self.saveUsingCloudKit(record: CKRecord(meme)) { (error) in
             if let error = error {
+                completion(error)
                 print("Error saving to cloudKit \(error.localizedDescription)")
             }
         }
