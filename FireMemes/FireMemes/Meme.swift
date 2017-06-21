@@ -30,6 +30,7 @@ class Meme: CloudKitSync {
     //gavin added
     var usersThatLikedRefs: [CKReference] = []
     var usersThatFlaggedRefs: [CKReference] = []
+    var likers: [CKReference]?
     
     let date: Date
     let identifier: String
@@ -40,7 +41,7 @@ class Meme: CloudKitSync {
     var ckReference: CKReference?
     var recordType: String { return Keys.meme }
     
-    init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorRef: CKReference?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false, usersThatLiked: [CKReference] = [], usersThatFlagged: [CKReference] = []) {
+    init(imageData: Data?, image: UIImage?, date: Date = Date(), id: String = UUID().uuidString, thumbsUp: Int = 0, comments: [String] = [], location: CLLocation, creatorRef: CKReference?, flagCount: Int = 0, memeOwner: User?, isBanned: Bool = false, usersThatLiked: [CKReference] = [], usersThatFlagged: [CKReference] = [], likers: [CKReference]) {
         self.imageData = imageData
         self.date = date
         self.identifier = id
@@ -76,9 +77,10 @@ class Meme: CloudKitSync {
             let memeOwner = record[Keys.owner] as? CKReference,
             let location = record[Keys.location] as? CLLocation,
             let usersThatLiked = record[Keys.usersThatLiked] as? [CKReference],
-            let usersThatFlagged = record[Keys.usersThatFlagged] as? [CKReference] else { return nil }
+            let usersThatFlagged = record[Keys.usersThatFlagged] as? [CKReference],
+            let likers = record[Keys.liker] as? [CKReference] else { return nil }
         
-        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned, usersThatLiked: usersThatLiked, usersThatFlagged: usersThatFlagged)
+        self.init(imageData: imageData, image: image, date: date, id: id, thumbsUp: thumbsUp, comments: comments, location: location, creatorRef: memeOwner, flagCount: flagCount, memeOwner: nil, isBanned: isBanned, usersThatLiked: usersThatLiked, usersThatFlagged: usersThatFlagged, likers: likers)
         cloudKitRecordID = record.recordID
     }
     

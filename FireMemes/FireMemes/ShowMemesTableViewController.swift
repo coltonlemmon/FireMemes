@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Social
+import CloudKit
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
@@ -322,17 +323,13 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         guard let indexPath = self.tableView.indexPath(for: sender) else { return }
         
         let meme = MemeController.shared.memes[indexPath.row]
+        guard let likers = meme.likers else { return }
         
-        guard MemeController.shared.userCanLike(meme) else { return }
+        guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+        let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
         
-        var localHasBeenUpvoted = hasBeenUpvoted
-        var upVoteCount = meme.thumbsUp
-        
-        if localHasBeenUpvoted == false {
-            upVoteCount += 1
-            MemeController.shared.addUpvoteToMeme(meme: meme)
-            localHasBeenUpvoted = true
-            sender.updateViews(meme: meme, hasBeenUpvoted: localHasBeenUpvoted)
+        if !likers.contains(likerReference) {
+            MemeController.shared.upvoteMeme(meme: meme)
         } else {
             MemeController.shared.removeUpvote(meme: meme)
         }
