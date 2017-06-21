@@ -48,7 +48,7 @@ class MemeController {
         guard let userID = UserController.shared.currentUser?.ckRecordID else { return nil }
         let userReference = CKReference(recordID: userID, action: .deleteSelf)
         
-        let meme = Meme(imageData: data, image: image, location: location, creatorRef: user.ckReference, memeOwner: user, likers: [userReference])
+        let meme = Meme(imageData: data, image: image, location: location, creatorRef: user.ckReference, memeOwner: user, usersThatLiked: [userReference], usersThatFlagged: [userReference], likers: [userReference])
         return meme
     }
     
@@ -85,8 +85,8 @@ class MemeController {
     func userCanLike(_ meme: Meme) -> Bool {
         
         guard let currentUserRef = UserController.shared.currentUser?.ckReference else {return false}
-        
-        if !meme.usersThatLikedRefs.contains(currentUserRef) {
+        guard let usersThatLikedRefs = meme.usersThatLikedRefs else { return false }
+        if !usersThatLikedRefs.contains(currentUserRef) {
             return true
         } else {
             return false
@@ -97,8 +97,8 @@ class MemeController {
     func userCanFlag(_ meme: Meme) -> Bool {
         
         guard let currentUserRef = UserController.shared.currentUser?.ckReference else {return false}
-        
-        if !meme.usersThatFlaggedRefs.contains(currentUserRef) {
+        guard let usersThatFlaggedRefs = meme.usersThatFlaggedRefs else { return false }
+        if !usersThatFlaggedRefs.contains(currentUserRef) {
             return true
         } else {
             return false

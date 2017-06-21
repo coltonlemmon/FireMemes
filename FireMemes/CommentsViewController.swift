@@ -61,6 +61,7 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let meme = meme else { return 0 }
         return meme.comments.count
+        
     }
 
     
