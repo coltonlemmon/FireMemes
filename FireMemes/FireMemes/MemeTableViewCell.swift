@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import Lottie
 
 class MemeTableViewCell: UITableViewCell {
     
@@ -24,8 +25,11 @@ class MemeTableViewCell: UITableViewCell {
     @IBOutlet weak var twitterButton: UIButton!
     
     
-    //each cell will have a meme,
-
+    
+    //each cell will have a meme
+    
+    //Animation for Likes
+  
     //Delegates
     var delegate: MemeTableViewCellDelegate?
     
@@ -49,7 +53,10 @@ class MemeTableViewCell: UITableViewCell {
     }
   
     @IBAction func upvoteButtonTapped(_ sender: Any) {
+        
         delegate?.upVoteButtonTapped(sender: self, hasBeenUpvoted: hasBeenUpvoted)
+        
+              
     }
     
     @IBAction func reportButtonTapped(_ sender: Any) {
@@ -63,6 +70,7 @@ class MemeTableViewCell: UITableViewCell {
 extension MemeTableViewCell {
     
     func updateViews(meme: Meme, upVoteCount: Int, hasUpvoted: Bool) {
+        
         memeImageView.image = meme.image
         numberOfComments.text = "\(meme.comments.count)"
         
@@ -79,14 +87,13 @@ extension MemeTableViewCell {
         numberOfUpvotes.text = "\(upVoteCount)"
         if hasUpvoted == true {
             numberOfUpvotes.textColor = .red
+         
         } else {
             numberOfUpvotes.textColor = .black
         }
         
     }
-
 }
-
 //Protocols
 protocol MemeTableViewCellDelegate: class{
     
@@ -101,5 +108,6 @@ protocol MemeTableViewCellDelegate: class{
     func reportButtonTapped(sender: MemeTableViewCell)
     
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool)
+    
 }
 

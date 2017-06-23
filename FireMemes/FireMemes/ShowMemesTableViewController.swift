@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Social
 import CloudKit
+import Lottie
 
 class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
@@ -28,6 +29,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //Loading Animation
     @IBOutlet weak var loadingAnimationView: LoadingAnimation!
+    
     @IBOutlet weak var loadingAnimationLabel: UILabel!
     
     //Make a meme button
@@ -135,6 +137,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.notification, object: nil)
         nc.addObserver(self, selector: #selector(refreshing), name: Keys.likerNotification, object: nil)
         
+        
         //Table View Delegates
         tableView.delegate = self
         tableView.dataSource = self
@@ -152,7 +155,46 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         self.view.addGestureRecognizer(rightSwipe)
         hideKeyboardWhenTappedAround()
         
+        //Adding Tap gesture recognizer, So user can like image
+        let didLikedImage = UITapGestureRecognizer(target: self, action: #selector(ShowMemesTableViewController.didDoubleTap(recognizer:)))
+        
+        //requires two taps for didLikeImage recognizer
+        didLikedImage.numberOfTapsRequired = 2
+        
+        //Add didLikeGesture to tableView
+        self.tableView.addGestureRecognizer(didLikedImage)
+        
     }
+    
+    //Animation - When user double taps on a cell
+    func didDoubleTap(recognizer: UIGestureRecognizer) {
+        
+        if recognizer.state == UIGestureRecognizerState.ended {
+            
+            let doubleTapLocation = recognizer.location(in: self.tableView)
+            
+            if let swipedIndexPath = tableView.indexPathForRow(at: doubleTapLocation) {
+                
+                if self.tableView.cellForRow(at: swipedIndexPath) != nil {
+                    
+                    let animationView = LOTAnimationView(name: "LikeAnimation")
+                  
+                    animationView?.frame = CGRect(x: UIScreen.main.bounds.size.width * 0.5 - 150, y: UIScreen.main.bounds.size.height * 0.5 - 100, width: 300, height: 250)
+                    
+                    animationView?.contentMode = .scaleAspectFit
+                    
+                    self.view.addSubview(animationView!)
+                    
+                    animationView?.play(completion: { (finish) in
+                    
+                        
+                        animationView?.removeFromSuperview()
+                    })
+                }
+            }
+        }
+    }
+
     
     //viewWillApear
     override func viewWillAppear(_ animated: Bool) {
@@ -171,6 +213,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     @IBAction func addCommentClicked(_ sender: Any) {
         
     }
+
   
     // MARK: - Table view data source
     
@@ -233,9 +276,13 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
 }
 
+
+
 //MARK: MemeTableViewCellDelegate Methods
 
 extension ShowMemesTableViewController: MemeTableViewCellDelegate {
+
+
 
     //Swipe right gesture regonizer, Hides the comment section when user swipes right
     func swipeRightGesture(swipe: UISwipeGestureRecognizer) {
@@ -318,20 +365,29 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         
     }
     
+ 
     //UpVote button tapped
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
+        
         guard let indexPath = self.tableView.indexPath(for: sender) else { return }
         
         let meme = MemeController.shared.memes[indexPath.row]
+        
         guard let likers = meme.likers else { return }
         
         guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+        
         let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
         
         if !likers.contains(likerReference) {
+            
             MemeController.shared.upvoteMeme(meme: meme)
+    
+            
         } else {
+            
             MemeController.shared.removeUpvote(meme: meme)
+            
         }
     }
     
@@ -381,6 +437,8 @@ extension ShowMemesTableViewController: CLLocationManagerDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
 }
+
+
 
 //MARK: - SwipeRightDelegate
 
