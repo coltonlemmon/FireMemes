@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9GN-a9-xrG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9GN-a9-xrG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Show Memes Table View Controller-->
+        <!--Item-->
         <scene sceneID="GTy-wU-Le8">
             <objects>
                 <tableViewController id="9GN-a9-xrG" customClass="ShowMemesTableViewController" customModule="FireMemes" customModuleProvider="target" sceneMemberID="viewController">
@@ -130,10 +129,11 @@
                             <outlet property="delegate" destination="9GN-a9-xrG" id="YV0-7O-usc"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="2X6-NZ-eo4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5eq-lm-eX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="-69.715142428785612"/>
+            <point key="canvasLocation" x="100" y="-151"/>
         </scene>
         <!--MemeCreator-->
         <scene sceneID="V4h-yU-2f1">

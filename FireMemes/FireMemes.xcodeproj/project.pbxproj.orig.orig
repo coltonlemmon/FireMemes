@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B2C862F1EEB0F9E00FDE53D /* MemeDaddy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2C862E1EEB0F9E00FDE53D /* MemeDaddy.storyboard */; };
+		3B2C86311EEB0FA900FDE53D /* MemeDaddyCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C86301EEB0FA900FDE53D /* MemeDaddyCreatorViewController.swift */; };
+		3B2C86331EEB0FC600FDE53D /* MemeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C86321EEB0FC600FDE53D /* MemeImageView.swift */; };
+		3BEE226B1EEEE45A00A9ED3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE226A1EEEE45A00A9ED3F /* User.swift */; };
+		3BEE226D1EEEE8EB00A9ED3F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE226C1EEEE8EB00A9ED3F /* UserController.swift */; };
+		4D15203F1EF9BB61000A1E79 /* BigFireAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15203E1EF9BB61000A1E79 /* BigFireAnimation.swift */; };
+		4D1520821EFC9503000A1E79 /* LikeAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D1520811EFC9503000A1E79 /* LikeAnimation.json */; };
+		4D1BF9CB1EF1ED4200D440A9 /* FireAnimationForPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */; };
+		4D4A88F61EE5B208004A2AC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */; };
+<<<<<<< HEAD
+		4D4A88FB1EE5B208004A2AC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A88F91EE5B208004A2AC3 /* Main.storyboard */; };
+=======
+		4D4A88FD1EE5B208004A2AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A88FC1EE5B208004A2AC3 /* Assets.xcassets */; };
+>>>>>>> develop
+		4D4A89001EE5B208004A2AC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A88FE1EE5B208004A2AC3 /* LaunchScreen.storyboard */; };
+		4D4A89081EE5B575004A2AC3 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A89071EE5B575004A2AC3 /* Meme.swift */; };
+		4D4A890C1EE5B7F7004A2AC3 /* MemeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A890B1EE5B7F7004A2AC3 /* MemeController.swift */; };
+		4D4A890F1EE5BA34004A2AC3 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A890E1EE5BA34004A2AC3 /* CloudKitManager.swift */; };
+		4D4A89121EE5BCF4004A2AC3 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A89111EE5BCF4004A2AC3 /* Keys.swift */; };
+		4DA2D7DB1EE9A921006D056D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA2D7DA1EE9A921006D056D /* CloudKit.framework */; };
+		4DA2D7DD1EEA3023006D056D /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA2D7DC1EEA3023006D056D /* LoadingAnimation.swift */; };
+		4DE80D821EEF6FEE00A745B8 /* FireAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE80D811EEF6FEE00A745B8 /* FireAnimation.swift */; };
+		5914E6E41EE87562007D9C81 /* ShowMemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914E6E31EE87562007D9C81 /* ShowMemesTableViewController.swift */; };
+		5914E6EA1EE87799007D9C81 /* MemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */; };
+		5914E7111EE9CD59007D9C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914E7101EE9CD59007D9C81 /* Main.storyboard */; };
+		59446B011EF09B0E00C0B1DD /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59446B001EF09B0E00C0B1DD /* CommentsViewController.swift */; };
+		AD106CA286E6087E9F7D698F /* Pods_FireMemes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77264F7600BF37D37F1E639D /* Pods_FireMemes.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+<<<<<<< HEAD
+		3B616A711EE86AC4002E0B03 /* MemeCreator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MemeCreator.storyboard; sourceTree = "<group>"; };
+		3B616A721EE86AC4002E0B03 /* MemeCreatorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCreatorTableViewController.swift; sourceTree = "<group>"; };
+		3B616A731EE86AC4002E0B03 /* MemeCreatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCreatorViewController.swift; sourceTree = "<group>"; };
+		3B616A7C1EE86B57002E0B03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B616A7E1EE86C27002E0B03 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D4A88F21EE5B208004A2AC3 /* FireMemes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireMemes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4D4A88FA1EE5B208004A2AC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+=======
+		19254F5D7ED5913F0EC15BCB /* Pods-FireMemes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireMemes.release.xcconfig"; path = "Pods/Target Support Files/Pods-FireMemes/Pods-FireMemes.release.xcconfig"; sourceTree = "<group>"; };
+		3B2C862E1EEB0F9E00FDE53D /* MemeDaddy.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MemeDaddy.storyboard; sourceTree = "<group>"; };
+		3B2C86301EEB0FA900FDE53D /* MemeDaddyCreatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeDaddyCreatorViewController.swift; sourceTree = "<group>"; };
+		3B2C86321EEB0FC600FDE53D /* MemeImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeImageView.swift; sourceTree = "<group>"; };
+		3BEE226A1EEEE45A00A9ED3F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3BEE226C1EEEE8EB00A9ED3F /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		4D15203E1EF9BB61000A1E79 /* BigFireAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFireAnimation.swift; sourceTree = "<group>"; };
+		4D1520811EFC9503000A1E79 /* LikeAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LikeAnimation.json; path = ../../../../../../../../Downloads/LikeAnimation.json; sourceTree = "<group>"; };
+		4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireAnimationForPicker.swift; sourceTree = "<group>"; };
+		4D4A88F21EE5B208004A2AC3 /* FireMemes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireMemes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4D4A88FC1EE5B208004A2AC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+>>>>>>> develop
+		4D4A88FF1EE5B208004A2AC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4D4A89011EE5B208004A2AC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D4A89071EE5B575004A2AC3 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		4D4A890B1EE5B7F7004A2AC3 /* MemeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeController.swift; sourceTree = "<group>"; };
+		4D4A890E1EE5BA34004A2AC3 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		4D4A89111EE5BCF4004A2AC3 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		4DA2D7D81EE9A91D006D056D /* FireMemes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FireMemes.entitlements; sourceTree = "<group>"; };
+		4DA2D7DA1EE9A921006D056D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		4DA2D7DC1EEA3023006D056D /* LoadingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
+		4DE80D811EEF6FEE00A745B8 /* FireAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireAnimation.swift; sourceTree = "<group>"; };
+		5914E6E31EE87562007D9C81 /* ShowMemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMemesTableViewController.swift; sourceTree = "<group>"; };
+		5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewCell.swift; sourceTree = "<group>"; };
+		5914E7101EE9CD59007D9C81 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		59446B001EF09B0E00C0B1DD /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentsViewController.swift; path = ../CommentsViewController.swift; sourceTree = "<group>"; };
+		77264F7600BF37D37F1E639D /* Pods_FireMemes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireMemes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B388B237B86330DECAB8F4C /* Pods-FireMemes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireMemes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FireMemes/Pods-FireMemes.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D4A88EF1EE5B208004A2AC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DA2D7DB1EE9A921006D056D /* CloudKit.framework in Frameworks */,
+				AD106CA286E6087E9F7D698F /* Pods_FireMemes.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4D1BFA401EF8261100D440A9 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				4D1520811EFC9503000A1E79 /* LikeAnimation.json */,
+				4DA2D7DC1EEA3023006D056D /* LoadingAnimation.swift */,
+				4DE80D811EEF6FEE00A745B8 /* FireAnimation.swift */,
+				4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */,
+				4D15203E1EF9BB61000A1E79 /* BigFireAnimation.swift */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		4D4A88E91EE5B208004A2AC3 = {
+			isa = PBXGroup;
+			children = (
+				4D4A88F41EE5B208004A2AC3 /* FireMemes */,
+				4D4A88F31EE5B208004A2AC3 /* Products */,
+				4DA2D7D91EE9A921006D056D /* Frameworks */,
+				A58EF0EB287F3AD5A3CEEEE1 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		4D4A88F31EE5B208004A2AC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D4A88F21EE5B208004A2AC3 /* FireMemes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D4A88F41EE5B208004A2AC3 /* FireMemes */ = {
+			isa = PBXGroup;
+			children = (
+				4DA2D7D81EE9A91D006D056D /* FireMemes.entitlements */,
+				4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */,
+				4DA2D7D71EE8A4A2006D056D /* Storyboards */,
+				5914E6EB1EE877F9007D9C81 /* ViewControllers */,
+				4D1BFA401EF8261100D440A9 /* Animation */,
+				4D4A89091EE5B586004A2AC3 /* Model */,
+				4D4A890A1EE5B7E9004A2AC3 /* ModelControllers */,
+				4D4A890D1EE5BA21004A2AC3 /* CloudKitManager */,
+				4D4A89101EE5BC35004A2AC3 /* Resources */,
+			);
+			path = FireMemes;
+			sourceTree = "<group>";
+		};
+		4D4A89091EE5B586004A2AC3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4D4A89071EE5B575004A2AC3 /* Meme.swift */,
+				3BEE226A1EEEE45A00A9ED3F /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4D4A890A1EE5B7E9004A2AC3 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D4A890B1EE5B7F7004A2AC3 /* MemeController.swift */,
+				3BEE226C1EEEE8EB00A9ED3F /* UserController.swift */,
+			);
+			name = ModelControllers;
+			sourceTree = "<group>";
+		};
+		4D4A890D1EE5BA21004A2AC3 /* CloudKitManager */ = {
+			isa = PBXGroup;
+			children = (
+				4D4A890E1EE5BA34004A2AC3 /* CloudKitManager.swift */,
+			);
+			name = CloudKitManager;
+			sourceTree = "<group>";
+		};
+		4D4A89101EE5BC35004A2AC3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4D4A88FC1EE5B208004A2AC3 /* Assets.xcassets */,
+				4D4A89011EE5B208004A2AC3 /* Info.plist */,
+				4D4A89111EE5BCF4004A2AC3 /* Keys.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4DA2D7D71EE8A4A2006D056D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5914E7101EE9CD59007D9C81 /* Main.storyboard */,
+				3B2C862E1EEB0F9E00FDE53D /* MemeDaddy.storyboard */,
+				4D4A88FE1EE5B208004A2AC3 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		4DA2D7D91EE9A921006D056D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DA2D7DA1EE9A921006D056D /* CloudKit.framework */,
+				77264F7600BF37D37F1E639D /* Pods_FireMemes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5914E6EB1EE877F9007D9C81 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				59446B001EF09B0E00C0B1DD /* CommentsViewController.swift */,
+				3B2C86301EEB0FA900FDE53D /* MemeDaddyCreatorViewController.swift */,
+				5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */,
+				5914E6E31EE87562007D9C81 /* ShowMemesTableViewController.swift */,
+				3B2C86321EEB0FC600FDE53D /* MemeImageView.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A58EF0EB287F3AD5A3CEEEE1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B388B237B86330DECAB8F4C /* Pods-FireMemes.debug.xcconfig */,
+				19254F5D7ED5913F0EC15BCB /* Pods-FireMemes.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4D4A88F11EE5B208004A2AC3 /* FireMemes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D4A89041EE5B208004A2AC3 /* Build configuration list for PBXNativeTarget "FireMemes" */;
+			buildPhases = (
+				26F459568535E75372F6FE38 /* [CP] Check Pods Manifest.lock */,
+				4D4A88EE1EE5B208004A2AC3 /* Sources */,
+				4D4A88EF1EE5B208004A2AC3 /* Frameworks */,
+				4D4A88F01EE5B208004A2AC3 /* Resources */,
+				6018CB263D8AB13126F76E9F /* [CP] Embed Pods Frameworks */,
+				FA1B527295213A3B4C136472 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FireMemes;
+			productName = FireMemes;
+			productReference = 4D4A88F21EE5B208004A2AC3 /* FireMemes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4D4A88EA1EE5B208004A2AC3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Colton;
+				TargetAttributes = {
+					4D4A88F11EE5B208004A2AC3 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = P3B9MPU7J2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 4D4A88ED1EE5B208004A2AC3 /* Build configuration list for PBXProject "FireMemes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4D4A88E91EE5B208004A2AC3;
+			productRefGroup = 4D4A88F31EE5B208004A2AC3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4D4A88F11EE5B208004A2AC3 /* FireMemes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4D4A88F01EE5B208004A2AC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B616A761EE86AC4002E0B03 /* MemeCreator.storyboard in Resources */,
+				4D4A89001EE5B208004A2AC3 /* LaunchScreen.storyboard in Resources */,
+<<<<<<< HEAD
+				4D4A88FB1EE5B208004A2AC3 /* Main.storyboard in Resources */,
+				3B616A7F1EE86C27002E0B03 /* Info.plist in Resources */,
+				3B616A7D1EE86B57002E0B03 /* Assets.xcassets in Resources */,
+=======
+				4D1520821EFC9503000A1E79 /* LikeAnimation.json in Resources */,
+				4D4A88FD1EE5B208004A2AC3 /* Assets.xcassets in Resources */,
+				5914E7111EE9CD59007D9C81 /* Main.storyboard in Resources */,
+				3B2C862F1EEB0F9E00FDE53D /* MemeDaddy.storyboard in Resources */,
+>>>>>>> develop
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26F459568535E75372F6FE38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6018CB263D8AB13126F76E9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FireMemes/Pods-FireMemes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA1B527295213A3B4C136472 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FireMemes/Pods-FireMemes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D4A88EE1EE5B208004A2AC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BEE226B1EEEE45A00A9ED3F /* User.swift in Sources */,
+				4D4A89081EE5B575004A2AC3 /* Meme.swift in Sources */,
+				4D1BF9CB1EF1ED4200D440A9 /* FireAnimationForPicker.swift in Sources */,
+				4D4A89121EE5BCF4004A2AC3 /* Keys.swift in Sources */,
+				3B2C86311EEB0FA900FDE53D /* MemeDaddyCreatorViewController.swift in Sources */,
+				4DE80D821EEF6FEE00A745B8 /* FireAnimation.swift in Sources */,
+				3BEE226D1EEEE8EB00A9ED3F /* UserController.swift in Sources */,
+				4D4A88F61EE5B208004A2AC3 /* AppDelegate.swift in Sources */,
+				4DA2D7DD1EEA3023006D056D /* LoadingAnimation.swift in Sources */,
+				4D15203F1EF9BB61000A1E79 /* BigFireAnimation.swift in Sources */,
+				4D4A890C1EE5B7F7004A2AC3 /* MemeController.swift in Sources */,
+				3B2C86331EEB0FC600FDE53D /* MemeImageView.swift in Sources */,
+				5914E6EA1EE87799007D9C81 /* MemeTableViewCell.swift in Sources */,
+				59446B011EF09B0E00C0B1DD /* CommentsViewController.swift in Sources */,
+				5914E6E41EE87562007D9C81 /* ShowMemesTableViewController.swift in Sources */,
+				4D4A890F1EE5BA34004A2AC3 /* CloudKitManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4D4A88FE1EE5B208004A2AC3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D4A88FF1EE5B208004A2AC3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4D4A89021EE5B208004A2AC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4D4A89031EE5B208004A2AC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4D4A89051EE5B208004A2AC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B388B237B86330DECAB8F4C /* Pods-FireMemes.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FireMemes/FireMemes.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = P3B9MPU7J2;
+				INFOPLIST_FILE = FireMemes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.colton.FireMemes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4D4A89061EE5B208004A2AC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19254F5D7ED5913F0EC15BCB /* Pods-FireMemes.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FireMemes/FireMemes.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = P3B9MPU7J2;
+				INFOPLIST_FILE = FireMemes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.colton.FireMemes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4D4A88ED1EE5B208004A2AC3 /* Build configuration list for PBXProject "FireMemes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D4A89021EE5B208004A2AC3 /* Debug */,
+				4D4A89031EE5B208004A2AC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D4A89041EE5B208004A2AC3 /* Build configuration list for PBXNativeTarget "FireMemes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D4A89051EE5B208004A2AC3 /* Debug */,
+				4D4A89061EE5B208004A2AC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4D4A88EA1EE5B208004A2AC3 /* Project object */;
+}

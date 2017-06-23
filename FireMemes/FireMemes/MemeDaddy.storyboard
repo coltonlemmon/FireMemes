@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Meme Creator-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" userLabel="Meme Creator" customClass="MemeDaddyCreatorViewController" customModule="FireMemes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="F2V-mH-P1e">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addImage" translatesAutoresizingMaskIntoConstraints="NO" id="rvw-Vm-whk" customClass="MemeImageView" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="34" width="375" height="276"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="276" id="iJI-Qf-bDZ"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="MEF-sY-pZ7" appends="YES" id="q3i-bD-njd"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0C-Ev-f0K">
+                                <rect key="frame" x="124" y="325" width="126" height="40"/>
+                                <color key="backgroundColor" red="0.99228101968765259" green="0.98448854684829712" blue="0.97593551874160767" alpha="0.27469499143835613" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BbJ-Yq-tjD"/>
+                                    <constraint firstAttribute="width" constant="126" id="a76-Y1-Fk8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <state key="normal" title="Add Text">
+                                    <color key="titleColor" red="0.059010490775108337" green="0.0509534552693367" blue="0.050871066749095917" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fng-St-cUp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-lt-VDl">
+                                <rect key="frame" x="16" y="619" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="0.1737746147260274" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <state key="normal" title="POST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postMeme:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0uH-e5-gBK"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUo-cd-nck" customClass="FireAnimationForPicker" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="162" y="548" width="51" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="Uf6-aJ-1Cr"/>
+                                    <constraint firstAttribute="height" constant="51" id="hze-NF-Z5q"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyi-gC-XxT" customClass="FireAnimation" customModule="FireMemes" customModuleProvider="target">
+                                <rect key="frame" x="162" y="548" width="51" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="XRX-4e-6CA"/>
+                                    <constraint firstAttribute="width" constant="51" id="whE-lg-kdK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="F2V-mH-P1e" secondAttribute="leading" id="00b-LH-UIW"/>
+                            <constraint firstItem="F2V-mH-P1e" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="3bV-oh-0Jf"/>
+                            <constraint firstItem="j3L-lt-VDl" firstAttribute="centerX" secondItem="v0C-Ev-f0K" secondAttribute="centerX" id="3m6-pU-GK2"/>
+                            <constraint firstAttribute="trailing" secondItem="rvw-Vm-whk" secondAttribute="trailing" id="4mz-qm-K4Q"/>
+                            <constraint firstItem="j3L-lt-VDl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8ll-yR-bHJ"/>
+                            <constraint firstItem="v0C-Ev-f0K" firstAttribute="centerX" secondItem="rvw-Vm-whk" secondAttribute="centerX" id="CDB-rV-Ran"/>
+                            <constraint firstItem="F2V-mH-P1e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HiI-8q-hqN"/>
+                            <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="fUo-cd-nck" secondAttribute="bottom" constant="20" id="QNk-tU-4xM"/>
+                            <constraint firstItem="fUo-cd-nck" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QcP-2A-USc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j3L-lt-VDl" secondAttribute="bottom" constant="8" id="c4H-co-dvm"/>
+                            <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="dyi-gC-XxT" secondAttribute="bottom" constant="20" id="esq-5L-z4I"/>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="trailing" secondItem="F2V-mH-P1e" secondAttribute="trailing" id="l87-SB-RFI"/>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="u5d-1A-PyA"/>
+                            <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uEb-ic-ZEl"/>
+                            <constraint firstItem="v0C-Ev-f0K" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="15" id="vh6-Ya-VjB"/>
+                            <constraint firstItem="dyi-gC-XxT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zfq-CQ-6b4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Meme Creator" id="MQb-az-aH2" userLabel="Meme Creator"/>
+                    <connections>
+                        <outlet property="addTextButton" destination="v0C-Ev-f0K" id="7To-UC-wdM"/>
+                        <outlet property="biggerFireView" destination="dyi-gC-XxT" id="KL2-jX-NBc"/>
+                        <outlet property="fireView" destination="fUo-cd-nck" id="dG1-qT-I5E"/>
+                        <outlet property="memeImageView" destination="rvw-Vm-whk" id="P0m-3M-Tgo"/>
+                        <outlet property="postMemeButton" destination="j3L-lt-VDl" id="T2v-Az-ISX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MEF-sY-pZ7">
+                    <connections>
+                        <action selector="selectImage:" destination="BYZ-38-t0r" id="iKN-gG-oaC"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3892" y="138.0809595202399"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="750" height="1334"/>
+        <image name="addImage" width="1000" height="600"/>
+    </resources>
+</document>
