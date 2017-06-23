@@ -156,7 +156,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         hideKeyboardWhenTappedAround()
         
         //Adding Tap gesture recognizer, So user can like image
-        let didLikedImage = UITapGestureRecognizer(target: self, action: #selector(ShowMemesTableViewController.didDoubleTapOnImage(sender:recognizer:)))
+        let didLikedImage = UITapGestureRecognizer(target: self, action: #selector(ShowMemesTableViewController.didDoubleTap(recognizer:)))
         
         //requires two taps for didLikeImage recognizer
         didLikedImage.numberOfTapsRequired = 2
@@ -166,6 +166,34 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
+    //Animation - When user double taps on a cell
+    func didDoubleTap(recognizer: UIGestureRecognizer) {
+        
+        if recognizer.state == UIGestureRecognizerState.ended {
+            
+            let doubleTapLocation = recognizer.location(in: self.tableView)
+            
+            if let swipedIndexPath = tableView.indexPathForRow(at: doubleTapLocation) {
+                
+                if self.tableView.cellForRow(at: swipedIndexPath) != nil {
+                    
+                    let animationView = LOTAnimationView(name: "LikeAnimation")
+                  
+                    animationView?.frame = CGRect(x: UIScreen.main.bounds.size.width * 0.5 - 150, y: UIScreen.main.bounds.size.height * 0.5 - 100, width: 300, height: 250)
+                    
+                    animationView?.contentMode = .scaleAspectFit
+                    
+                    self.view.addSubview(animationView!)
+                    
+                    animationView?.play(completion: { (finish) in
+                    
+                        
+                        animationView?.removeFromSuperview()
+                    })
+                }
+            }
+        }
+    }
 
     
     //viewWillApear

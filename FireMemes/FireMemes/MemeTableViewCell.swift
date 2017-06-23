@@ -109,7 +109,5 @@ protocol MemeTableViewCellDelegate: class{
     
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool)
     
-    func didDoubleTapOnImage(sender: MemeTableViewCell, recognizer: UITapGestureRecognizer)
-    
 }
 
