@@ -186,8 +186,25 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
                     self.view.addSubview(animationView!)
                     
                     animationView?.play(completion: { (finish) in
-                    
                         
+                            func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
+                                guard let indexPath = self.tableView.indexPath(for: sender) else { return }
+                                
+                                let meme = MemeController.shared.memes[indexPath.row]
+                                
+                                guard let likers = meme.likers else { return }
+                                
+                                guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+                                
+                                let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+                                
+                                if !likers.contains(likerReference) {
+                                    MemeController.shared.upvoteMeme(meme: meme)
+                                } else {
+                                    
+                                    MemeController.shared.removeUpvote(meme: meme)
+                                }
+                            }
                         animationView?.removeFromSuperview()
                     })
                 }
@@ -368,7 +385,6 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
  
     //UpVote button tapped
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
-        
         guard let indexPath = self.tableView.indexPath(for: sender) else { return }
         
         let meme = MemeController.shared.memes[indexPath.row]
@@ -380,14 +396,10 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
         
         if !likers.contains(likerReference) {
-            
             MemeController.shared.upvoteMeme(meme: meme)
-    
-            
         } else {
             
             MemeController.shared.removeUpvote(meme: meme)
-            
         }
     }
     
