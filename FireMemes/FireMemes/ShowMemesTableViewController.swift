@@ -71,7 +71,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 
     //MARK: - Internal Properties
     
-    var locationManager = CLLocationManager()
+    var locationManager: CLLocationManager!
     var myLocation: CLLocation?
     
     var currentUser = UserController.shared.currentUser
@@ -102,13 +102,17 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func requestLocation() {
-        locationManager.requestLocation()
+        DispatchQueue.main.async {
+            self.locationManager.requestLocation()
+        }
     }
     
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager = CLLocationManager()
         
         setupView()
         
@@ -155,62 +159,64 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         self.view.addGestureRecognizer(rightSwipe)
         hideKeyboardWhenTappedAround()
         
-        //Adding Tap gesture recognizer, So user can like image
-        let didLikedImage = UITapGestureRecognizer(target: self, action: #selector(ShowMemesTableViewController.didDoubleTap(recognizer:)))
-        
-        //requires two taps for didLikeImage recognizer
-        didLikedImage.numberOfTapsRequired = 2
-        
-        //Add didLikeGesture to tableView
-        self.tableView.addGestureRecognizer(didLikedImage)
+//        //Adding Tap gesture recognizer, So user can like image
+//        let didLikedImage = UITapGestureRecognizer(target: self, action: #selector(ShowMemesTableViewController.didDoubleTap(recognizer:)))
+//        
+//        //requires two taps for didLikeImage recognizer
+//        didLikedImage.numberOfTapsRequired = 2
+//        
+//        //Add didLikeGesture to tableView
+//        self.tableView.addGestureRecognizer(didLikedImage)
         
     }
     
     //Animation - When user double taps on a cell
-    func didDoubleTap(recognizer: UIGestureRecognizer) {
-        
-        if recognizer.state == UIGestureRecognizerState.ended {
-            
-            let doubleTapLocation = recognizer.location(in: self.tableView)
-            
-            if let swipedIndexPath = tableView.indexPathForRow(at: doubleTapLocation) {
-                
-                if self.tableView.cellForRow(at: swipedIndexPath) != nil {
-                    
-                    let animationView = LOTAnimationView(name: "LikeAnimation")
-                  
-                    animationView?.frame = CGRect(x: UIScreen.main.bounds.size.width * 0.5 - 150, y: UIScreen.main.bounds.size.height * 0.5 - 100, width: 300, height: 250)
-                    
-                    animationView?.contentMode = .scaleAspectFit
-                    
-                    self.view.addSubview(animationView!)
-                    
-                    animationView?.play(completion: { (finish) in
-                        
-                            func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
-                                guard let indexPath = self.tableView.indexPath(for: sender) else { return }
-                                
-                                let meme = MemeController.shared.memes[indexPath.row]
-                                
-                                guard let likers = meme.likers else { return }
-                                
-                                guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
-                                
-                                let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
-                                
-                                if !likers.contains(likerReference) {
-                                    MemeController.shared.upvoteMeme(meme: meme)
-                                } else {
-                                    
-                                    MemeController.shared.removeUpvote(meme: meme)
-                                }
-                            }
-                        animationView?.removeFromSuperview()
-                    })
-                }
-            }
-        }
-    }
+//    func didDoubleTap(recognizer: UIGestureRecognizer) {
+//        
+//        if recognizer.state == UIGestureRecognizerState.ended {
+//            
+//            let doubleTapLocation = recognizer.location(in: self.tableView)
+//            
+//            func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
+//                guard let indexPath = self.tableView.indexPath(for: sender) else { return }
+//                
+//                let meme = MemeController.shared.memes[indexPath.row]
+//                
+//                guard let likers = meme.likers else { return }
+//                
+//                guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+//                
+//                let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+//                
+//                if !likers.contains(likerReference) {
+//                    MemeController.shared.upvoteMeme(meme: meme)
+//                } else {
+//                    
+//                    MemeController.shared.removeUpvote(meme: meme)
+//                }
+//            }
+//            
+//            if let swipedIndexPath = tableView.indexPathForRow(at: doubleTapLocation) {
+//                
+//                if self.tableView.cellForRow(at: swipedIndexPath) != nil {
+//                    
+//                    let animationView = LOTAnimationView(name: "LikeAnimation")
+//                  
+//                    animationView?.frame = CGRect(x: UIScreen.main.bounds.size.width * 0.5 - 150, y: UIScreen.main.bounds.size.height * 0.5 - 100, width: 300, height: 250)
+//                    
+//                    animationView?.contentMode = .scaleAspectFit
+//                    
+//                    self.view.addSubview(animationView!)
+//                    
+//                    animationView?.play(completion: { (finish) in
+//                        
+//                        animationView?.removeFromSuperview()
+//                        
+//                    })
+//                }
+//            }
+//        }
+//    }
 
     
     //viewWillApear
@@ -299,8 +305,6 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
 
 extension ShowMemesTableViewController: MemeTableViewCellDelegate {
 
-
-
     //Swipe right gesture regonizer, Hides the comment section when user swipes right
     func swipeRightGesture(swipe: UISwipeGestureRecognizer) {
         switch swipe.direction.rawValue {
@@ -382,7 +386,6 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         
     }
     
- 
     //UpVote button tapped
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool) {
         guard let indexPath = self.tableView.indexPath(for: sender) else { return }
@@ -400,6 +403,54 @@ extension ShowMemesTableViewController: MemeTableViewCellDelegate {
         } else {
             
             MemeController.shared.removeUpvote(meme: meme)
+        }
+    }
+    
+    //Double tapped upvote
+    func doubleTapUpVote(sender: MemeTableViewCell, hasBeenUpvoted: Bool, recognizer: UIGestureRecognizer) {
+        
+        if recognizer.state == UIGestureRecognizerState.ended {
+            
+            let doubleTapLocation = recognizer.location(in: self.tableView)
+
+            
+            if let swipedIndexPath = tableView.indexPathForRow(at: doubleTapLocation) {
+                
+                if self.tableView.cellForRow(at: swipedIndexPath) != nil {
+                    
+                    guard let indexPath = self.tableView.indexPath(for: sender) else { return }
+                    
+                    let meme = MemeController.shared.memes[indexPath.row]
+                    
+                    guard let likers = meme.likers else { return }
+                    
+                    guard let likerID = UserController.shared.currentUser?.ckRecordID else { return }
+                    
+                    let likerReference = CKReference(recordID: likerID, action: .deleteSelf)
+                    
+                    if !likers.contains(likerReference) {
+                        MemeController.shared.upvoteMeme(meme: meme)
+                    } else {
+                        
+                        MemeController.shared.removeUpvote(meme: meme)
+                    }
+                    
+                    let animationView = LOTAnimationView(name: "LikeAnimation")
+                    
+                    animationView?.frame = CGRect(x: UIScreen.main.bounds.size.width * 0.5 - 150, y: UIScreen.main.bounds.size.height * 0.5 - 100, width: 300, height: 250)
+                    
+                    animationView?.contentMode = .scaleAspectFit
+                    
+                    self.view.addSubview(animationView!)
+                    
+                    animationView?.play(completion: { (finish) in
+                        
+                        
+                        animationView?.removeFromSuperview()
+                        
+                    })
+                }
+            }
         }
     }
     

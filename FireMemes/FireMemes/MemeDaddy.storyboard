@@ -70,10 +70,13 @@
                                     <constraint firstAttribute="height" constant="51" id="hze-NF-Z5q"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyi-gC-XxT" customClass="FireAnimation" customModule="FireMemes" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyi-gC-XxT" customClass="FireAnimation" customModule="FireMemes" customModuleProvider="target">
                                 <rect key="frame" x="162" y="548" width="51" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="XRX-4e-6CA"/>
+                                    <constraint firstAttribute="width" constant="51" id="whE-lg-kdK"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -88,10 +91,12 @@
                             <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="fUo-cd-nck" secondAttribute="bottom" constant="20" id="QNk-tU-4xM"/>
                             <constraint firstItem="fUo-cd-nck" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QcP-2A-USc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j3L-lt-VDl" secondAttribute="bottom" constant="8" id="c4H-co-dvm"/>
+                            <constraint firstItem="j3L-lt-VDl" firstAttribute="top" secondItem="dyi-gC-XxT" secondAttribute="bottom" constant="20" id="esq-5L-z4I"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="trailing" secondItem="F2V-mH-P1e" secondAttribute="trailing" id="l87-SB-RFI"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="u5d-1A-PyA"/>
                             <constraint firstItem="rvw-Vm-whk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uEb-ic-ZEl"/>
                             <constraint firstItem="v0C-Ev-f0K" firstAttribute="top" secondItem="rvw-Vm-whk" secondAttribute="bottom" constant="15" id="vh6-Ya-VjB"/>
+                            <constraint firstItem="dyi-gC-XxT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zfq-CQ-6b4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Meme Creator" id="MQb-az-aH2" userLabel="Meme Creator"/>

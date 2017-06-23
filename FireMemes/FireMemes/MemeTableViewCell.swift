@@ -24,8 +24,6 @@ class MemeTableViewCell: UITableViewCell {
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var twitterButton: UIButton!
     
-    
-    
     //each cell will have a meme
     
     //Animation for Likes
@@ -53,14 +51,15 @@ class MemeTableViewCell: UITableViewCell {
     }
   
     @IBAction func upvoteButtonTapped(_ sender: Any) {
-        
         delegate?.upVoteButtonTapped(sender: self, hasBeenUpvoted: hasBeenUpvoted)
-        
-              
     }
     
     @IBAction func reportButtonTapped(_ sender: Any) {
         delegate?.reportButtonTapped(sender: self)
+    }
+    
+    func didDoubleTap(recognizer: UIGestureRecognizer) {
+        delegate?.doubleTapUpVote(sender: self, hasBeenUpvoted: hasBeenUpvoted, recognizer: recognizer)
     }
     
 }
@@ -92,6 +91,15 @@ extension MemeTableViewCell {
             numberOfUpvotes.textColor = .black
         }
         
+        //Adding Tap gesture recognizer, So user can like image
+        let didLikedImage = UITapGestureRecognizer(target: self, action: #selector(MemeTableViewCell.didDoubleTap(recognizer:)))
+        
+        //requires two taps for didLikeImage recognizer
+        didLikedImage.numberOfTapsRequired = 2
+        
+        //Add didLikeGesture to tableView
+        self.addGestureRecognizer(didLikedImage)
+        
     }
 }
 //Protocols
@@ -109,5 +117,7 @@ protocol MemeTableViewCellDelegate: class{
     
     func upVoteButtonTapped(sender: MemeTableViewCell, hasBeenUpvoted: Bool)
     
+    func doubleTapUpVote(sender: MemeTableViewCell, hasBeenUpvoted: Bool, recognizer: UIGestureRecognizer)
+
 }
 
