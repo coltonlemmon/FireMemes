@@ -32,8 +32,6 @@ class CommentsViewController: UIViewController,UITableViewDataSource, UITableVie
         tableView.reloadData()
     }
     
-   
-    
 //MARK: - Internal Properties
     
     var meme: Meme?
