@@ -13,6 +13,7 @@
 		3BEE226B1EEEE45A00A9ED3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE226A1EEEE45A00A9ED3F /* User.swift */; };
 		3BEE226D1EEEE8EB00A9ED3F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE226C1EEEE8EB00A9ED3F /* UserController.swift */; };
 		4D15203F1EF9BB61000A1E79 /* BigFireAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15203E1EF9BB61000A1E79 /* BigFireAnimation.swift */; };
+		4D1520B51F0166B3000A1E79 /* LikeAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 4D1520B41F0166B3000A1E79 /* LikeAnimation.json */; };
 		4D1BF9CB1EF1ED4200D440A9 /* FireAnimationForPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */; };
 		4D4A88F61EE5B208004A2AC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */; };
 		4D4A88FD1EE5B208004A2AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4A88FC1EE5B208004A2AC3 /* Assets.xcassets */; };
@@ -28,7 +29,6 @@
 		5914E6EA1EE87799007D9C81 /* MemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */; };
 		5914E7111EE9CD59007D9C81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5914E7101EE9CD59007D9C81 /* Main.storyboard */; };
 		59446B011EF09B0E00C0B1DD /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59446B001EF09B0E00C0B1DD /* CommentsViewController.swift */; };
-		59F202EC1EFD7B9800EB8A08 /* LikeAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 59F202EB1EFD7B9800EB8A08 /* LikeAnimation.json */; };
 		AD106CA286E6087E9F7D698F /* Pods_FireMemes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77264F7600BF37D37F1E639D /* Pods_FireMemes.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +40,7 @@
 		3BEE226A1EEEE45A00A9ED3F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3BEE226C1EEEE8EB00A9ED3F /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		4D15203E1EF9BB61000A1E79 /* BigFireAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFireAnimation.swift; sourceTree = "<group>"; };
+		4D1520B41F0166B3000A1E79 /* LikeAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LikeAnimation.json; sourceTree = "<group>"; };
 		4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireAnimationForPicker.swift; sourceTree = "<group>"; };
 		4D4A88F21EE5B208004A2AC3 /* FireMemes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireMemes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4A88F51EE5B208004A2AC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		5914E6E91EE87799007D9C81 /* MemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewCell.swift; sourceTree = "<group>"; };
 		5914E7101EE9CD59007D9C81 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		59446B001EF09B0E00C0B1DD /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentsViewController.swift; path = ../CommentsViewController.swift; sourceTree = "<group>"; };
-		59F202EB1EFD7B9800EB8A08 /* LikeAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LikeAnimation.json; path = ../../../../../Downloads/LikeAnimation.json; sourceTree = "<group>"; };
 		77264F7600BF37D37F1E639D /* Pods_FireMemes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireMemes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B388B237B86330DECAB8F4C /* Pods-FireMemes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireMemes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FireMemes/Pods-FireMemes.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,11 +79,11 @@
 		4D1BFA401EF8261100D440A9 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				59F202EB1EFD7B9800EB8A08 /* LikeAnimation.json */,
 				4DA2D7DC1EEA3023006D056D /* LoadingAnimation.swift */,
 				4DE80D811EEF6FEE00A745B8 /* FireAnimation.swift */,
 				4D1BF9CA1EF1ED4200D440A9 /* FireAnimationForPicker.swift */,
 				4D15203E1EF9BB61000A1E79 /* BigFireAnimation.swift */,
+				4D1520B41F0166B3000A1E79 /* LikeAnimation.json */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
@@ -273,8 +273,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D4A89001EE5B208004A2AC3 /* LaunchScreen.storyboard in Resources */,
-				59F202EC1EFD7B9800EB8A08 /* LikeAnimation.json in Resources */,
 				4D4A88FD1EE5B208004A2AC3 /* Assets.xcassets in Resources */,
+				4D1520B51F0166B3000A1E79 /* LikeAnimation.json in Resources */,
 				5914E7111EE9CD59007D9C81 /* Main.storyboard in Resources */,
 				3B2C862F1EEB0F9E00FDE53D /* MemeDaddy.storyboard in Resources */,
 			);
