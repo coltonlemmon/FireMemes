@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="369"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M8H-m4-HF3" id="m0t-Il-tmo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="368.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="369"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-QK-PF9">
@@ -317,7 +317,7 @@
                                         <rect key="frame" x="0.0" y="65" width="310" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sRq-Sc-SVN" id="7Sa-g3-Buw">
-                                            <rect key="frame" x="0.0" y="0.0" width="310" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -333,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2x-HP-CjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060.8" y="872.11394302848578"/>
+            <point key="canvasLocation" x="1059" y="890"/>
         </scene>
         <!--MemeDaddy-->
         <scene sceneID="7jt-9B-Xnh">
