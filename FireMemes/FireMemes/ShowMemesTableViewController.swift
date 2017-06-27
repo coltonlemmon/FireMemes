@@ -127,7 +127,7 @@ class ShowMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         // Location Services
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     
